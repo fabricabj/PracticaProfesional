@@ -5,32 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proveedores</title>
+    <title>Proveedores inactivos</title>
 </head>
 
 <body>
     <?php   
-    $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:proveedores.php?pagina=1");
+      header("location:proveedoresinactivos.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM proveedores WHERE idestado = 1";
-  $consulta = mysqli_query($conexion,$sql);
-  if(isset($_GET['orden'])){
-    if(isset($_GET['ascendente'])){
-      if($_GET['ascendente']==1){
-        $sql2 = " ASC";
-        $asc = 0;
-      }else{
-        $sql2 = " DESC";
-        $asc = 1;
-      }
-    }
-    $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
-    echo $sql;
-  }
+  
+  $consulta = mysqli_query($conexion, "SELECT * FROM proveedores WHERE idestado = 2");
   $proveedores_x_pag = 2;
   $total_proveedores = mysqli_num_rows($consulta);
   $paginas = $total_proveedores / $proveedores_x_pag;
@@ -38,21 +24,21 @@
   if (isset($_GET['pagina'])) {
     require("header.php");
     $iniciar = ($_GET['pagina'] - 1) * $proveedores_x_pag;
-    $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag");
+    $resultado = mysqli_query($conexion, "SELECT * FROM proveedores WHERE idestado = 2 limit $iniciar,$proveedores_x_pag");
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Proveedores</h3>
+        <h3 class="text-center text-white">Listado de Proveedores Inactivos</h3>
         <table class="table table-light">
           <thead>
           
             <th scope ="col">Id</th>
             <th scope ="col">Razòn Social</th>
             <th scope ="col">Cuit</th>
-            <th scope ="col"><a href="proveedores.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
+            <th scope ="col">Mail</th>
             <th scope ="col">Estado</th>
             <th><a href="altaproveedores.php"><button type="button" class="btn btn-warning">Nuevo</button></a></th>
-            <th><a href="proveedoresinactivos.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+            <th><a href="proveedores.php"><button type="button" class="btn btn-primary">Activos</button></a></th>
             <form action="ordenarlista.php" method="POST">
             <th><select  name="orden" class="form-control">
               <option value="idproveedor"> <?php echo "Id"; ?></option>
@@ -60,8 +46,7 @@
               <option value="cuit"> <?php echo "Cuit";  ?> </option>
               <option value="mail"> <?php echo "Mail";  ?> </option>
             </select></th><th>
-            <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado?>" hidden>
-            <button type="submit" value="ordenar" name="ordenar" class="btn btn-info">Ordenar</button></th>
+            <button type="submit" value="ordenarinactivos" name="ordenarinactivos" class="btn btn-info">Ordenar</button></th>
             </form>
 </thead> 
 <?php
@@ -82,7 +67,6 @@
                         $descripcion=$i['descripcion'];
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
-
       echo "<td><form action='modificarproveedores.php' method='post'>
                     <input name='cuit' id='cuit' value='".$fila['cuit']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
@@ -107,11 +91,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
