@@ -47,7 +47,7 @@
                                 </select>
                             </div>
             </div>
-              <input name='cuit' id='cuit' value='cuit' hidden>
+            
               <button type="submit" class="btn btn-secondary w-5" name="btnGuardar" onclick="esCUITValida(cuit)" id="btnGuardar" value="btnGuardar" >Guardar Cambios</button>
           </form>      
       </div> 

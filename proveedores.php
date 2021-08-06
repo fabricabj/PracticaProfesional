@@ -29,7 +29,6 @@
       }
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
-    echo $sql;
   }
   $proveedores_x_pag = 2;
   $total_proveedores = mysqli_num_rows($consulta);
@@ -46,23 +45,14 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col">Id</th>
-            <th scope ="col">Razòn Social</th>
-            <th scope ="col">Cuit</th>
+            <th scope ="col"><a href="proveedores.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="proveedores.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
+            <th scope ="col"><a href="proveedores.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
             <th scope ="col"><a href="proveedores.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
             <th scope ="col">Estado</th>
             <th><a href="altaproveedores.php"><button type="button" class="btn btn-warning">Nuevo</button></a></th>
             <th><a href="proveedoresinactivos.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
-            <form action="ordenarlista.php" method="POST">
-            <th><select  name="orden" class="form-control">
-              <option value="idproveedor"> <?php echo "Id"; ?></option>
-              <option value="razon_social"> <?php echo "Razon Social"; ?></option>
-              <option value="cuit"> <?php echo "Cuit";  ?> </option>
-              <option value="mail"> <?php echo "Mail";  ?> </option>
-            </select></th><th>
-            <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado?>" hidden>
-            <button type="submit" value="ordenar" name="ordenar" class="btn btn-info">Ordenar</button></th>
-            </form>
+            
 </thead> 
 <?php
   
@@ -115,6 +105,12 @@
                             </ul>
                         </nav>
                     </div>
+
+      <?php
+        if (isset($_GET['estado'])&& $_GET['estado']==1) {
+            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+        }
+        ?>
 
 </body>
 

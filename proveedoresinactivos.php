@@ -10,13 +10,27 @@
 
 <body>
     <?php   
+    $asc = 0;
     
     if(!isset($_GET['pagina'])){
       header("location:proveedoresinactivos.php?pagina=1");
       }
       include "conexion.php";
   
-  $consulta = mysqli_query($conexion, "SELECT * FROM proveedores WHERE idestado = 2");
+      $sql = "SELECT * FROM proveedores WHERE idestado = 2";
+      $consulta = mysqli_query($conexion,$sql);
+      if(isset($_GET['orden'])){
+        if(isset($_GET['ascendente'])){
+          if($_GET['ascendente']==1){
+            $sql2 = " ASC";
+            $asc = 0;
+          }else{
+            $sql2 = " DESC";
+            $asc = 1;
+          }
+        }
+        $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
+      }
   $proveedores_x_pag = 2;
   $total_proveedores = mysqli_num_rows($consulta);
   $paginas = $total_proveedores / $proveedores_x_pag;
@@ -24,7 +38,7 @@
   if (isset($_GET['pagina'])) {
     require("header.php");
     $iniciar = ($_GET['pagina'] - 1) * $proveedores_x_pag;
-    $resultado = mysqli_query($conexion, "SELECT * FROM proveedores WHERE idestado = 2 limit $iniciar,$proveedores_x_pag");
+    $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag");
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
@@ -32,22 +46,14 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col">Id</th>
-            <th scope ="col">Razòn Social</th>
-            <th scope ="col">Cuit</th>
-            <th scope ="col">Mail</th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
             <th scope ="col">Estado</th>
             <th><a href="altaproveedores.php"><button type="button" class="btn btn-warning">Nuevo</button></a></th>
             <th><a href="proveedores.php"><button type="button" class="btn btn-primary">Activos</button></a></th>
-            <form action="ordenarlista.php" method="POST">
-            <th><select  name="orden" class="form-control">
-              <option value="idproveedor"> <?php echo "Id"; ?></option>
-              <option value="razon_social"> <?php echo "Razon Social"; ?></option>
-              <option value="cuit"> <?php echo "Cuit";  ?> </option>
-              <option value="mail"> <?php echo "Mail";  ?> </option>
-            </select></th><th>
-            <button type="submit" value="ordenarinactivos" name="ordenarinactivos" class="btn btn-info">Ordenar</button></th>
-            </form>
+          
 </thead> 
 <?php
   
@@ -74,7 +80,7 @@
             </td>";
               echo "<td><form action='abmproveedores.php' method='post'>
                     <input name='cuit' id='cuit' value='".$fila['cuit']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+                    <button type='submit' class='btn btn-info' name='btnActivar' id='btnActivar' value='btnActivar'>Activar</button>
                 </form>
             </td>";
     // echo "<td><a href='abmproveedores.php'><button type='button' class='btn btn-danger'>Eliminar</button></a></td>";
