@@ -54,7 +54,7 @@
             
             if (isset($_GET['pagina'])) {
                $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
-               $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
+               $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
                while ($r = mysqli_fetch_array($consulta2)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
@@ -122,8 +122,10 @@
                                                         case "baja pelicula": ?>
                                                                     <div class="col-md-6">
                                                                         <form method="POST" action="ABM.php">
-                                                                                <button style="margin: 5px;" type="submit" name="idpelicula" value="<?php echo $r['idpelicula']; ?>" class="btn btn-dark">Eliminar</button>
-                                                                                <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                                        <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
+                                                                            <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                                                <button style="margin: 5px;" type="submit" name="idpelicula" value="idpelicula" class="btn btn-dark">Eliminar</button>
+                                                                                
                                                                                
                                                                             </form>
                                                                     </div>

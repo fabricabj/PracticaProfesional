@@ -67,10 +67,25 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 		header("location:categorias.php?genero=$generos&esatado=2");
 	}
 }
-if (isset($_POST['idpelicula'])) {
+if (isset($_POST['idpelicula']) && !empty($_POST['idpelicula'])) {
 	
-	$idPelicula = $_POST['idpelicula'];
-	$delete=mysqli_query($conexion, "delete from peliculas where idpelicula='$idPelicula'");
+	$idPelicula = $_POST['id'];
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
 	header("location:categorias.php");
+
+	echo $idPelicula;
 }
+
+/*if(isset($_POST['delete']) && !empty($_POST['delete'])){ 
+    require("conexion.php");
+    $idproducto=$_POST['id'];
+    $categoria=$_POST['categ'];
+    $pagina=$_POST['pag'];
+    $estado=mysqli_query($conexion,"SELECT idestado FROM pelicula_estados WHERE descripcion='inactivo'");
+    while($r=mysqli_fetch_array($estado)){$idEstado=$r['idestado'];}
+    $actualizar=mysqli_query($conexion,"UPDATE peliculas SET idestado=$idEstado WHERE idProducto=$idproducto");
+    
+    echo "<script>window.location.href ='productos.php?categoria=$categoria&pagina=$pagina';</script>";
+}
+?>*/
 ?>

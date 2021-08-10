@@ -112,7 +112,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputPassword4">Fecha</label>
-                            <input type="date" class="form-control" name="fecha" id="fecha" value="<?php echo $datos['fecha'];?>" required>                          
+                            <input type="date" class="form-control" name="fecha" id="fecha" required>                          
                         </div>
                         
                         <div class="form-group">
