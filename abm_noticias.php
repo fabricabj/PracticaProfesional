@@ -53,7 +53,7 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	if (isset($_POST['idnoticia'])) {
 		
 		$idNoticia = $_POST['idnoticia'];
-		$delete=mysqli_query($conexion, "delete from noticias where idnoticia='$idNoticia'");
+		$delete=mysqli_query($conexion, "update noticias set idestado = 2 where idnoticia='$idNoticia'");
 		header("location:noticias.php");
 	}
 

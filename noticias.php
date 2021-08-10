@@ -35,6 +35,8 @@
                                                 <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta noticia</button>
                                             </form>
                                         </li> 
+                                        <form method="POST" action="listarNoticias.php">
+                                                <button class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="listar" value="listar" ><i class="far fa-arrow-alt-circle-up"></i>Listar Noticias</button>
                         <?php     break;
                                 }
                                 }
