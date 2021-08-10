@@ -145,7 +145,7 @@
              ?>
          </div>
          </div>
-         </div>
+         </div>e
          <?php } ?>
                       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">

@@ -12,8 +12,9 @@
     <?php   
     require("header.php");
     require("conexion.php");?>
-    <div class="container">
-        <H1 class="text-white">Modificar Proveedores</H1>
+    <div class="container"  style="padding-top:100px;">
+    <div style="background:#212121; border-radius:30px;">
+        <H1 align="center" class="text-white">Modificar Proveedores</H1>
  
        <?php
          if (isset($_POST['cuit'])) {
@@ -31,13 +32,13 @@
          <form action="abmproveedores.php" method= "POST">
     <div class="px-lg-5 py-lg-4 p-4">
         <div class="form-row">
-              <div class="col-3">
+              <div class="col-6">
                 <label class="form-label font-weight-bold text-white">Razòn Social</label>
                 <input type="text"class="form-control bg-dark-x border-0" placeholder="Razòn Social" id="razon_social" name ="razon_social"  value="<?php echo $datos_generos['razon_social'];?>"/>
                  
                 
               </div>
-              <div class="col-3">
+              <div class="col-6">
               <label class="form-label font-weight-bold text-white">Cuit</label>
                 <input type="text"class="form-control bg-dark-x border-0" placeholder="Cuit" id="cuit" name ="cuit"  value="<?php echo $datos_generos['cuit'];?>"/>
                  <input type="text"class="form-control bg-dark-x border-0"  id="cuit_anterior" name ="cuit_anterior"  value="<?php echo $datos_generos['cuit'];?>"hidden/>
@@ -45,12 +46,12 @@
               </div>
 
               <div class="form-row">
-              <div class="col-3">
+              <div class="col-6">
                 <label class="form-label font-weight-bold text-white">Email</label>
                 <input type="email" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresar Email" id="email" value="<?php echo $datos_generos['mail'];?>" name="email"/>
               </div>
             
-              <div class="col-3">
+              <div class="col-6">
                 <label class="form-label font-weight-bold text-white">Estado</label>
 
 								<select name="estado" class="form-control" >
@@ -63,7 +64,7 @@
 								</select>
               </div><br>
             </div>
-              <button type="submit" class="btn btn-primary w-5" name="btnModificar" id="btnModificar" value="btnModificar">Guardar Cambios</button>
+              <button type="submit" class="btn btn-secondary w-5" name="btnModificar" id="btnModificar" value="btnModificar">Guardar Cambios</button>
           </form>       
              </div>
       </div>

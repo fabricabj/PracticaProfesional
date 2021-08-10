@@ -102,11 +102,11 @@ function killSession(){
                                 <a href="categorias.php">Peliculas</a>
                                 <a href="#">Estrenos</a>
                                 <a href="#">Calendario</a>
-                                <a href="proveedores.php">Proveedores</a>
+                                <a href="proveedores.php?pagina=1">Proveedores</a>
                                 <a href="#">Contactenos</a>
                             <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
+                                <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
                             </form>
                         </div>
                     </nav>

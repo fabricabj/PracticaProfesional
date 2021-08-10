@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proveedores</title>
+    <title>Proveedores inactivos</title>
 </head>
 
 <body>
@@ -13,23 +13,24 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:proveedores.php?pagina=1");
+      header("location:proveedoresinactivos.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM proveedores WHERE idestado = 1";
-  $consulta = mysqli_query($conexion,$sql);
-  if(isset($_GET['orden'])){
-    if(isset($_GET['ascendente'])){
-      if($_GET['ascendente']==1){
-        $sql2 = " ASC";
-        $asc = 0;
-      }else{
-        $sql2 = " DESC";
-        $asc = 1;
+  
+      $sql = "SELECT * FROM proveedores WHERE idestado = 2";
+      $consulta = mysqli_query($conexion,$sql);
+      if(isset($_GET['orden'])){
+        if(isset($_GET['ascendente'])){
+          if($_GET['ascendente']==1){
+            $sql2 = " ASC";
+            $asc = 0;
+          }else{
+            $sql2 = " DESC";
+            $asc = 1;
+          }
+        }
+        $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
       }
-    }
-    $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
-  }
   $proveedores_x_pag = 2;
   $total_proveedores = mysqli_num_rows($consulta);
   $paginas = $total_proveedores / $proveedores_x_pag;
@@ -41,18 +42,18 @@
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Proveedores</h3>
+        <h3 class="text-center text-white">Listado de Proveedores Inactivos</h3>
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="proveedores.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="proveedores.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
-            <th scope ="col"><a href="proveedores.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
-            <th scope ="col"><a href="proveedores.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
             <th scope ="col">Estado</th>
             <th><a href="altaproveedores.php"><button type="button" class="btn btn-warning">Nuevo</button></a></th>
-            <th><a href="proveedoresinactivos.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
-            
+            <th><a href="proveedores.php"><button type="button" class="btn btn-primary">Activos</button></a></th>
+          
 </thead> 
 <?php
   
@@ -72,7 +73,6 @@
                         $descripcion=$i['descripcion'];
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
-
       echo "<td><form action='modificarproveedores.php' method='post'>
                     <input name='cuit' id='cuit' value='".$fila['cuit']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
@@ -80,7 +80,7 @@
             </td>";
               echo "<td><form action='abmproveedores.php' method='post'>
                     <input name='cuit' id='cuit' value='".$fila['cuit']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+                    <button type='submit' class='btn btn-info' name='btnActivar' id='btnActivar' value='btnActivar'>Activar</button>
                 </form>
             </td>";
     // echo "<td><a href='abmproveedores.php'><button type='button' class='btn btn-danger'>Eliminar</button></a></td>";
@@ -97,20 +97,14 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedoresinactivos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
-
-      <?php
-        if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
-        }
-        ?>
 
 </body>
 
