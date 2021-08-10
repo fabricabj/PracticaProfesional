@@ -2,7 +2,7 @@
 <!DOCTYPE html>
  <html>
    <head>
-    <title><?php if (isset($_POST['nombre_noticia'])) { echo "Modificar Noticia";}else{echo "Alta Noticia";}?></title> 
+    <title><?php if (isset($_POST['idnoticia'])) { echo "Modificar Noticia";}else{echo "Alta Noticia";}?></title> 
    </head>
    <body>
    <?php require ("header.php");
@@ -14,10 +14,10 @@
         
             <div align="center" class="col-md-12 altamod">
             <?php 
-                 if (isset($_POST['nombre_noticia'])) {
-                      $nombre_noticia=$_POST['nombre_noticia'];
-                      $consulta="SELECT * FROM noticias WHERE nombre_noticia='$nombre_noticia'";
-                      $tipoestado=mysqli_query($conexion,"SELECT idestado FROM noticias WHERE nombre_noticia='$nombre_noticia'");
+                 if (isset($_POST['idnoticia'])) {
+                      $idnoticia=$_POST['idnoticia'];
+                      $consulta="SELECT * FROM noticias WHERE idnoticia='$idnoticia'";
+                      $tipoestado=mysqli_query($conexion,"SELECT idestado FROM noticias WHERE idnoticia='$idnoticia'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestado'];
                       }  
