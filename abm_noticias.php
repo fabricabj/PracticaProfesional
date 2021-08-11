@@ -50,11 +50,22 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 		header("location:noticias.php");
 	}
 } 
-	if (isset($_POST['idnoticia'])) {
+
+
+	if (isset($_POST['idnoticia']) && !empty($_POST['idnoticia'])) {
 		
 		$idNoticia = $_POST['idnoticia'];
 		$delete=mysqli_query($conexion, "update noticias set idestado = 2 where idnoticia='$idNoticia'");
-		header("location:noticias.php");
+		header("location:listarNoticias.php");
 	}
+
+	if (isset($_POST['activar']) && !empty($_POST['activar'])) {
+	
+	$idNoticia = $_POST['id'];
+	$delete=mysqli_query($conexion, "Update noticias Set idestado = 1 where idnoticia=$idNoticia");
+	header("location:noticiasinactivas.php");
+	
+
+}
 
 ?>
