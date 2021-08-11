@@ -35,13 +35,14 @@
                                                 <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta noticia</button>
                                             </form>
                                         </li> 
-                                        <form method="POST" action="listarNoticias.php">
-                                                <button class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="listar" value="listar" ><i class="far fa-arrow-alt-circle-up"></i>Listar Noticias</button>
+                                        
                         <?php     break;
                                 }
                                 }
                             }
                         ?>
+                        <form method="POST" action="listarNoticias.php">
+                                                <button class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="listar" value="listar" ><i class="far fa-arrow-alt-circle-up"></i>Listar Noticias</button>
                         </ul>
                 </div>     
             </div> 
@@ -65,7 +66,7 @@
                                     switch($nombrePermiso) {
                                     case "modificar noticias": ?>     
                                    <form method="POST" action="altaNoticia.php">
-                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" name="nombre_noticia" value="<?php echo $r['nombre_noticia']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
+                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" name="idnoticia" value="<?php echo $r['idnoticia']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
                                    </form>
                                    <?php break;
                                      case "baja noticia": ?>

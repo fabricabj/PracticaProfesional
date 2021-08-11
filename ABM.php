@@ -71,9 +71,16 @@ if (isset($_POST['idpelicula']) && !empty($_POST['idpelicula'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-	header("location:categorias.php");
+	header("location:listarpeliculas.php");
 
-	echo $idPelicula;
+}
+
+if (isset($_POST['activar']) && !empty($_POST['activar'])) {
+	
+	$idPelicula = $_POST['id'];
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 1 where idpelicula=$idPelicula");
+	header("location:peliculasinactivas.php");
+
 }
 
 /*if(isset($_POST['delete']) && !empty($_POST['delete'])){ 

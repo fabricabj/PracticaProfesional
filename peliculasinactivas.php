@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar peliculas</title>
+    <title>Peliculas inactivas</title>
 </head>
 
 <body>
@@ -13,10 +13,10 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:listarpeliculas.php?pagina=1");
+      header("location:peliculasinactivas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM peliculas WHERE idestado = 1";
+  $sql = "SELECT * FROM peliculas WHERE idestado = 2";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -52,7 +52,7 @@
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=categorias&ascendente=<?php echo $asc; ?>" > Categorias </a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaMod.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-            <th><a href="peliculasinactivas.php"><button type="button" class="btn btn-secondary">Inactivas</button></a></th>
+            <th><a href="listarpeliculas.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
             
 </thead> 
 <?php
@@ -82,7 +82,7 @@
             </td>";
               echo "<td><form action='ABM.php' method='post'>
                     <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
-                    <button class='btn btn-danger' name='idpelicula' id='idpelicula' value='idpelicula'>Eliminar</button>
+                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                 </form>
  
             </td>";
@@ -100,18 +100,17 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="peliculasinactivas.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="peliculasinactivas.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="peliculasinactivas.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
 
       <?php
-
-        if (isset($_GET['estado']) && $_GET['estado']==1) {
+        if (isset($_GET['estado'])&& $_GET['estado']==1) {
             echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
