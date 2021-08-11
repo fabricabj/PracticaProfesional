@@ -31,7 +31,6 @@
                              <div class="form-group col-md-4">
                                 <label>Titulo</label>
                                 <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" value="<?php echo $datos['nombre_noticia'];?>">
-                                <input type="text" class="form-control" name="nombre_anterior" id="nombre_anterior" value="<?php echo $datos['nombre_anterior'];?>" hidden>
                             </div>
                          </div>
                            <div class="form-row">
@@ -50,12 +49,23 @@
                              
 							<div class="form-group col-md-4">
 								<label>Estado</label>
-								<select name="estado" class="form-control" >
+								<select name="idestado" class="form-control" >
 									
-									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado FROM estados_noticias ORDER BY idestado ASC");
+									<?php $selectEstado=mysqli_query($conexion,"SELECT descripcion,idestado FROM estados_noticias ORDER BY idestado ASC");
 									while($r=mysqli_fetch_array($selectEstado)){?>
 										
-										<option value="<?php echo $r['idestado'];?>" <?php  if($idTipoEstado==$r['idestado']){ echo'selected';}?>><?php echo $r['idestado'];?></option>
+										<option value="<?php echo $r['idestado'];?>" <?php  if($idTipoEstado==$r['idestado']){ echo'selected';}?>><?php echo $r['descripcion'];?></option>
+									<?php }?>
+								</select>
+							</div>
+                            <div class="form-group col-md-4">
+								<label>Proveedor</label>
+								<select id="idproveedor" name="idproveedor" class="form-control" >
+									
+									<?php $selectProveedor=mysqli_query($conexion,"SELECT razon_social,idproveedor FROM proveedores ORDER BY idproveedor ASC");
+									while($r=mysqli_fetch_array($selectProveedor)){?>
+										
+										<option value="<?php echo $r['idproveedor'];?>"><?php echo $r['razon_social'];?></option>
 									<?php }?>
 								</select>
 							</div>
@@ -65,7 +75,8 @@
                             <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="5"><?php echo $datos['descripcion'];?></textarea>
                          </div>                
                          <div class="form-group">
-                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar Noticia</button>
+                             <input type="text" name="id" id="id" value="<?php echo $datos['idnoticia']; ?>" hidden>
+                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Modificar Noticia</button>
                              <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
                          </div>
                        </form>
@@ -83,10 +94,10 @@
 								<label>Estado</label>
 								<select name="estado" class="form-control" >
 									
-									<?php $estado=mysqli_query($conexion,"SELECT idestado FROM estados_noticias ORDER BY idestado ASC");
+									<?php $estado=mysqli_query($conexion,"SELECT descripcion,idestado FROM estados_noticias ORDER BY idestado ASC");
 									while($r=mysqli_fetch_array($estado)) { ?>
 										
-										<option> <?php echo $r['idestado'];?>  </option>
+										<option value="<?php echo $r['idestado'];?>"> <?php echo $r['descripcion'];?>  </option>
 									<?php }?>
 								
                                 
@@ -102,10 +113,10 @@
 								<label>Proveedor</label>
 								<select id="idproveedor" name="idproveedor" class="form-control" >
 									
-									<?php $selectProveedor=mysqli_query($conexion,"SELECT idproveedor FROM proveedores ORDER BY idproveedor ASC");
+									<?php $selectProveedor=mysqli_query($conexion,"SELECT razon_social,idproveedor FROM proveedores ORDER BY idproveedor ASC");
 									while($r=mysqli_fetch_array($selectProveedor)){?>
 										
-										<option><?php echo $r['idproveedor'];?></option>
+										<option value="<?php echo $r['idproveedor'];?>"><?php echo $r['razon_social'];?></option>
 									<?php }?>
 								</select>
 							</div>

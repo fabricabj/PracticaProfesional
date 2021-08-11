@@ -23,33 +23,21 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 } 
  if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 	
-	$titulo_anterior = $_POST['nombre_anterior'];
+	$idnoticia = $_POST['id'];
 	$nombre_noticia = $_POST['nombre_noticia'];
 	$descripcion = $_POST['descripcion'];
 	$fecha=$_POST['fecha'];
 	$imagen = $_POST['imagen'];
 	$idestado=$_POST['idestado'];
     $idproveedor=$_POST['idproveedor'];
+
+	echo $idnoticia;
 	
-	
-	if ($nombre_noticia!=$titulo_anterior){
-	 $registros=mysqli_query($conexion,"SELECT nombre_noticia from noticias WHERE nombre_noticia='$nombre_noticia'");
-		if(mysqli_num_rows($registros)>0){  
-			$Actualizar = "UPDATE noticias SET nombre_noticia='$nombre_noticia',descripcion='$descripcion',fecha='$fecha',imagen='$imagen',idestado=$idestado,idproveedor='$idproveedor' WHERE nombre_noticia='$titulo_anterior'";
+			$Actualizar = "UPDATE noticias SET nombre_noticia='$nombre_noticia',descripcion='$descripcion',fecha='$fecha',imagen='$imagen',idestado=$idestado,idproveedor='$idproveedor' WHERE idnoticia=$idnoticia";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:noticias.php");   		
-		}else{
-			//arrreglar estoooooooooo
-			$Actualizar = "UPDATE noticias SET nombre_noticia='$nombre_noticia',descripcion='$descripcion',fecha='$fecha',imagen='$imagen',idestado=$idestado,idproveedor='$idproveedor' WHERE nombre_noticia='$titulo_anterior'";
-			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:noticias.php");
-		} 
-	}else{
-		$Actualizar = "UPDATE noticias SET descripcion='$descripcion',fecha='$fecha',imagen='$imagen',idestado=$idestado,idproveedor='$idproveedor' WHERE nombre_noticia='$titulo_anterior'";
-		$enviar = mysqli_query($conexion, $Actualizar);
-		header("location:noticias.php");
+            header("location:noticias.php");   		
 	}
-} 
+
 
 
 	if (isset($_POST['idnoticia']) && !empty($_POST['idnoticia'])) {
