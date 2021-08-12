@@ -48,6 +48,7 @@
             <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>" >Id</a></th>
             <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=nombre_usuario&ascendente=<?php echo $asc; ?>" >Nombre Usuario</a></th>
             <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" >Mail</a></th>
+            <th scope ="col">Grupo</a></th>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
            <!-- <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>-->
@@ -56,12 +57,19 @@
 <?php
   
     while($fila = $resultado->fetch_assoc()){
-
+       
       echo "<tr>";
       echo "<td>"; echo $fila['idusuario']; echo "</td>";
       echo "<td>"; echo $fila['nombre_usuario']; echo "</td>";
       echo "<td>"; echo $fila['mail']; echo "</td>";
       //echo "<td>"; echo $fila['idestado']; echo "</td>";
+      $selectGrupo=mysqli_query($conexion,"SELECT g.nombre_grupo FROM grupo AS g
+      JOIN grupo_usuarios AS gu ON gu.idgrupo=g.idgrupo
+      WHERE gu.idusuario={$fila['idusuario']}");
+while($i=mysqli_fetch_array($selectGrupo)){
+$nombre_grupo=$i['nombre_grupo'];
+}
+echo "<td>"; echo $nombre_grupo; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestado FROM usuarios WHERE idusuario='{$fila['idusuario']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestado'];
@@ -72,6 +80,8 @@
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
 
+                     
+                     
 //      echo "<td><form action='altaNoticia.php' method='post'>
   //                  <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."' hidden>
     //                <button type='submit' class='btn btn-success'>Modificar</button>

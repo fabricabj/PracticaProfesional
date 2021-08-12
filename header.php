@@ -96,6 +96,11 @@ function killSession(){
                                                         <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar peliculas</button>
                                                     </form>
                                     <?php        break;
+                                                 case "buscar usuarios": ?>
+                                                    <form method="POST" action="listarUsuario.php">
+                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar usuarios</button>
+                                                    </form>
+                                    <?php        break;
                                               }
                       
                                             }?>
@@ -117,7 +122,6 @@ function killSession(){
                                 <a href="#">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
-                                <a href="listarUsuario.php">Usuarios</a>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
