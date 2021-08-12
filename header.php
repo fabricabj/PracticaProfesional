@@ -104,6 +104,7 @@ function killSession(){
                                 <a href="#">Calendario</a>
                                 <a href="proveedores.php?pagina=1">Proveedores</a>
                                 <a href="#">Contactenos</a>
+                                <a href="listarUsuario.php">Usuarios</a>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
