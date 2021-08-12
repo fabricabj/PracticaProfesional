@@ -15,7 +15,7 @@
     <div style="background:#212121; border-radius:30px;">
         <H1 align="center" class="text-white">Proveedores Alta</H1>
         
-         <form action="abmproveedores.php" method= "POST">
+       
     <div class="px-lg-5 py-lg-4 p-4">
         <div class="form-row">
               <div class="col-6">
@@ -25,7 +25,7 @@
               </div>
               <div class="col-6">
               <label class="form-label font-weight-bold text-white">Cuit</label>
-                <input type="text"class="form-control bg-dark-x border-0" placeholder="Cuit" id="cuit" name ="cuit" onkeyup="isValid(this.value);">
+                <input type="text"class="form-control bg-dark-x border-0" placeholder="Cuit" id="cuit" name ="cuit">
                 
               </div>
               </div>
@@ -48,34 +48,84 @@
                             </div>
             </div>
             
-              <button type="submit" class="btn btn-secondary w-5" name="btnGuardar" onclick="esCUITValida(cuit)" id="btnGuardar" value="btnGuardar" >Guardar Cambios</button>
-          </form>      
+              <a href="#" class="btn btn-secondary w-5" name="btnGuardar" onclick="altaProveedores(document.getElementById('cuit').value)" id="btnGuardar" value="btnGuardar" >Guardar Cambios</a>
+                
       </div> 
              </div>
       </div>
       
             <script>
-                function isValid($cuit) {
-		$digits = array();
-		if (strlen($cuit) != 13) return false;
-		for ($i = 0; $i < strlen($cuit); $i++) {
-			if ($i == 2 or $i == 11) {
-				if ($cuit[$i] != '-') return false;
+               /* function isValid(cuit) {
+                  alert(cuit);
+digits = array();
+		if (strlen(cuit) != 13) return false;
+		for (i = 0; i < strlen(cuit); i++) {
+			if (i == 2 or i == 11) {
+				if (cuit[i] != '-') return false;
 			} else {
-				if (!ctype_digit($cuit[$i])) return false;
-				if ($i < 12) {
-					$digits[] = $cuit[$i];
+				if (!ctype_digit(cuit[i])) return false;
+				if (i < 12) {
+					digits[] = cuit[i];
 				}
 			}
 		}
-		$acum = 0;
-		foreach (array(5, 4, 3, 2, 7, 6, 5, 4, 3, 2) as $i => $multiplicador) {
-			$acum += $digits[$i] * $multiplicador;
+		acum = 0;
+		foreach (array(5, 4, 3, 2, 7, 6, 5, 4, 3, 2) as i => multiplicador) {
+			acum += digits[i] * multiplicador;
 		}
-		$cmp = 11 - ($acum % 11);
-		if ($cmp == 11) $cmp = 0;
-		if ($cmp == 10) $cmp = 9;
-		return ($cuit[12] == $cmp);
+		cmp = 11 - (acum % 11);
+		if (cmp == 11) cmp = 0;
+		if (cmp == 10) cmp = 9;
+		return (cuit[12] == cmp);*/
+
+    function altaProveedores(cuit:String) : Boolean{
+  
+     
+		if (cuit.length != 13) return false;
+		
+		let rv = false;
+		let resultado = 0;
+		let cuit_nro = cuit.replace("-", "");
+		const codes = "6789456789";
+		let verificador = parseInt(cuit_nro[cuit_nro.length-1]);
+		let x = 0;
+		
+		while (x < 10)
+		{
+			let digitoValidador = parseInt(codes.substring(x, x+1));
+			if (isNaN(digitoValidador)) digitoValidador = 0;
+			let digito = parseInt(cuit_nro.substring(x, x+1));
+			if (isNaN(digito)) digito = 0;
+			let digitoValidacion = digitoValidador * digito;
+			resultado += digitoValidacion;
+			x++;
+		}
+		resultado = resultado % 11;
+		rv = (resultado == verificador);
+		return rv;
+	
+    if(cuit.length == 13){
+                    $.ajax({
+                        url: 'abmproveedores.php',
+                        type: 'POST',
+                        data: { 
+                            id: idProducto,
+                            categ: categoria,
+                            pag: pagina,
+                            delete: eliminarProducto,
+                          
+                  },
+              })
+              .done(function(response){
+                  $("#result").html(response);
+              })
+              .fail(function(jqXHR){
+                  console.log(jqXHR.statusText);
+              });
+              alert('El producto ha sido eliminado');
+            }
+          }
+    
 	
     </script>
 

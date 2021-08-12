@@ -81,8 +81,22 @@ function killSession(){
                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Asignar permisos</button>
                                                      </form>
                                     <?php        break;
-
-                                               }
+                                                 case "buscar proveedores": ?>
+                                                    <form method="POST" action="proveedores.php">
+                                                       <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar proveedores</button>
+                                                     </form>
+                                    <?php        break;
+                                                 case "buscar noticias": ?>
+                                                    <form method="POST" action="listarNoticias.php">
+                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar noticias</button>
+                                                    </form>
+                                    <?php        break;
+                                                case "buscar pelicula": ?>
+                                                    <form method="POST" action="listarpeliculas.php">
+                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar peliculas</button>
+                                                    </form>
+                                    <?php        break;
+                                              }
                       
                                             }?>
                                          <form action="index.php" method="POST">
@@ -102,7 +116,6 @@ function killSession(){
                                 <a href="categorias.php">Peliculas</a>
                                 <a href="#">Estrenos</a>
                                 <a href="#">Calendario</a>
-                                <a href="proveedores.php?pagina=1">Proveedores</a>
                                 <a href="#">Contactenos</a>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">

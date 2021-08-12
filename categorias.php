@@ -10,30 +10,6 @@
       require("conexion.php");   
 
    ?>
-   <div class="row">  
-                <div class="col-md-12 menualta">
-                        <ul class="nav">
-                        <?php if(isset($_SESSION['login']) && $_SESSION['login']>0){
-                            $idgrupo=$_SESSION['grupo'];
-                            $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
-                            while($rs=mysqli_fetch_array($permisos)){
-
-                                $nombrePermiso=$rs['nombre_permiso'];
-                                switch($nombrePermiso) {
-                                case "alta pelicula": ?>
-                                        <li class="nav-item" style="margin:3px">
-                                            <form method="POST" action="listarpeliculas.php">
-                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Listar peliculas</button>
-                                            </form>
-                                        </li> 
-                        <?php     break;
-                                }
-                                }
-                            }
-                        ?>
-                        </ul>
-                </div>     
-            </div> 
    <div class="container">
        <div class="row">
           <div class="col-md-4" align="center" style="padding:20px;">

@@ -10,18 +10,47 @@
 
 <body>
     <?php   
-    require("header.php");?>
+    $asc = 0;
+    
+    if(!isset($_GET['pagina'])){
+      header("location:listarPermisos.php?pagina=1");
+      }
+      include "conexion.php";
+  $sql = "SELECT * FROM grupo";
+  $consulta = mysqli_query($conexion,$sql);
+  if(isset($_GET['orden'])){
+    if(isset($_GET['ascendente'])){
+      if($_GET['ascendente']==1){
+        $sql2 = " ASC";
+        $asc = 0;
+      }else{
+        $sql2 = " DESC";
+        $asc = 1;
+      }
+    }
+    $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
+  }
+  $permisos_x_pag = 2;
+  $total_permisos = mysqli_num_rows($consulta);
+  $paginas = $total_permisos / $permisos_x_pag;
+  $paginas = ceil($paginas);
+  if (isset($_GET['pagina'])) {
+    require("header.php");
+    $iniciar = ($_GET['pagina'] - 1) * $permisos_x_pag;
+    $resultado = mysqli_query($conexion,$sql." limit $iniciar,$permisos_x_pag");
+
+    ?>
     <div class="container">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <h3 class="text-center text-white">Listado de Grupos</h3>
             <table class="table table-light">
-                    <th scope ="col">Grupo</th>
-                    <th><a href="asignarpermisos.php"><button type="button" class="btn btn-primary">Nuevo</button></a></th>         
+            <thead>
+                    <th scope ="col"><a href="listarPermisos.php?pagina=1&orden=nombre_grupo&ascendente=<?php echo $asc; ?>" >Grupo</a></th>
+                    <th><a href="asignarpermisos.php"><button type="button" class="btn btn-primary">Nuevo</button></a></th>      
+            </thead>   
                     <?php
-                      include "conexion.php";
-                      $sentencia = "SELECT * FROM grupo";
-                      $resultado = $conexion->query($sentencia) or die (mysqli_error($conexion));
-                      while($fila = $resultado->fetch_assoc()){
+                    
+                        while($fila= $resultado->fetch_assoc()){
 
                         echo "<tr>
                                   <td>".$fila['nombre_grupo']."</td>
@@ -43,5 +72,20 @@
             </table>
         </div>
     </div>
+    </div>
+    <?php }
+      ?>
+      <div class="container" style="padding-top:40px">
+                        <nav arial-label="page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarPermisos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarPermisos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                <?php endfor ?>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarPermisos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
 </body>
 </html>
