@@ -15,7 +15,7 @@
     <div style="background:#212121; border-radius:30px;">
         <H1 align="center" class="text-white">Proveedores Alta</H1>
         
-       
+    
     <div class="px-lg-5 py-lg-4 p-4">
         <div class="form-row">
               <div class="col-6">
@@ -26,7 +26,7 @@
               <div class="col-6">
               <label class="form-label font-weight-bold text-white">Cuit</label>
                 <input type="text"class="form-control bg-dark-x border-0" placeholder="Cuit" id="cuit" name ="cuit">
-                
+                <input type="text"class="form-control bg-dark-x border-0" id="btnGuardar" name ="btnGuardar" value="btnGuardar" hidden>
               </div>
               </div>
 
@@ -37,7 +37,7 @@
               </div><br>
               <div class="form-group col-md-6">
               <label class="form-label font-weight-bold text-white">estado</label>
-                                <select name="estado" class="form-control" >
+                                <select name="estado" id="estado" class="form-control" >
 
                                     <?php $selectEstado=mysqli_query($conexion,"SELECT descripcion FROM estados_provedores ORDER BY descripcion ASC");
                                     while($r=mysqli_fetch_array($selectEstado)){?>
@@ -48,86 +48,87 @@
                             </div>
             </div>
             
-              <a href="#" class="btn btn-secondary w-5" name="btnGuardar" onclick="altaProveedores(document.getElementById('cuit').value)" id="btnGuardar" value="btnGuardar" >Guardar Cambios</a>
-                
+              <button type="submit" class="btn btn-secondary w-5" onclick="validarCuit()">Guardar Cambios</button>
+              <div id="result"></div>          
       </div> 
              </div>
       </div>
-      
-            <script>
-               /* function isValid(cuit) {
-                  alert(cuit);
-digits = array();
-		if (strlen(cuit) != 13) return false;
-		for (i = 0; i < strlen(cuit); i++) {
-			if (i == 2 or i == 11) {
-				if (cuit[i] != '-') return false;
-			} else {
-				if (!ctype_digit(cuit[i])) return false;
-				if (i < 12) {
-					digits[] = cuit[i];
-				}
-			}
-		}
-		acum = 0;
-		foreach (array(5, 4, 3, 2, 7, 6, 5, 4, 3, 2) as i => multiplicador) {
-			acum += digits[i] * multiplicador;
-		}
-		cmp = 11 - (acum % 11);
-		if (cmp == 11) cmp = 0;
-		if (cmp == 10) cmp = 9;
-		return (cuit[12] == cmp);*/
+      <script type="text/javascript">
 
-    function altaProveedores(cuit:String) : Boolean{
-  
-     
-		if (cuit.length != 13) return false;
-		
-		let rv = false;
-		let resultado = 0;
-		let cuit_nro = cuit.replace("-", "");
-		const codes = "6789456789";
-		let verificador = parseInt(cuit_nro[cuit_nro.length-1]);
-		let x = 0;
-		
-		while (x < 10)
-		{
-			let digitoValidador = parseInt(codes.substring(x, x+1));
-			if (isNaN(digitoValidador)) digitoValidador = 0;
-			let digito = parseInt(cuit_nro.substring(x, x+1));
-			if (isNaN(digito)) digito = 0;
-			let digitoValidacion = digitoValidador * digito;
-			resultado += digitoValidacion;
-			x++;
-		}
-		resultado = resultado % 11;
-		rv = (resultado == verificador);
-		return rv;
-	
-    if(cuit.length == 13){
-                    $.ajax({
-                        url: 'abmproveedores.php',
-                        type: 'POST',
-                        data: { 
-                            id: idProducto,
-                            categ: categoria,
-                            pag: pagina,
-                            delete: eliminarProducto,
-                          
-                  },
-              })
-              .done(function(response){
-                  $("#result").html(response);
-              })
-              .fail(function(jqXHR){
-                  console.log(jqXHR.statusText);
-              });
-              alert('El producto ha sido eliminado');
-            }
-          }
-    
-	
-    </script>
+  function validarCuit(cuit) 
+    {
+    var vec = new Array(10);
+    var cuit = document.getElementById('cuit').value;
+    esCuit=false;
+    cuit_rearmado="";
+    errors = ''
+    for (i=0; i < cuit.length; i++)
+    {   
+        caracter=cuit.charAt( i);
+        if ( caracter.charCodeAt(0) >= 48 && caracter.charCodeAt(0) <= 57 )
+        {
+            cuit_rearmado +=caracter;
+        }
+    }
+    cuit=cuit_rearmado;
+    if ( cuit.length != 11) {  // si no estan todos los digitos
+        esCuit=false;
+        errors = 'Cuit < 11 ';
+        alert( "CUIT Menor a 11 Caracteres" );
+    } else {
+        x=i=dv=0;
+        // Multiplico los dígitos.
+        vec[0] = cuit.charAt(  0) * 5;
+        vec[1] = cuit.charAt(  1) * 4;
+        vec[2] = cuit.charAt(  2) * 3;
+        vec[3] = cuit.charAt(  3) * 2;
+        vec[4] = cuit.charAt(  4) * 7;
+        vec[5] = cuit.charAt(  5) * 6;
+        vec[6] = cuit.charAt(  6) * 5;
+        vec[7] = cuit.charAt(  7) * 4;
+        vec[8] = cuit.charAt(  8) * 3;
+        vec[9] = cuit.charAt(  9) * 2;
+                    
+        // Suma cada uno de los resultado.
+        for( i = 0;i<=9; i++) 
+        {
+            x += vec[i];
+        }
+        dv = (11 - (x % 11)) % 11;
+        if ( dv == cuit.charAt( 10) )
+        {
+            esCuit=true;
+        }
+    }
+    if ( !esCuit ) 
+    {
+        alert( "CUIT Invalido" );
+        document.form.cuit.focus();
+        errors = 'Cuit Invalido ';
+    }else{
+      $.ajax({
+            url: 'abmproveedores.php',
+            type: 'POST',
+            data: { 
+                razon: document.getElementById('razon_social').value,
+                cuit: document.getElementById('cuit').value,
+                email: document.getElementById('email').value,
+                estado: document.getElementById('estado').value,
+                btnGuardar: document.getElementById('btnGuardar').value,
+              
+            },
+         })
+         .done(function(response){
+            $("#result").html(response);
+         })
+         .fail(function(jqXHR){
+            console.log(jqXHR.statusText);
+         });
+         
+    }
+    document.MM_returnValue1 = (errors == '');
+    }
+</script>
 
     
 </body>

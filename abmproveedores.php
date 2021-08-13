@@ -2,21 +2,28 @@
 require("conexion.php");
 if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
 
-    $razon_social = $_POST['razon_social'];
+    $razon_social = $_POST['razon'];
     $cuit = $_POST['cuit'];
     $email=$_POST['email'];
     $estado=$_POST['estado'];
     //echo $razon_social." ".$cuit." ".$email." ".$estado;
     $registros=mysqli_query($conexion,"SELECT cuit from proveedores WHERE cuit='$cuit'");
-	if(mysqli_num_rows($registros)>0){  
-        header("location:proveedores.php?pagina=1&estado=1");
+	$registros2=mysqli_query($conexion,"SELECT mail from proveedores WHERE mail='$email'");
+	if(mysqli_num_rows($registros)>0 || mysqli_num_rows($registros2)>0){  
+		if(mysqli_num_rows($registros)>0){
+             echo "<script>alert('el cuit ingresado ya existe, intente con otro');</script>";
+		}
+		if(mysqli_num_rows($registros2)>0){
+			echo "<script>alert('el mail ingresado ya existe, intente con otro');</script>";
+	    }
 	}else{
 		$selectEstado=mysqli_query($conexion,"SELECT idestado FROM estados_provedores WHERE descripcion='$estado'");
         while($r=mysqli_fetch_array($selectEstado)){
             $idestado=$r['idestado'];
 		}
 		$Insert=mysqli_query($conexion,"INSERT INTO proveedores values (00,'$razon_social','$cuit','$email',$idestado)");
-        header("location:proveedores.php");
+		echo "<script>alert('registrado con exito');</script>";
+       
     }
 }
  if (isset($_POST['btnModificar']) && !empty($_POST['btnModificar'])) {
