@@ -24,7 +24,7 @@ if (isset($_GET['error'])&& $_GET['error']==1) {
 if (isset($_GET['error'])&& $_GET['error']==2) {
     echo "<script type='text/javascript'>alert('Usuario o contraseña incorrecto.');</script>";
 }
-if (isset($_GET['registro'])&& $_GET['registro']==1) {
+if (isset($_GET['estado'])&& $_GET['estado']==1) {
     echo "<script type='text/javascript'>alert('fue registrado con exito');</script>";
 }
 ?>

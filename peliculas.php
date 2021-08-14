@@ -55,10 +55,10 @@
             if (isset($_GET['pagina'])) {
                $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
                $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
-               while ($r = mysqli_fetch_array($consulta2)) { ?>
+               while ($r = mysqli_fetch_array($consulta2)) {?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
-                              <a href="#"><img src="<?php echo $r['imagen']; ?>" class="card-img-top"></a>
+                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top"></a>
                               <p><?php echo "<i class='fas fa-star'></i>" . $r['puntaje']; ?></p>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
@@ -86,6 +86,10 @@
                                 ?>
                                     <div style="padding-top:5px;">
                                         <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-info-circle"></i></a>
+                                        
+                                    </div>
+                                    <div>
+                                       <a style="float: right;margin-right:7px;border-radius:30px" class="btn btn-dark card-text" href="peliculas.php?genero=<?php echo $peliculas;?>&pagina=<?php echo $_GET['pagina'];?>&idpelicula=<?php echo $r['idpelicula']; ?>&estado=4"><i class="fas fa-bookmark"></i></a>
                                     </div>
                                 </div>
                           </div>
@@ -100,7 +104,7 @@
                                     <div class="modal-body" style="background:#121212;color:white">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <img src="<?php echo $r['imagen']; ?>" style="width:50%"><br>
+                                                <img src="imagenes/<?php echo $r['imagen']; ?>" style="width:50%"><br>
                                             </div>
                                             <div class="col-md-6">
                                                 <h6><strong>Titulo: </strong><?php echo $r['titulo']; ?></h6>
@@ -160,5 +164,18 @@
                             </ul>
                         </nav>
                     </div>
+                    <?php  
+                         if (isset($_GET['idpelicula']) && (isset($_GET['estado']) && $_GET['estado'] == 4)) {
+                            $idPelicula = $_GET['idpelicula'];
+                            $prod = mysqli_query($conexion, "select * from favoritos where idusuario={$_SESSION['login']} and idpelicula='$idPelicula'");
+                            if (mysqli_num_rows($prod) > 0) {
+                                echo "<script>alert('no puede agregar una pelicula que ya se encuentra en la lista');</script>";
+                            } else {
+                                $insertar = mysqli_query($conexion, "insert into favoritos(idusuario,idpelicula)values('{$_SESSION['login']}','$idPelicula')");
+                                echo "<script>alert('pelicula agregada');</script>";
+                            }
+                        }
+                                            
+                    ?>
     </body>
 </html>

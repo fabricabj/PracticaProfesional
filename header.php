@@ -78,27 +78,32 @@ function killSession(){
                                               switch($nombrePermiso) {
                                                  case "asignar permisos": ?>     
                                                      <form method="POST" action="asignarpermisos.php">
-                                                       <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Asignar permisos</button>
+                                                       <button type="submit" class="dropdown-item">Asignar permisos</button>
                                                      </form>
                                     <?php        break;
                                                  case "buscar proveedores": ?>
                                                     <form method="POST" action="proveedores.php">
-                                                       <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar proveedores</button>
+                                                       <button type="submit" class="dropdown-item">Buscar proveedores</button>
                                                      </form>
                                     <?php        break;
                                                  case "buscar noticias": ?>
                                                     <form method="POST" action="listarNoticias.php">
-                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar noticias</button>
+                                                        <button type="submit" class="dropdown-item">Buscar noticias</button>
                                                     </form>
                                     <?php        break;
                                                 case "buscar pelicula": ?>
                                                     <form method="POST" action="listarpeliculas.php">
-                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar peliculas</button>
+                                                        <button type="submit" class="dropdown-item">Buscar peliculas</button>
                                                     </form>
                                     <?php        break;
                                                  case "buscar usuarios": ?>
                                                     <form method="POST" action="listarUsuario.php">
-                                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" class="btn btn-dark">Buscar usuarios</button>
+                                                        <button type="submit" class="dropdown-item">Buscar usuarios</button>
+                                                    </form>
+                                    <?php        break;
+                                                case "favoritos": ?>
+                                                    <form method="POST" action="lista.php">
+                                                        <button type="submit" class="dropdown-item">Mi lista</button>
                                                     </form>
                                     <?php        break;
                                               }
