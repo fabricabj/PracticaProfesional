@@ -25,7 +25,7 @@
                       $generos=explode(' ', $datos_generos['categorias']);
                       $rta=in_array(' ',$generos);
                   ?>
-                       <form method="POST" action="ABM.php" style="width:70%;">
+                       <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label>Titulo</label>
@@ -38,7 +38,7 @@
                               </div>
                          </div>
                          <div class="form-row">
-                             <div class="form-group col-md-8">
+                             <div class="form-group col-md-4">
                                 <label>Duracion</label>
                                 <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required>
                              </div>
@@ -47,17 +47,12 @@
                                 <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required>
                                
                              </div>
-                         </div>
-                           <div class="form-row">
-                              <div class="form-group col-md-8">
-                                 <label>imagen</label>
-                                 <input type="text" class="form-control" value="<?php echo $datos_generos['imagen'];?>" name="imagen" id="imagen" required>
-                              </div>
-                              <div class="form-group col-md-4">
+                             <div class="form-group col-md-4">
                                 <label for="inputPassword4">Precio</label>
                                 <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $datos_generos['precio'];?>" required>
                              </div>
-                          </div>
+                         </div>
+                           
                           <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label for="inputPassword4">fecha de publicacion</label>
@@ -79,6 +74,15 @@
                             <label>Descripcion</label>
                             <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"><?php echo $datos_generos['descripcion'];?></textarea>
                          </div>
+                         <div class="form-row">
+                              <div class="form-group col-md-8">
+                                 <label for="imagen">imagen</label>
+ 					             <input type="file" name="imagen" class="form-control" id="imagen" >
+                              </div>
+                              <div class="form-group col-md-4">
+                                  <img src="<?php echo "imagenes/". $datos_generos["imagen"]; ?>" width =100>
+                             </div>
+                          </div>
                          <p style="color:#fafafa;float:left">Generos</p><br>
                          <div class="form-row"  style="border: 1px solid white;color:#fafafa;padding-top:20px;float:left;width:100%">
                              <div class="form-group">
@@ -138,7 +142,7 @@
                   }
                  if(isset($_POST['alta']) && !empty($_POST['alta'])){ ?>
                     
-                    <form method="POST" action="ABM.php" style="width:70%;">
+                    <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Titulo</label>
@@ -150,7 +154,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-4">
                                <label for="inputPassword4">Duracion</label>
                                <input type="text" class="form-control" name="duracion" id="duracion" required placeholder="ingrese duracion en minutos" onkeyup="this.value=Numeros(this.value)">
                             </div>
@@ -158,17 +162,12 @@
                                <label for="inputPassword4">Puntaje</label>
                                <input type="text" class="form-control" name="puntaje" id="puntaje" required placeholder="ingrese solo numeros" onkeypress="return filterFloat(event,this);">
                             </div>
-                        </div>
-                        <div class="form-row">       
-                                <div class="form-group col-md-8">
-                                    <label for="inputEmail4">imagen</label>
-                                    <input type="text" class="form-control" name="imagen" id="imagen" required placeholder="ingrese link de la imagen">
-                                </div>
-                                <div class="form-group col-md-4">
+                            <div class="form-group col-md-4">
                                         <label for="inputPassword4">Precio</label>
                                         <input type="text" class="form-control" name="precio" id="precio" required>
                                 </div>
                         </div>
+                        
                         <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label for="inputPassword4">fecha de publicacion</label>
@@ -189,6 +188,13 @@
                         <div class="form-group">
                             <label for="inputEmail4">Descripcion</label>
                             <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"></textarea>
+                        </div>
+                        <div class="form-row">       
+                                <div class="form-group col-md-8">
+                                     <label for="imagen">imagen</label>
+ 					                <input type="file" name="imagen" class="form-control" id="imagen" >
+                                </div>
+                                
                         </div>
                         <p style="color:#fafafa;float:left">Generos</p><br>
                         <div class="form-row"  style="border: 1px solid white;padding-top:20px;color:#fafafa;float:left;width:100%">

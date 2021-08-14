@@ -12,7 +12,7 @@
         $insertar=mysqli_query($conexion,"INSERT INTO usuarios(idusuario,nombre_usuario,mail,contrasenia,idestado) VALUES (00,'$usuario','$mail','$contrasenia',1)");
         $idusuario = mysqli_insert_id($conexion);
         $insergrupo=mysqli_query($conexion,"INSERT INTO grupo_usuarios(idgrupo,idusuario) SELECT (SELECT idgrupo FROM grupo WHERE nombre_grupo='cliente'),$idusuario");
-        header("location:index.php");
+        header("location:index.php?estado=1");
     }
 }
 
