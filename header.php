@@ -122,6 +122,7 @@ function killSession(){
                                 <a href="#">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
+                                <a href="gestionPerfil.php">Gestion de Perfil</a>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
                                 <button class="btn btn-primary" type="submit">Buscar</button>
