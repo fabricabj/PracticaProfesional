@@ -106,6 +106,11 @@ function killSession(){
                                                         <button type="submit" class="dropdown-item">Mi lista</button>
                                                     </form>
                                     <?php        break;
+                                                 case "gestion perfil": ?>     
+                                                        <form method="POST" action="gestionPerfil.php">
+                                                        <button type="submit" class="dropdown-item">Gestionar perfil</button>
+                                                        </form>
+                                    <?php        break;
                                               }
                       
                                             }?>
@@ -127,7 +132,6 @@ function killSession(){
                                 <a href="#">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
-                                <a href="gestionPerfil.php">Gestion de Perfil</a>
                             <form class="d-flex">
                                 <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
                                 <button class="btn btn-primary" type="submit">Buscar</button>

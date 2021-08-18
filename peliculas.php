@@ -58,12 +58,14 @@
                while ($r = mysqli_fetch_array($consulta2)) {?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
-                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top"></a>
+                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" width="620px"></a>
                               <p><?php echo "<i class='fas fa-star'></i>" . $r['puntaje']; ?></p>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
+                                  <label><strong>Precio: </strong><?php echo "$".$r['precio']; ?></label>
+                                 
                               </div>
-                              <div>
+                              <div style="padding-top:40px">
                               <?php 
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
                               $idgrupo=$_SESSION['grupo'];
@@ -112,6 +114,7 @@
                                                 <h6><strong>Duracion: </strong><?php echo $r['duracion']." min"; ?></h6>
                                                 <h6><strong>puntaje: </strong><?php echo "<i class='fas fa-star'></i>" .$r['puntaje']; ?></h6>
                                                 <h6><strong>Año: </strong><?php echo $r['anio']; ?></h6>
+                                                <h6><strong>Precio: </strong><?php echo $r['precio']; ?></h6>
                                                 <h6 align="center"><strong>Descripcion </strong></h6>
                                                 <h6><?php echo $r['descripcion']; ?></h6>
                                             </div>

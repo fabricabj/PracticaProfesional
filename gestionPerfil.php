@@ -1,3 +1,7 @@
+<?php 
+require("header.php");
+$select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombre ASC");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +13,30 @@
 </head>
 
 <body>
-<?php   
-require("header.php");?>
+<script language="javascript">
+ 	$(document).ready(function(){
+ 		$("#cbxpais").change(function () {	
+ 			$("#cbxpais option:selected").each(function () {
+                 id= $(this).val();
+ 				 $.post("includes/obtenerProvincias.php", { id: id }, function(data){
+ 					$("#cbxprovincia").html(data);
+ 				});             
+ 			});
+ 		});
+     $("#cbxprovincia").change(function () {	
+ 			$("#cbxprovincia option:selected").each(function () {
+ 				id_ciudad = $(this).val();
+ 				 $.post("includes/obtenerCiudad.php", { id_ciudad: id_ciudad }, function(data){
+ 					$("#cbxciudad").html(data);
+ 				});           
+ 			});
+ 		});
+ 	});
+ 	
+	
+	
+ </script>
+
 <div class="container"  style="padding-top:100px;">
 <div style="background:#212121; border-radius:30px;">
 <H1 align="center" class="text-white">Perfil</H1>
@@ -28,6 +54,7 @@ require("header.php");?>
         <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
                             <select name="tipoDocumento" id="tipoDocumento" class="form-control" >
+                            <option>Seleccione Tipo documentacion</option>
 
                                 <?php $selectEstado=mysqli_query($conexion,"SELECT nombre_documento FROM documento_tipos ORDER BY idtipodocumento ASC");
                                 while($r=mysqli_fetch_array($selectEstado)){?>
@@ -43,8 +70,10 @@ require("header.php");?>
          <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Sexo</label>
                             <select name="sexo" id="sexo" class="form-control" >
+                            <option>Seleccione Sexo</option>
 
                                 <?php $selectEstado=mysqli_query($conexion,"SELECT nombre FROM generos ORDER BY idgenero ASC");
+                                
                                 while($r=mysqli_fetch_array($selectEstado)){?>
 
                                     <option><?php echo $r['nombre'];?></option>
@@ -55,25 +84,25 @@ require("header.php");?>
              <label class="form-label font-weight-bold text-white">Numero de Telefono</label>
             <input type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="numTelefono" name ="numTelefono"/>
         </div>
-         <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">País</label>
-                            <select name="pais" id="pais" class="form-control" >
-
-                                <?php $selectEstado=mysqli_query($conexion,"SELECT nombre, idpais FROM paises ORDER BY idpais ASC");
-                                while($r=mysqli_fetch_array($selectEstado)){?>
-
-                                    <option><?php echo $r['nombre'];?></option>
-                                <?php }?>
+         <div class="form-group col-md-4">
+         <label class="form-label font-weight-bold text-white">Pais</label>
+                                <select class="form-control" id="cbxpais" name="cbxpais">
+               	                  <option>Seleccione Pais</option>
+                                  <?php while ($rsTP = $select3->fetch_assoc()){?>
+                                     <option><?php echo $rsTP['nombre'];?></option>
+                                  <?php } ?>
+                                </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label font-weight-bold text-white">Provincia</label>
+                            <select name="cbxprovincia" id="cbxprovincia" class="form-control" >
+                                 <option>seleccione provincia</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">Provincia</label>
-                            <select name="provincia" id="provincia" class="form-control" >
-                                <?php $selectEstado=mysqli_query($conexion,"SELECT p.nombre_provincia FROM provincias AS p, paises AS pa where p.idpais = pa.idpais ORDER BY idpais ASC");
-                                while($r=mysqli_fetch_array($selectEstado)){?>
-
-                                    <option><?php echo $r['nombre_provincia'];?></option>
-                                <?php }?>
+                        <div class="form-group col-md-4">
+                            <label class="form-label font-weight-bold text-white">Ciudad</label>
+                            <select name="cbxciudad" id="cbxciudad" class="form-control" >
+                                 <option>seleccione Ciudad</option>
                             </select>
                         </div>
         </div>
@@ -84,7 +113,6 @@ require("header.php");?>
 
 </div>
  </div>
-<!-- <button type="submit" class="btn btn-secondary w-5" onclick="validarCuit()">Guardar Cambios</button>
-            <div id="result"></div> -->
-                                </body>
-                                </html>
+
+</body>
+</html>
