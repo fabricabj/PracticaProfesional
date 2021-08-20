@@ -36,7 +36,7 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
 	
 	
  </script>
-
+<form action="abm_gestionPerfil.php" method ="POST" style="width:95%;">
 <div class="container"  style="padding-top:100px;">
 <div style="background:#212121; border-radius:30px;">
 <H1 align="center" class="text-white">Perfil</H1>
@@ -44,7 +44,7 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
     <div class="form-row">
         <div class="col-6">
              <label class="form-label font-weight-bold text-white">Nombre</label>
-            <input type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre" name ="nombre"/>
+            <input type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre_usuario" name ="nombre_usuario"/>
         </div>
 
         <div class="col-6">
@@ -53,7 +53,7 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
         </div>
         <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
-                            <select name="tipoDocumento" id="tipoDocumento" class="form-control" >
+                            <select name="idtipodocumento" id="idtipodocumento" class="form-control" >
                             <option>Seleccione Tipo documentacion</option>
 
                                 <?php $selectEstado=mysqli_query($conexion,"SELECT nombre_documento FROM documento_tipos ORDER BY idtipodocumento ASC");
@@ -65,7 +65,7 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
                         </div>
                         <div class="col-6">
              <label class="form-label font-weight-bold text-white">Numero de Documento</label>
-            <input type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numDocumento" name ="numDocumento"/>
+            <input type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numero_documento" name ="numero_documento"/>
         </div>
          <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Sexo</label>
@@ -82,7 +82,7 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
                         </div>
                                    <div class="col-6">
              <label class="form-label font-weight-bold text-white">Numero de Telefono</label>
-            <input type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="numTelefono" name ="numTelefono"/>
+            <input type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="telefono" name ="telefono"/>
         </div>
          <div class="form-group col-md-4">
          <label class="form-label font-weight-bold text-white">Pais</label>
@@ -105,6 +105,9 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
                                  <option>seleccione Ciudad</option>
                             </select>
                         </div>
+                        <div>
+                            <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardarPerfil" name="guardarPerfil"><i class="fas fa-save"></i> Guardar Usuario</button>
+                        </div>
         </div>
     </div>
 
@@ -113,6 +116,6 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
 
 </div>
  </div>
-
+                                  </form>
 </body>
 </html>
