@@ -82,11 +82,11 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
 
                      
                      
-//      echo "<td><form action='altaNoticia.php' method='post'>
-  //                  <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."' hidden>
-    //                <button type='submit' class='btn btn-success'>Modificar</button>
-      //          </form>
-        //    </td>";
+      echo "<td><form action='modificarUsuario.php' method='post'>
+                    <input name='idusuario' id='idusuario' value='".$fila['idusuario']."' hidden>
+                    <button type='submit' class='btn btn-success'>Modificar</button>
+                </form>
+            </td>";
               echo "<td><form action='abm_usuario.php' method='post'>
                     <input name='idusuario' id='idusuario' value='".$fila['idusuario']."'hidden>
                     <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
