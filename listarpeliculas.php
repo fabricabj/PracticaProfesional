@@ -86,8 +86,10 @@
                 </form>
  
             </td>";
+            
     // echo "<td><a href='abmproveedores.php'><button type='button' class='btn btn-danger'>Eliminar</button></a></td>";
     }
+
 
   ?>
           </table>

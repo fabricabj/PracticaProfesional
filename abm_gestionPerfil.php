@@ -12,7 +12,7 @@ if (isset($_POST['guardarPerfil']) && !empty($_POST['guardarPerfil'])) {
     $provincia=$_POST['cbxprovincia'];
     $ciudad=$_POST['cbxciudad'];
 
-	//$Insert=mysqli_query($conexion,"INSERT INTO usuarios values (00,'$apellido','$telefono','$numero_documento','$ciudad',$tipo_documento,$nombre,$sexo)");	
+	$Insert=mysqli_query($conexion,"INSERT INTO usuarios values (00,'','',$apellido','$telefono','','','$numero_documento','$ciudad',$tipo_documento,$nombre,$sexo)");	
 		//echo"$Insert";
 		//header("location:noticias.php");
 echo $nombre . " ". $apellido." ".$telefono. " ".$tipo_documento." ".$numero_documento." ".$pais." ".$provincia." ".$ciudad;
