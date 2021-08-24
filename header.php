@@ -111,6 +111,11 @@ function killSession(){
                                                         <button type="submit" class="dropdown-item">Gestionar perfil</button>
                                                         </form>
                                     <?php        break;
+                                                case "buscar estrenos": ?>     
+                                                        <form method="POST" action="listadoEstrenos.php">
+                                                        <button type="submit" class="dropdown-item">Buscar estrenos</button>
+                                                        </form>
+                                    <?php        break;
                                               }
                       
                                             }?>
