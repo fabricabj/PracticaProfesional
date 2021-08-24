@@ -129,7 +129,7 @@ function killSession(){
                         <div class="container-fluid menu">
                                 <a href="noticias.php">Noticias</a>
                                 <a href="categorias.php">Peliculas</a>
-                                <a href="#">Estrenos</a>
+                                <a href="estrenos.php">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
                             <form class="d-flex">
