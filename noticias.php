@@ -50,7 +50,7 @@
             <?php while ($r = mysqli_fetch_array($consulta)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
-                              <a href="#"><img src="<?php echo $r['imagen']; ?>" class="card-img-top"></a>
+                            <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" width="620px"></a>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['nombre_noticia']; ?></p>
                               </div>
@@ -90,7 +90,7 @@
                                     <div class="modal-body" style="background:#121212;color:white">
                                     <div class="col-md-6">
                                     <h6><strong>Titulo: </strong><?php echo $r['nombre_noticia']; ?></h6>
-                                        <img src="<?php echo $r['imagen']; ?>" style="width:50%"><br>
+                                    <img src="imagenes/<?php echo $r['imagen']; ?>" style="width:50%"><br>
                                     </div>
                                         <div >                                
                                             <div class="col-md-12">                                               

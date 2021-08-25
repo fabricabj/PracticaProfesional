@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("conexion.php");
 if (isset($_POST['guardarPerfil']) && !empty($_POST['guardarPerfil'])) {
 	
@@ -8,12 +9,10 @@ if (isset($_POST['guardarPerfil']) && !empty($_POST['guardarPerfil'])) {
 	$tipo_documento = $_POST['idtipodocumento'];
 	$numero_documento=$_POST['numero_documento']; 
     $sexo=$_POST['sexo'];
-    $pais=$_POST['cbxpais'];
-    $provincia=$_POST['cbxprovincia'];
     $ciudad=$_POST['cbxciudad'];
 
-	//$Insert=mysqli_query($conexion,"INSERT INTO usuarios values (00,'$apellido','$telefono','$numero_documento','$ciudad',$tipo_documento,$nombre,$sexo)");	
+	$Insert=mysqli_query($conexion,"UPDATE usuarios SET apellido='$apellido',telefono='$telefono',numero_documento='$numero_documento',nombre='$nombre',idciudad=$ciudad,idgenero=$sexo,idtipodocumento=$tipo_documento WHERE idusuario={$_SESSION['login']}");	
 		//echo"$Insert";
 		//header("location:noticias.php");
-echo $nombre . " ". $apellido." ".$telefono. " ".$tipo_documento." ".$numero_documento." ".$pais." ".$provincia." ".$ciudad;
+echo $nombre . " ". $apellido." ".$telefono. " ".$tipo_documento." ".$numero_documento." ".$ciudad;
 } 

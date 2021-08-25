@@ -26,18 +26,21 @@
                       //$generos=explode(' ', $datos_generos['categorias']);
                       //$rta=in_array(' ',$generos);
                   ?>
-                       <form method="POST" action="abm_noticias.php" style="width:70%;">
+                       <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-4">
                                 <label>Titulo</label>
                                 <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" value="<?php echo $datos['nombre_noticia'];?>">
                             </div>
                          </div>
-                           <div class="form-row">
-                              <div class="form-group col-md-4">
-                                 <label>Imágen</label>
-                                 <input type="text" class="form-control" value="<?php echo $datos['imagen'];?>" name="imagen" id="imagen" required>
+                         <div class="form-row">
+                              <div class="form-group col-md-8">
+                                 <label for="imagen">imagen</label>
+ 					             <input type="file" name="imagen" class="form-control" id="imagen" >
                               </div>
+                              <div class="form-group col-md-4">
+                                  <img src="<?php echo "imagenes/". $datos["imagen"]; ?>" width =100>
+                             </div>
                           </div>
                           <div class="form-row">
                              <div class="form-group">
@@ -84,7 +87,7 @@
                   }
                  if(isset($_POST['alta']) && !empty($_POST['alta'])){ ?>
                     
-                    <form method="POST" action="abm_noticias.php" style="width:70%;">
+                    <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Título</label>
@@ -105,9 +108,12 @@
 							</div>
                         </div>                     
                         <div class="form-row">       
-                                <div class="form-group col-md-8">
-                                    <label for="inputEmail4">Imágen</label>
-                                    <input type="text" class="form-control" name="imagen" id="imagen" required placeholder="Ingrese link de la imágen">
+                                <div class="form-row">       
+                                        <div class="form-group col-md-8">
+                                            <label for="imagen">imagen</label>
+                                            <input type="file" name="imagen" class="form-control" id="imagen" >
+                                        </div>
+                                        
                                 </div>
                                 <div class="form-group col-md-4">
 								<label>Proveedor</label>

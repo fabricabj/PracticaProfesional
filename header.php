@@ -106,7 +106,12 @@ function killSession(){
                                                         <button type="submit" class="dropdown-item">Mi lista</button>
                                                     </form>
                                     <?php        break;
-                                                 case "gestion perfil": ?>     
+                                                case "comprar pelicula": ?>
+                                                    <form method="POST" action="carrito.php">
+                                                        <button type="submit" class="dropdown-item">Carrito</button>
+                                                    </form>
+                                    <?php        break;
+                                                            case "gestion perfil": ?>     
                                                         <form method="POST" action="gestionPerfil.php">
                                                         <button type="submit" class="dropdown-item">Gestionar perfil</button>
                                                         </form>

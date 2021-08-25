@@ -58,7 +58,7 @@
                while ($r = mysqli_fetch_array($consulta2)) {?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
-                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" width="620px"></a>
+                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" width="500px"></a>
                               <p><?php echo "<i class='fas fa-star'></i>" . $r['puntaje']; ?></p>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
@@ -127,15 +127,27 @@
                                                         $nombrePermiso=$rs['nombre_permiso'];
                                                         switch($nombrePermiso) {
                                                         case "baja pelicula": ?>
-                                                                    <div class="col-md-6">
-                                                                        <form method="POST" action="ABM.php">
-                                                                        <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
-                                                                            <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
-                                                                                <button style="margin: 5px;" type="submit" name="idpelicula" value="idpelicula" class="btn btn-dark">Eliminar</button>
-                                                                                
-                                                                               
-                                                                            </form>
-                                                                    </div>
+                                                            <div class="col-md-6">
+                                                                <form method="POST" action="ABM.php">
+                                                                <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
+                                                                    <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                                        <button style="margin: 5px;" type="submit" name="idpelicula" value="idpelicula" class="btn btn-dark">Eliminar</button>
+                                                                        
+                                                                        
+                                                                    </form>
+                                                            </div>
+                                                    <?php break;
+                                                        case "comprar pelicula": ?>
+                                                            <div class="col-md-6">
+                                                                <form method="POST" action="altacarrito.php">
+                                                                    <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
+                                                                    <input type="text" name="pagina" id="pagina" value="<?php echo $_GET['pagina']; ?>" hidden>
+                                                                    <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                                    <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a carrito</button>
+                                                                        
+                                                                    
+                                                                    </form>
+                                                            </div>
                                                     <?php break;
                                                         }
                                                             
