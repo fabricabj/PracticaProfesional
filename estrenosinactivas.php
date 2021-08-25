@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estrenos</title>
+    <title>Noticias inactivas</title>
 </head>
 
 <body>
@@ -13,10 +13,10 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:listadoEstrenos.php?pagina=1");
+      header("location:estrenosinactivas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM noticias where idestado=1 and fecha BETWEEN '20210101' AND '20221231'";
+  $sql = "SELECT * FROM noticias where idestado=2 and fecha BETWEEN '20210101' AND '20221231'";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -41,17 +41,17 @@
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Estrenos</h3>
+        <h3 class="text-center text-white">Estrenos Inactivas</h3>
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
-            <<th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=fecha&ascendente=<?php echo $asc; ?>" > Fecha</a></th>
+            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
+            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
+            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Fecha</a></th>-->
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="estrenosinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+          <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
 </thead> 
 <?php
   
@@ -78,9 +78,10 @@
                 </form>
             </td>";
               echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
+                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                 </form>
+ 
             </td>";
     
     }
@@ -96,11 +97,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listadoEstrenos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="estrenosinactivas.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listadoEstrenos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="estrenosinactivas.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listadoEstrenos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="estrenosinactivas.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
