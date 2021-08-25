@@ -9,7 +9,7 @@
         <?php
         
         require("header.php");
-         $consulta = mysqli_query($conexion, "SELECT * FROM noticias where idestado=1 and fecha BETWEEN '20210101' AND '20221231'"); ?>
+         $consulta = mysqli_query($conexion, "SELECT * FROM peliculas where idestado=1 and fecha_publicacion BETWEEN '20210101' AND '20221231'"); ?>
 
        
             <div class="row">  
@@ -43,9 +43,9 @@
             <?php while ($r = mysqli_fetch_array($consulta)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
-                              <a href="#"><img src="<?php echo $r['imagen']; ?>" class="card-img-top"></a>
+                              <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top"></a>
                               <div class="card-body" style="height:70px">
-                                  <p align="center" class="card-text"><?php echo $r['nombre_noticia']; ?></p>
+                                  <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
                               </div>
                               <div>
                               <?php 
@@ -74,7 +74,7 @@
                                 </div>
                           </div>
                     </div>
-                    <div align="center" data-backdrop="static" class="modal" id="info<?php echo $r['idnoticia']; ?>">
+                    <div align="center" data-backdrop="static" class="modal" id="info<?php echo $r['idpelicula']; ?>">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header" style="background:#212121;color:white">
@@ -82,8 +82,8 @@
                                     </div>
                                     <div class="modal-body" style="background:#121212;color:white">
                                     <div class="col-md-6">
-                                    <h6><strong>Titulo: </strong><?php echo $r['nombre_noticia']; ?></h6>
-                                        <img src="<?php echo $r['imagen']; ?>" style="width:50%"><br>
+                                    <h6><strong>Titulo: </strong><?php echo $r['titulo']; ?></h6>
+                                        <img src="imagenes/<?php echo $r['imagen']; ?>" style="width:50%"><br>
                                     </div>
                                         <div >                                
                                             <div class="col-md-12">                                               
