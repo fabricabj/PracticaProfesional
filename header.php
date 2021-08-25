@@ -116,6 +116,11 @@ function killSession(){
                                                         <button type="submit" class="dropdown-item">Gestionar perfil</button>
                                                         </form>
                                     <?php        break;
+                                                case "buscar estrenos": ?>     
+                                                        <form method="POST" action="listadoEstrenos.php">
+                                                        <button type="submit" class="dropdown-item">Buscar estrenos</button>
+                                                        </form>
+                                    <?php        break;
                                               }
                       
                                             }?>
@@ -134,7 +139,7 @@ function killSession(){
                         <div class="container-fluid menu">
                                 <a href="noticias.php">Noticias</a>
                                 <a href="categorias.php">Peliculas</a>
-                                <a href="#">Estrenos</a>
+                                <a href="estrenos.php">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
                             <form class="d-flex">

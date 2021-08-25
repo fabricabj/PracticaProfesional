@@ -23,8 +23,7 @@
                       }  
                       $resultado=mysqli_query($conexion,$consulta);
                       $datos=mysqli_fetch_assoc($resultado);
-                      //$generos=explode(' ', $datos_generos['categorias']);
-                      //$rta=in_array(' ',$generos);
+                     
                   ?>
                        <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
