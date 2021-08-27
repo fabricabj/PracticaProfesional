@@ -7,7 +7,6 @@ $pagina=$_POST['pagina'];
 if(isset($_SESSION['carrito'])){
 
        if(isset($_POST['id'])){
-           echo "hola1";
         $arreglo=$_SESSION['carrito'];
         $encontro=false;
         $numero=0;
@@ -23,26 +22,23 @@ if(isset($_SESSION['carrito'])){
             $nombre="";
          $precio=0;
          $img="";
-         $cantidadProd=0;
          $registro=mysqli_query($conexion,"select * from peliculas where idpelicula=".$_POST['id'])or die("Problemas en el select:".mysqli_error($conexion));;
          while ($r=mysqli_fetch_array($registro)) {
              $titulo=$r['titulo'];
              $precio=$r['precio'];
     
          }
-         $prodNuevo=array('Id'=>$_POST['id'],
+         $peliNuevo=array('Id'=>$_POST['id'],
                         'Titulo'=>$titulo,
                         'Precio'=>$precio
         );            
-         array_push($arreglo, $prodNuevo);
+         array_push($arreglo, $peliNuevo);
          $_SESSION['carrito']=$arreglo;
          header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=1");
         }
     }
 }else{
-    echo "hola2";
      if(isset($_POST['id'])){
-         echo "hola3";
          $titulo="";
          $precio=0;
          $registro=mysqli_query($conexion,"select * from peliculas where idpelicula=".$_POST['id'])or die("Problemas en el select:".mysqli_error($conexion));;
