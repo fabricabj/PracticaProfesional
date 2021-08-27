@@ -166,7 +166,7 @@
              ?>
          </div>
          </div>
-         </div>e
+         </div>
          <?php } ?>
                       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
@@ -189,6 +189,12 @@
                                 $insertar = mysqli_query($conexion, "insert into favoritos(idusuario,idpelicula)values('{$_SESSION['login']}','$idPelicula')");
                                 echo "<script>alert('pelicula agregada');</script>";
                             }
+                        }
+                        if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==2){
+                            echo "<script>alert('La pelicula ya fue agregada al carrito anteriormente');</script>";
+                        }
+                        if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==1){
+                            echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
                         }
                                             
                     ?>

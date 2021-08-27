@@ -170,16 +170,5 @@ if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 
 }
 
-/*if(isset($_POST['delete']) && !empty($_POST['delete'])){ 
-    require("conexion.php");
-    $idproducto=$_POST['id'];
-    $categoria=$_POST['categ'];
-    $pagina=$_POST['pag'];
-    $estado=mysqli_query($conexion,"SELECT idestado FROM pelicula_estados WHERE descripcion='inactivo'");
-    while($r=mysqli_fetch_array($estado)){$idEstado=$r['idestado'];}
-    $actualizar=mysqli_query($conexion,"UPDATE peliculas SET idestado=$idEstado WHERE idProducto=$idproducto");
-    
-    echo "<script>window.location.href ='productos.php?categoria=$categoria&pagina=$pagina';</script>";
-}
-?>*/
+
 ?>

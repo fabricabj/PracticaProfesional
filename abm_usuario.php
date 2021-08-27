@@ -1,5 +1,9 @@
 <?php
 require("conexion.php");
+
+if (isset($_POST['btnModificar']) && !empty($_POST['btnModificar'])) {
+echo "hola";
+}
 if (isset($_POST['idusuario']) && !empty($_POST['idusuario'])) {
 	
 	$idUsuario = $_POST['idusuario'];

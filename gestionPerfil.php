@@ -150,5 +150,8 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
 </div>
  </div>
                                   </form>
+<?php if(isset($_GET['estado'])&& $_GET['estado']==1){
+    echo "<script>alert('Perfil actualizado con exito');</script>";
+}?>
 </body>
 </html>
