@@ -80,14 +80,7 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	$nombreImg=imagen();
 	$estado=$_POST['estado']; 
     $idproveedor=$_POST['idproveedor'];
-	//  $registros=mysqli_query($conexion,"SELECT nombre_noticia from noticias WHERE nombre_noticia='$nombre_noticia'");
-	/* if(mysqli_num_rows($estado)>0){  
-		 $selectEstado=mysqli_query($conexion,"SELECT idestado FROM estados_noticias WHERE descripcion='$estado'");
-		 while($r=mysqli_fetch_array($selectEstado)){
-			$idestado=$r['idestado'];
-		 }
-		
-	}  */
+	
 	$Insert=mysqli_query($conexion,"INSERT INTO noticias values (00,'$nombre_noticia','$descripcion','$fecha','$nombreImg',$estado,$idproveedor)");	
 		//echo"$Insert";
 		header("location:noticias.php");

@@ -9,7 +9,7 @@
         <?php
         
         require("header.php");
-         $consulta = mysqli_query($conexion, "SELECT * FROM peliculas where idestado=1 and fecha_publicacion BETWEEN '20210101' AND '20221231'"); ?>
+         $consulta = mysqli_query($conexion, "SELECT * FROM peliculas where idestado=3"); ?>
 
        
             <div class="row">  
@@ -24,7 +24,7 @@
                                 switch($nombrePermiso) {
                                 case "alta estrenos": ?>
                                         <li class="nav-item" style="margin:3px">
-                                            <form method="POST" action="altaNoticia.php">
+                                            <form method="POST" action="altaEstrenos.php">
                                                 <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta estrenos</button>
                                             </form>
                                         </li> 
@@ -57,19 +57,19 @@
                                     $nombrePermiso=$rs['nombre_permiso'];
                                     switch($nombrePermiso) {
                                     case "modificar estrenos": ?>     
-                                   <form method="POST" action="altaNoticia.php">
-                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" name="idnoticia" value="<?php echo $r['idnoticia']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
+                                   <form method="POST" action="altaEstrenos.php">
+                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" name="titulo" value="<?php echo $r['titulo']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
                                    </form>
                                    <?php break;
                                      case "baja estrenos": ?>
-                                     <a style="float: left;margin: 5px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idnoticia']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                     <a style="float: left;margin: 5px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-trash-alt"></i></a>
                                    <?php break;
                                     }
                                   }
                                 }
                                 ?>
                                     <div style="padding-top:5px;">
-                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idnoticia']; ?>"><i class="fas fa-info-circle"></i></a>
+                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-info-circle"></i></a>
                                     </div>
                                 </div>
                           </div>
@@ -97,10 +97,10 @@
 
                                                         $nombrePermiso=$rs['nombre_permiso'];
                                                         switch($nombrePermiso) {
-                                                        case "baja noticias": ?>
+                                                        case "baja estrenos": ?>
                                                                     <div class="col-md-6">
-                                                                        <form method="POST" action="abm_noticias.php">
-                                                                                <button style="margin: 5px;" type="submit" name="idnoticia" value="<?php echo $r['idnoticia']; ?>" class="btn btn-dark">Eliminar</button>
+                                                                        <form method="POST" action="abm_estrenos.php">
+                                                                                <button style="margin: 5px;" type="submit" name="idpelicula" value="<?php echo $r['idpelicula']; ?>" class="btn btn-dark">Eliminar</button>
                                                                                 <input type="text" name="genero" id="genero" value="<?php echo $noticias;?>" hidden>
                                                                                
                                                                             </form>

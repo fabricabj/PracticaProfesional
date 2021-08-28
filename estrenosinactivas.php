@@ -16,7 +16,7 @@
       header("location:estrenosinactivas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM noticias where idestado=2 and fecha BETWEEN '20210101' AND '20221231'";
+  $sql = "SELECT * FROM peliculas where idestado=3";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -45,10 +45,10 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
+             <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
             <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
-            <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Fecha</a></th>-->
+            <<th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Añio</a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
           <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
@@ -58,27 +58,27 @@
     while($fila = $resultado->fetch_assoc()){
 
       echo "<tr>";
-      echo "<td>"; echo $fila['idnoticia']; echo "</td>";
-      echo "<td>"; echo $fila['nombre_noticia']; echo "</td>";
+      echo "<td>"; echo $fila['idpelicula']; echo "</td>";
+      echo "<td>"; echo $fila['titulo']; echo "</td>";
       echo "<td>"; echo $fila['descripcion']; echo "</td>";
-      echo "<td>"; echo $fila['fecha']; echo "</td>";
-      $tipoestado=mysqli_query($conexion,"SELECT idestado FROM noticias WHERE idnoticia='{$fila['idnoticia']}'");
+      echo "<td>"; echo $fila['anio']; echo "</td>";
+      $tipoestado=mysqli_query($conexion,"SELECT idestado FROM peliculas WHERE idpelicula='{$fila['idpelicula']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestado'];
                       } 
-      $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM estados_noticias WHERE idestado = $idTipoEstado ORDER BY descripcion ASC");
+      $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM pelicula_estados WHERE idestado = $idTipoEstado ORDER BY descripcion ASC");
                       while($i=mysqli_fetch_array($selectEstado)){
                         $descripcion=$i['descripcion'];
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
 
-      echo "<td><form action='altaNoticia.php' method='post'>
-                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."' hidden>
+      echo "<td><form action='altaMod.php' method='post'>
+                    <input name='titulo' id='titulo' value='".$fila['idpelicula']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-              echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
+              echo "<td><form action='altaMod.php' method='post'>
+                    <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
                     <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                 </form>
  
