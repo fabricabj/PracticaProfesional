@@ -50,7 +50,7 @@
             <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
             <<th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Añio</a></th>
             <th scope ="col">Estado</th>
-            <th><form action="altaMod.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
+            <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
           <th><a href="estrenosinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
 </thead> 
 <?php
@@ -72,13 +72,13 @@
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
 
-      echo "<td><form action='altaMod.php' method='post'>
+      echo "<td><form action='altaEstrenos.php' method='post'>
                     <input name='titulo' id='titulo' value='".$fila['titulo']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-              echo "<td><form action='altaMod.php' method='post'>
-                    <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
+              echo "<td><form action='abm_estrenos.php' method='post'>
+                    <input name='idpelicula' id='idpelicula' value='".$fila['idpelicula']."'hidden>
                     <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
                 </form>
             </td>";

@@ -16,7 +16,7 @@
       header("location:estrenosinactivas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM peliculas where idestado=3";
+  $sql = "SELECT * FROM peliculas where anio=2022 AND idestado=2";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -50,7 +50,7 @@
             <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
             <<th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Añio</a></th>
             <th scope ="col">Estado</th>
-            <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
+            <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
           <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
 </thead> 
 <?php
@@ -72,12 +72,12 @@
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
 
-      echo "<td><form action='altaMod.php' method='post'>
+      echo "<td><form action='altaEstrenos.php' method='post'>
                     <input name='titulo' id='titulo' value='".$fila['idpelicula']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-              echo "<td><form action='altaMod.php' method='post'>
+              echo "<td><form action='abm_estrenos.php' method='post'>
                     <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
                     <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                 </form>

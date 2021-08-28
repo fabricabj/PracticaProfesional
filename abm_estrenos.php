@@ -156,22 +156,28 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 	}
 }
 
-
+//Se Elimina el estreno
 if (isset($_POST['idpelicula']) && !empty($_POST['idpelicula'])) {
-	
 	$idPelicula = $_POST['idpelicula'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
 	header("location:estrenos.php");
 
 }
-
-/*if (isset($_POST['activar']) && !empty($_POST['activar'])) {
-	
+//Se activa estrenosinactivas.php
+if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	$idPelicula = $_POST['id'];
-	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 1 where idpelicula=$idPelicula");
-	header("location:peliculasinactivas.php");
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 3 where idpelicula=$idPelicula");
+	header("location:listadoEstrenos.php");
 
-}*/
+}
+//Se elimina listadoEstrenos.php
+if (isset($_POST['idPelicula']) && !empty($_POST['idPelicula'])) {
+	
+	$idPelicula = $_POST['idPelicula'];
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
+	header("location:listadoEstrenos.php");
+
+}
 
 
 ?>
