@@ -48,7 +48,7 @@
              <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
             <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
             <th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
-            <<th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Añio</a></th>
+            <<th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Año</a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
           <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
