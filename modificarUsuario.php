@@ -44,34 +44,26 @@
                 <input type="text"class="form-control bg-dark-x border-0" placeholder="Mail" id="mail" name ="mail"  value="<?php echo $datos_generos['mail'];?>"/>
               </div>
               </div>
-
-              <div class="form-row">
-              <div class="col-6">
-                <label class="form-label font-weight-bold text-white">Grupo</label>
-                    <select name="grupo" class="form-control">
-                        <?php $selectEstado=mysqli_query($conexion,"SELECT idgrupo,nombre_grupo FROM grupo ORDER BY idgrupo ASC");
-									while($r=mysqli_fetch_array($selectEstado)){?>
-										
-										<option value="<?php echo $r['idgrupo'];?>" <?php if($idTipoEstado==$r['idgrupo']){ echo'selected';}?>><?php echo $r['nombre_grupo'];?></option>
-									<?php }?>
-                    </select>
-              </div>
-            
+           
               <div class="col-6">
                 <label class="form-label font-weight-bold text-white">Estado</label>
 
-								<select name="estado" class="form-control" >
+								<select name="estado" id="estado" class="form-control" >
 									
-									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM estados_provedores ORDER BY descripcion ASC");
+									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM usuario_estados ORDER BY descripcion ASC");
 									while($r=mysqli_fetch_array($selectEstado)){?>
 										
 										<option value="<?php echo $r['idestado'];?>" <?php if($idTipoEstado==$r['idestado']){ echo'selected';}?>><?php echo $r['descripcion'];?></option>
 									<?php }?>
 								</select>
               </div><br>
-            </div>
-            <br>
-              <button  type="submit" class="btn btn-secondary w-5" name="btnModificar" id="btnModificar" value="btnModificar">Guardar Cambios</button>
+             <div class="form-group">
+                             <input type="text" name="id" id="id" value="<?php echo $datos_generos['idusuario']; ?>" hidden>
+                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="btnModificar" name="btnModificar"><i class="fas fa-save"></i> Modificar Noticia</button>
+                             <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
+                         </div>
+            
+              <!--<button  type="submit" class="btn btn-secondary w-5" name="btnModificar" id="btnModificar" value="btnModificar">Guardar Cambios</button>-->
           </form>       
              </div>
       </div>
@@ -80,3 +72,4 @@
 </body>
 
 </html>
+

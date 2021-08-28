@@ -2,7 +2,19 @@
 require("conexion.php");
 
 if (isset($_POST['btnModificar']) && !empty($_POST['btnModificar'])) {
-echo "hola";
+
+	$usuario_anterior =$_POST['id'];
+	$nombre = $_POST['nombre_usuario'];
+	$mail = $_POST['mail'];
+	//$nombre_grupo = ['grupo'];
+	$estado =['estado'];
+
+	$Insert=mysqli_query($conexion,"UPDATE usuarios SET nombre_usuario='$nombre',mail='$mail',idestado='$estado' WHERE idusuario='$usuario_anterior'");
+	echo $usuario_anterior." ".$nombre." ".$mail;
+       header("location:listarUsuario.php");
+
+	
+
 }
 if (isset($_POST['idusuario']) && !empty($_POST['idusuario'])) {
 	
