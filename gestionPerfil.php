@@ -60,12 +60,12 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
     <div class="form-row">
         <div class="col-6">
              <label class="form-label font-weight-bold text-white">Nombre</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['nombre'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre_usuario" name ="nombre_usuario"/>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['nombre'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre_usuario" name ="nombre_usuario" onkeypress="return check(event)"/>
         </div>
 
         <div class="col-6">
              <label class="form-label font-weight-bold text-white">Apellido</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['apellido'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Apellido" id="apellido" name ="apellido"/>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['apellido'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Apellido" id="apellido" name ="apellido" onkeypress="return check(event)"/>
         </div>
         <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
@@ -81,7 +81,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                         </div>
                         <div class="col-6">
              <label class="form-label font-weight-bold text-white">Numero de Documento</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numero_documento" name ="numero_documento"/>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
         </div>
          <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Sexo</label>
@@ -98,7 +98,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                         </div>
                                    <div class="col-6">
              <label class="form-label font-weight-bold text-white">Numero de Telefono</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="telefono" name ="telefono"/>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="telefono" name ="telefono" onkeyup="this.value=NumerosTel(this.value)" />
         </div>
          <div class="form-group col-md-4">
          <label class="form-label font-weight-bold text-white">Pais</label>
@@ -153,5 +153,76 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
 <?php if(isset($_GET['estado'])&& $_GET['estado']==1){
     echo "<script>alert('Perfil actualizado con exito');</script>";
 }?>
+
+  <script>
+
+function Numeros(string){
+    var out = '';
+    ok=true;
+    var filtro = '1234567890';
+    for (var i=0; i<8; i++)
+       if (filtro.indexOf(string.charAt(i)) != -1)
+	     out += string.charAt(i);
+    
+         return out;
+}
+function NumerosTel(string){
+    var out = '';
+    ok=true;
+    var filtro = '1234567890';
+    for (var i=0; i<10; i++)
+       if (filtro.indexOf(string.charAt(i)) != -1)
+	     out += string.charAt(i);
+    
+         return out;
+}
+function filterFloat(evt,input){
+        var key = window.Event ? evt.which : evt.keyCode;    
+        var chark = String.fromCharCode(key);
+        var tempValue = input.value+chark;
+        if(key >= 48 && key <= 57){
+            if(filter(tempValue)=== false){
+                return false;
+            }else{       
+                return true;
+            }
+        }else{
+              if(key == 8 || key == 13 || key == 0) {     
+                  return true;              
+              }else if(key == 46){
+                    if(filter(tempValue)=== false){
+                        return false;
+                    }else{       
+                        return true;
+                    }
+              }else{
+                  return false;
+              }
+        }
+    }
+    function filter(__val__){
+        var preg = /^([0-9]+\.?[0-9]{0,2})$/; 
+        if(preg.test(__val__) === true){
+            return true;
+        }else{
+           return false;
+        }
+        function check(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla == 8) {
+                return true;
+            }
+
+            // Patron de entrada, en este caso solo acepta numeros y letras
+            patron = /[A-Za-z0-9_-]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        }
+        
+    }
+
+    </script>
 </body>
 </html>

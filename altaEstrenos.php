@@ -140,7 +140,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Titulo</label>
-                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula">
+                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula"  onkeypress="return check(event)">
                             </div>
                             <div class="form-group col-md-4">
                                <label for="inputPassword4">año</label>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"  onkeypress="return check(event)"></textarea>
                         </div>
                         <div class="form-row">       
                                 <div class="form-group col-md-8">
@@ -282,12 +282,26 @@ function filterFloat(evt,input){
               }
         }
     }
+
     function filter(__val__){
         var preg = /^([0-9]+\.?[0-9]{0,2})$/; 
         if(preg.test(__val__) === true){
             return true;
         }else{
            return false;
+        }
+        function check(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla == 8) {
+                return true;
+            }
+
+            // Patron de entrada, en este caso solo acepta numeros y letras
+            patron = /[A-Za-z0-9_-]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
         }
         
     }

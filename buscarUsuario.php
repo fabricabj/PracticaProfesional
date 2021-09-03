@@ -13,10 +13,11 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:listarUsuario.php?pagina=1");
+      header("location:buscarUsuario.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM usuarios WHERE idestado = 1";
+      $nombre_usuario=$_POST['nombre_usuario'];
+  $sql = "SELECT * FROM usuarios WHERE(nombre_usuario like '%$nombre_usuario%') AND idestado=1";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
