@@ -82,7 +82,6 @@ if (isset($_POST['guardar']) && !empty($_POST['guardar'])) {
 	$nombreImg=imagen();
 	$descripcion = $_POST['descripcion'];
 	$anio = $_POST['anio'];
-	$precio = $_POST['precio'];
 	$fecha_publicacion=$_POST['fecha_publicacion'];
 	$estado=$_POST['estado'];
 	$generos='';
@@ -101,7 +100,7 @@ if (isset($_POST['guardar']) && !empty($_POST['guardar'])) {
 		while($r=mysqli_fetch_array($selectEstado)){
 			$idestado=$r['idestado'];
 		}
-		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,$precio,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
+		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
 		header("location:estrenos.php");
 
 	}
@@ -115,7 +114,6 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 	$nombreImg=imagen();
 	$descripcion = $_POST['descripcion'];
 	$anio = $_POST['anio'];
-	$precio = $_POST['precio'];
 	$fecha_publicacion=$_POST['fecha_publicacion'];
 	$idestado = $_POST['estado'];
 	$generos='';
@@ -132,24 +130,24 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 			header("location:estrenos.php");     
 		}else{
 		  if (!is_null($nombreImg)) {	
-			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
+			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
 			header("location:estrenos.php");
 			
 		  }else{
-			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
+			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
 			header("location:estrenos.php"); 
 		  }
 		}
 	}else{
 		if (!is_null($nombreImg)) {	
-			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
+			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
 			header("location:estrenos.php");
 			
 		  }else{
-			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
+			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
 			header("location:estrenos.php"); 
 		  }

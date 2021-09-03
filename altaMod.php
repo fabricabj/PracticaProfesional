@@ -29,27 +29,27 @@
                          <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label>Titulo</label>
-                                <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $datos_generos['titulo'];?>" required>
+                                <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $datos_generos['titulo'];?>" required onkeypress="return check(event)">
                                 <input type="text" class="form-control" name="titulo_anterior" id="titulo_anterior" value="<?php echo $datos_generos['titulo'];?>" hidden>
                               </div>
                               <div class="form-group col-md-4">
                                   <label for="inputPassword4">Año</label>
-                                  <input type="text" class="form-control" value="<?php echo $datos_generos['anio'];?>" name="anio" id="anio">
+                                  <input type="text" class="form-control" value="<?php echo $datos_generos['anio'];?>" name="anio" id="anio" require onkeyup="this.value=Numeros(this.value)">
                               </div>
                          </div>
                          <div class="form-row">
                              <div class="form-group col-md-4">
                                 <label>Duracion</label>
-                                <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required>
+                                <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required onkeyup="this.value=Numeros(this.value)">
                              </div>
                              <div class="form-group col-md-4">
                                 <label for="inputPassword4">Puntaje</label>
-                                <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required>
+                                <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required onkeypress="return filterFloat(event,this);">
                                
                              </div>
                              <div class="form-group col-md-4">
                                 <label for="inputPassword4">Precio</label>
-                                <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $datos_generos['precio'];?>" required>
+                                <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $datos_generos['precio'];?>" required onkeyup="this.value=Numeros(this.value)">
                              </div>
                          </div>
                            
@@ -72,7 +72,7 @@
 						 </div>
                          <div class="form-group">
                             <label>Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"><?php echo $datos_generos['descripcion'];?></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"require onkeypress="return check(event)"><?php echo $datos_generos['descripcion'];?></textarea>
                          </div>
                          <div class="form-row">
                               <div class="form-group col-md-8">
@@ -146,7 +146,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Titulo</label>
-                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula">
+                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula" onkeypress="return check(event)">
                             </div>
                             <div class="form-group col-md-4">
                                <label for="inputPassword4">año</label>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                         <label for="inputPassword4">Precio</label>
-                                        <input type="text" class="form-control" name="precio" id="precio" required>
+                                        <input type="text" class="form-control" name="precio" id="precio" required placeholder="ingrese precio en minutos" onkeyup="this.value=Numeros(this.value)">
                                 </div>
                         </div>
                         
@@ -187,7 +187,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula" onkeypress="return check(event)"></textarea>
                         </div>
                         <div class="form-row">       
                                 <div class="form-group col-md-8">
@@ -301,6 +301,19 @@ function filterFloat(evt,input){
             return true;
         }else{
            return false;
+        }
+        function check(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla == 8) {
+                return true;
+            }
+
+            // Patron de entrada, en este caso solo acepta numeros y letras
+            patron = /[A-Za-z0-9_-]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
         }
         
     }

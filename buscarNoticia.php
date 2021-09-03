@@ -11,12 +11,13 @@
 <body>
     <?php   
     $asc = 0;
-    
+
     if(!isset($_GET['pagina'])){
-      header("location:listarNoticias.php?pagina=1");
+      header("location:buscarNoticia.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM noticias WHERE idestado = 1";
+      $nombre_noticia=$_POST['nombre_noticia']; 
+  $sql = "SELECT * FROM noticias WHERE (nombre_noticia like '%$nombre_noticia%') AND idestado=1";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -107,7 +108,6 @@
         </div>
       </div>
   </div>
-    
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">

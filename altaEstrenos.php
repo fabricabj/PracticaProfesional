@@ -38,27 +38,21 @@
                               </div>
                          </div>
                          <div class="form-row">
-                             <div class="form-group col-md-4">
+                             <div class="form-group col-md-3">
                                 <label>Duracion</label>
                                 <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required>
                              </div>
-                             <div class="form-group col-md-4">
+                             <div class="form-group col-md-3">
                                 <label for="inputPassword4">Puntaje</label>
                                 <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required>
                                
                              </div>
-                             <div class="form-group col-md-4">
-                                <label for="inputPassword4">Precio</label>
-                                <input type="text" class="form-control" name="precio" id="precio" value="<?php echo $datos_generos['precio'];?>" required>
-                             </div>
-                         </div>
                            
-                          <div class="form-row">
-                             <div class="form-group col-md-8">
+                             <div class="form-group col-md-3">
                                 <label for="inputPassword4">fecha de publicacion</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" value="<?php echo $datos_generos['fecha_publicacion'];?>" required>
                              </div>
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-3">
 								<label>estado</label>
 								<select name="estado" class="form-control" >
 									
@@ -154,26 +148,19 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                <label for="inputPassword4">Duracion</label>
                                <input type="text" class="form-control" name="duracion" id="duracion" required placeholder="ingrese duracion en minutos" onkeyup="this.value=Numeros(this.value)">
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-3">
                                <label for="inputPassword4">Puntaje</label>
                                <input type="text" class="form-control" name="puntaje" id="puntaje" required placeholder="ingrese solo numeros" onkeypress="return filterFloat(event,this);">
                             </div>
-                            <div class="form-group col-md-4">
-                                        <label for="inputPassword4">Precio</label>
-                                        <input type="text" class="form-control" name="precio" id="precio" required>
-                                </div>
-                        </div>
-                        
-                        <div class="form-row">
-                             <div class="form-group col-md-8">
+                             <div class="form-group col-md-3">
                                 <label for="inputPassword4">fecha de publicacion</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" required>
                              </div>
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-3">
 								<label>estado</label>
 								<select name="estado" class="form-control" >
 									

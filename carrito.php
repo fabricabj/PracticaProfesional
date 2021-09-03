@@ -25,6 +25,8 @@ require("header.php");
         <th scope ="col"></th>
         
 </thead> 
+<tbody class="carrito">
+
 <?php
 $cont=0;
    
@@ -34,7 +36,7 @@ $cont=0;
 
       echo "<td>".$datos[$i]['Titulo']."</td>";
       echo "<td>$".$datos[$i]['Precio']."</td>";
-      echo "<td><a href='#' class='btn btn-dark'>Eliminar</a></td>";
+      echo "<td><a href='#' id='btnBaja' class='btn btn-dark eliminar' data-id='{$datos[$i]['Id']}'>Eliminar</a></td>";
       
     echo "</tr>";
     $cont+=$datos[$i]['Precio'];
@@ -52,6 +54,7 @@ $cont=0;
   <tr align="center">
      <th colspan="3"><?php echo "TOTAL A PAGAR: $".$cont;?></th>
   </tr>
+</tbody>
   </table>
   <div align="center">  
            <a class="btn btn-dark" href="#">
@@ -64,7 +67,21 @@ $cont=0;
     </div>
   </div>
 </div>
-
+<script>
+         
+         $('.eliminar').click(function(e){
+             e.preventDefault();
+             var eliminar = confirm('De verdad desea eliminar esta pelicula del carrito?');
+             var id=$(this).attr('data-id');
+             if(eliminar){
+                  $(this).parentsUntil('.carrito').remove();
+                  $.post('bajaCarrito.php',{
+                        IdPelicula:id
+                  });
+            }
+            window.location.href="carrito.php";
+         });
+      </script>
   
        
 <?php 

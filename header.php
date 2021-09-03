@@ -162,11 +162,11 @@ function killSession(){
                           <form action="login.php" method="POST">
                              <div class="form-group" id="user-group">
                                 <label for="user">Usuario</label>
-                                <input type="text" class="form-control" name="usuario" id="usuario"  placeholder="ingrese su usuario" require>
+                                <input type="text" class="form-control" name="usuario" id="usuario" onkeypress="return check(event)"  placeholder="ingrese su usuario" require>
                              </div>
                              <div class="form-group" id="password-group">
                                 <label for="contra">Contraseña</label>
-                                <input type="password" class="form-control" name="contrasenia" id="contrasenia" placeholder="ingrese su contraseña" require>
+                                <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="ingrese su contraseña" require>
                              </div>
                              <div align="center"><a style="color:black;text-decoration:none" href="#">¿Olvidaste tu contraseña?</a></div>
                                 <div align="center" class="form-group">
@@ -191,7 +191,7 @@ function killSession(){
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label>mail</label>
-                                    <input type="text" class="form-control" name="email" id="mail"  placeholder="example@example.com" required>
+                                    <input type="email" class="form-control" name="email" id="mail"  placeholder="example@example.com" required>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>usuario</label>
@@ -201,11 +201,11 @@ function killSession(){
                             <div class="row">
                                <div class="form-group col-md-6">
                                   <label>Contraseña</label>
-                                  <input type="password" class="form-control" name="contrasenia" id="contrasenia" placeholder="ingrese su contraseña" required>
+                                  <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="ingrese su contraseña" required>
                                </div>
                                <div class="form-group col-md-6">
                                   <label>Repetir Contraseña</label>
-                                  <input type="password" class="form-control" id="contrasenia2" placeholder="ingrese su contraseña" required>
+                                  <input type="password" class="form-control" id="contrasenia2" onkeypress="return check(event)" placeholder="ingrese su contraseña" required>
                                </div>
                             </div>
                             <div class="col-md-12" align="center">
