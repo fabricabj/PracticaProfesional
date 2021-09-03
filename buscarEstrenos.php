@@ -13,10 +13,11 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:listadoEstrenos.php?pagina=1");
+      header("location:buscarEstrenos.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM peliculas WHERE idestado=3 ";
+       $titulo=$_POST['titulo'];
+  $sql = "SELECT * FROM peliculas WHERE(titulo like '%$titulo%')AND idestado=3 ";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
