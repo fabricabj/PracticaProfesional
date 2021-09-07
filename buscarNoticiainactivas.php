@@ -5,18 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias inactivas</title>
+    <title>Noticias</title>
 </head>
 
 <body>
     <?php   
     $asc = 0;
-    
+
     if(!isset($_GET['pagina'])){
-      header("location:noticiasinactivas.php?pagina=1");
+      header("location:buscarNoticiainactivas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM noticias WHERE idestado = 2";
+      $nombre_noticia=$_POST['nombre_noticia']; 
+  $sql = "SELECT * FROM noticias WHERE (nombre_noticia like '%$nombre_noticia%') AND idestado=2";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -38,6 +39,7 @@
     require("header.php");
     $iniciar = ($_GET['pagina'] - 1) * $noticias_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$noticias_x_pag");
+      }
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
@@ -58,13 +60,15 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="noticiasinactivas.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="noticiasinactivas.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
-            <th scope ="col"><a href="noticiasinactivas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="listarNoticias.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
+          <th><a href="noticiasinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+ 
+   
 </thead> 
 <?php
   
@@ -91,12 +95,11 @@
                 </form>
             </td>";
               echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
-                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
+                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."'hidden>
+                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
                 </form>
- 
             </td>";
-    
+     
     }
 
   ?>
@@ -105,8 +108,6 @@
         </div>
       </div>
   </div>
-      <?php }
-      ?>
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">

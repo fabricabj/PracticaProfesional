@@ -13,7 +13,9 @@
         height: 100%;
         text-align: center;
     }
+    
 </style>
+<title>Inicio Peliculas AFL cinema</title>
 </head>
 <body>
 <?php

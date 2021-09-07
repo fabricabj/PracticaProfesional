@@ -136,16 +136,12 @@ function killSession(){
                 </div>
                 <div class="col-md-12" style="background:#121212">
                     <nav class="navbar navbar-light">
-                        <div class="container-fluid menu">
+                        <div class="container-fluid menu colspan=1">
                                 <a href="noticias.php">Noticias</a>
                                 <a href="categorias.php">Peliculas</a>
                                 <a href="estrenos.php">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="Buscar" placeholder="Buscar" aria-label="Buscar">
-                                <button class="btn btn-primary" type="submit">Buscar</button>
-                            </form>
                         </div>
                     </nav>
                 </div>

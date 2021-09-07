@@ -30,7 +30,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $usuarios_x_pag = 2;
+  $usuarios_x_pag = 8;
   $total_usuarios = mysqli_num_rows($consulta);
   $paginas = $total_usuarios / $usuarios_x_pag;
   $paginas = ceil($paginas);

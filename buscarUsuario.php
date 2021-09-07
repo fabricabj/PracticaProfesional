@@ -31,7 +31,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $usuarios_x_pag = 2;
+  $usuarios_x_pag = 8;
   $total_usuarios = mysqli_num_rows($consulta);
   $paginas = $total_usuarios / $usuarios_x_pag;
   $paginas = ceil($paginas);
@@ -120,11 +120,11 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuario.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="buscarUsuario.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuario.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>

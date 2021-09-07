@@ -16,8 +16,9 @@
       header("location:listarpeliculas.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM peliculas WHERE idestado = 1";
-  $consulta = mysqli_query($conexion,$sql);
+      $titulo=$_POST['titulo'];
+      $sql = "SELECT * FROM peliculas WHERE (titulo like '%$titulo%') AND idestado=1";
+  $consult = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
       if($_GET['ascendente']==1){
@@ -31,7 +32,7 @@
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
   $peliculas_x_pag = 8;
-  $total_peliculas = mysqli_num_rows($consulta);
+  $total_peliculas = mysqli_num_rows($consult);
   $paginas = $total_peliculas / $peliculas_x_pag;
   $paginas = ceil($paginas);
   if (isset($_GET['pagina'])) {
@@ -115,11 +116,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarpeliculas.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
