@@ -41,18 +41,13 @@
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Noticias</h3>
-        <form action="buscarNoticiainactivas.php?pagina=1" method="POST">
-         
+        <h3 class="text-center text-white">Listado de Noticias Inactivas</h3>
+        <form action="buscarNoticiainactivas.php?pagina=1" method="POST">       
              <div class="input-group-prepend">
-   
-    
-      
-                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+               <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
-
             </div>
         </form>
         <table class="table table-light">
@@ -64,7 +59,7 @@
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="listarNoticias.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
+          <th><a href="listarNoticias.php"><button type="button" class="btn btn-primary">Activas</button></a></th>
 </thead> 
 <?php
   

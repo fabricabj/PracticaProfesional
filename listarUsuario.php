@@ -43,16 +43,11 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Usuarios</h3>
           <form action="buscarUsuario.php?pagina=1" method="POST">
-         
              <div class="input-group-prepend">
-   
-    
-      
                   <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
-
             </div>
         </form>
         <table class="table table-light">
@@ -92,9 +87,6 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
                         $descripcion=$i['descripcion'];
                       } 
                       echo "<td>"; echo $descripcion; echo "</td>";
-
-                     
-                     
       echo "<td><form action='modificarUsuario.php' method='post'>
                     <input name='idusuario' id='idusuario' value='".$fila['idusuario']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>

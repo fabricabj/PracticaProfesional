@@ -51,7 +51,7 @@
             <<th scope ="col"><a href="estrenosinactivas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Año</a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
+          <th><a href="listadoEstrenos.php"><button type="button" class="btn btn-primary">Activas</button></a></th>
 </thead> 
 <?php
   
@@ -73,7 +73,7 @@
                       echo "<td>"; echo $descripcion; echo "</td>";
 
       echo "<td><form action='altaEstrenos.php' method='post'>
-                    <input name='titulo' id='titulo' value='".$fila['idpelicula']."' hidden>
+                    <input name='titulo' id='titulo' value='".$fila['titulo']."' hidden>
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";

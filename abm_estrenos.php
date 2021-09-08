@@ -100,7 +100,7 @@ if (isset($_POST['guardar']) && !empty($_POST['guardar'])) {
 		while($r=mysqli_fetch_array($selectEstado)){
 			$idestado=$r['idestado'];
 		}
-		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
+		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,null,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
 		header("location:estrenos.php");
 
 	}

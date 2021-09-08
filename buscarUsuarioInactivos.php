@@ -13,10 +13,11 @@
     $asc = 0;
     
     if(!isset($_GET['pagina'])){
-      header("location:usuariosinactivos.php?pagina=1");
+      header("location:buscarUsuariosInactivos.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM usuarios WHERE idestado = 2";
+       $nombre_usuario=$_POST['nombre_usuario']; 
+  $sql = "SELECT * FROM usuarios WHERE (nombre_usuario like '%$nombre_usuario%') AND idestado=2";
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -36,6 +37,7 @@
   $paginas = ceil($paginas);
   if (isset($_GET['pagina'])) {
     require("header.php");
+    
     $iniciar = ($_GET['pagina'] - 1) * $usuarios_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$usuarios_x_pag");
     ?>

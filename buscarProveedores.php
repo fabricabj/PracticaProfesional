@@ -13,10 +13,11 @@
 $asc = 0;
 
 if(!isset($_GET['pagina'])){
-  header("location:proveedores.php?pagina=1");
+  header("location:buscarProveedores.php?pagina=1");
   }
   include "conexion.php";
-$sql = "SELECT * FROM proveedores WHERE idestado = 1";
+  $razon_social =$_POST['razon_social'];
+$sql = "SELECT * FROM proveedores WHERE(razon_social like '%$razon_social%') AND idestado = 1";
 $consulta = mysqli_query($conexion,$sql);
 if(isset($_GET['orden'])){
 if(isset($_GET['ascendente'])){

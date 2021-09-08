@@ -59,7 +59,7 @@
               </div><br>
              <div class="form-group">
                              <input type="text" name="id" id="id" value="<?php echo $datos_generos['idusuario']; ?>" hidden>
-                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="btnModificar" name="btnModificar"><i class="fas fa-save"></i> Modificar Noticia</button>
+                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="btnModificar" name="btnModificar"><i class="fas fa-save"></i> Modificar usuario</button>
                              <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
                          </div>
             

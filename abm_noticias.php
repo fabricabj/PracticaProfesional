@@ -1,6 +1,7 @@
 <?php
 require("conexion.php");
 function imagen(){
+    require("conexion.php");
     if (isset($_POST['Modificar'])) {
         $idnoticia=$_POST['idnoticia'];
         $consulta= "SELECT imagen from noticias where idnoticia='$idnoticia'";
