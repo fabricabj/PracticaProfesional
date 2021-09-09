@@ -29,7 +29,7 @@
                          <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label>Titulo</label>
-                                <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $datos_generos['titulo'];?>" required onkeypress="return check(event)">
+                                <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $datos_generos['titulo'];?>" required>
                                 <input type="text" class="form-control" name="titulo_anterior" id="titulo_anterior" value="<?php echo $datos_generos['titulo'];?>" hidden>
                               </div>
                               <div class="form-group col-md-4">
@@ -72,7 +72,7 @@
 						 </div>
                          <div class="form-group">
                             <label>Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"require onkeypress="return check(event)"><?php echo $datos_generos['descripcion'];?></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"require ><?php echo $datos_generos['descripcion'];?></textarea>
                          </div>
                          <div class="form-row">
                               <div class="form-group col-md-8">
@@ -146,7 +146,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Titulo</label>
-                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula" onkeypress="return check(event)">
+                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula" >
                             </div>
                             <div class="form-group col-md-4">
                                <label for="inputPassword4">año</label>
@@ -187,7 +187,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula" onkeypress="return check(event)"></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula" ></textarea>
                         </div>
                         <div class="form-row">       
                                 <div class="form-group col-md-8">
