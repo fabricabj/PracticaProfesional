@@ -47,14 +47,10 @@
         <form action="buscarNoticiainactivas.php?pagina=1" method="POST">
          
              <div class="input-group-prepend">
-   
-    
-      
                   <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
-
             </div>
         </form>
         <table class="table table-light">

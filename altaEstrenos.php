@@ -22,7 +22,7 @@
                       }  
                       $resultado=mysqli_query($conexion,$consulta);
                       $datos_generos=mysqli_fetch_assoc($resultado);
-                      $generos=explode(' ', $datos_generos['categorias']);
+                      $generos=explode(' ',$datos_generos['categorias']);
                       $rta=in_array(' ',$generos);
                   ?>
                        <form method="POST" action="abm_estrenos.php" enctype="multipart/form-data" style="width:70%;">
