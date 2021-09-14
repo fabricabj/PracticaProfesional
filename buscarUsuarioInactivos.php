@@ -105,11 +105,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
