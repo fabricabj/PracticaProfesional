@@ -16,7 +16,10 @@
       header("location:listarpeliculas.php?pagina=1");
       }
       include "conexion.php";
-      $titulo=$_POST['titulo'];
+      
+  if (isset($_GET['pagina'])) {
+    require("header.php");
+    $titulo=$_POST['titulo'];
       $sql = "SELECT * FROM peliculas WHERE (titulo like '%$titulo%') AND idestado=1";
   $consult = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
@@ -35,8 +38,6 @@
   $total_peliculas = mysqli_num_rows($consult);
   $paginas = $total_peliculas / $peliculas_x_pag;
   $paginas = ceil($paginas);
-  if (isset($_GET['pagina'])) {
-    require("header.php");
     $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$peliculas_x_pag");
     ?>
@@ -114,16 +115,34 @@
       <?php }
       ?>
       <div class="container" style="padding-top:40px">
-                        <nav arial-label="page navigation">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
-                                <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
-                                <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+  <nav arial-label="page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+        <form action="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
+          <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          
+        </form>
+      </li>
+      <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+       <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>">
+         <form action="buscarPelicula.php?pagina=<?php echo $i ?>" method="POST">
+          <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2"><?php echo $i ?></button>
+        </form>
+      </li>
+    <?php endfor ?>
+    <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+     <form action="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" method="POST">
+      <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+      <button name="buscar" value="buscar" class="page-link" id="button-addon2">Siguiente</button>
+    </form>
+  </li>
+</ul>
+</nav>
+</div>
+
+
 
       <?php
 
