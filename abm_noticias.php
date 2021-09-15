@@ -1,5 +1,9 @@
 <?php
 require("conexion.php");
+use BenMajor\ImageResize\Image;
+
+require "vendor/autoload.php";
+
 function imagen(){
     require("conexion.php");
     if (isset($_POST['Modificar'])) {
@@ -13,65 +17,111 @@ function imagen(){
         }else{
             if (isset($_FILES['imagen']) && !empty($_FILES['imagen']['name'])) {
                 
-                $errores=array();
-                $file_name=$_FILES['imagen']['name'];
-                $file_size=$_FILES['imagen']['size'];
-                $file_tmp=$_FILES['imagen']['tmp_name'];
-                $file_type=$_FILES['imagen']['type'];
-                $file_ext=$_FILES['imagen']['name'];
-                $file_ext=explode('.',$file_ext);
-                $file_ext=end($file_ext);
-                $file_ext=strtolower($file_ext);
-                
-                $extencionPermitidas= array("jpeg","jpg","png","gif","bmp");
-                if (in_array($file_ext, $extencionPermitidas)==false) {
-                    $errores[]='archivo no permitido,selecione una imagen...';
-                }
-                if ($file_size >=2897152) {
-                    $errores[]='el archivo debe ser menor a 2Mb..';
-                }
-                if (empty($errores)==true) {
-                    move_uploaded_file($file_tmp, "Imagenes/".$file_name);
-                    return $file_name;
-                }
-                else{
-                    
-                    print_r($errores);
-                    
-                }
+                $errores=0;
+       
+				$extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+				$name = pathinfo($_FILES['imagen']['name'], PATHINFO_FILENAME).".".$extension;
+				$mimeType = $_FILES['imagen']['type'];
+
+				$extension2 = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+				$name2 = pathinfo($_FILES['imagen']['name'], PATHINFO_FILENAME).".".$extension;
+				$mimeType2 = $_FILES['imagen']['type'];
+
+				# Generate a new image resize object using a upload image:
+				$image = new Image($_FILES['imagen']['tmp_name']);
+				$image2 = new Image($_FILES['imagen']['tmp_name']);
+
+				if ($mimeType == "imagen/png" || $mimeType == "imagen/gif" || $mimeType == "imagen/svg+xml" || $mimeType == "imagen/svg") {
+					
+					$image->setTransparency(true); // agregar transparencia si el formato de imagen acepta transparencia
+				} else {
+					$image->setTransparency(false); // no agregar transparencia si el formato de la imagen no acepta transparencia
+				}
+				
+					
+
+				# Set the background to white:
+				$image->setBackgroundColor('#212121');
+
+				# Contain the image:
+				$image->contain(200);
+
+				$image->output("imagenes");
+				$image2->output("ImagenesOriginales"); // Asegurate que la carpeta donde lo vas a guardar permita lectura y escritura, tambien verifica sus carpetas padres
+
+				# Renombrar la imagen genereda por el metodo output
+				
+				rename($image->getOutputFilename(), 'imagenes/'.$name);
+				rename($image2->getOutputFilename(), 'ImagenesOriginales/'.$name2);
+				}
+
+				if (empty($errores)==true) {
+					move_uploaded_file($image, "Imagenes/".$name);
+					move_uploaded_file($image2, "ImagenesOriginales/".$name2);
+					return $name;
+				}
+				else{
+					
+					print_r($errores);
+					
+				}
             }
             
             
-        }
-    }
+	}
+    
     if (isset($_FILES['imagen']) && !empty($_FILES['imagen']['name'])) {
-        $errores=0;
-        $file_name=$_FILES['imagen']['name'];
-        $file_size=$_FILES['imagen']['size'];
-        $file_tmp=$_FILES['imagen']['tmp_name'];
-        $file_type=$_FILES['imagen']['type'];
-        $file_ext=$_FILES['imagen']['name'];
-        $file_ext=explode('.',$file_ext);
-        $file_ext=end($file_ext);
-        $file_ext=strtolower($file_ext);
-        
-        $extencionPermitidas= array("jpeg","jpg","png","gif","bmp");
-        if (in_array($file_ext, $extencionPermitidas)==false) {
-            $errores+=1;
-            header("location:altaNoticia.php?imgEstado=$errores");
-        }
-        if ($file_size >=2897152) {
-            $errores+=2;
-            header("location:altaNoticia.php?imgEstado=$errores");
-        }
-        if (empty($errores)==true) {
-            move_uploaded_file($file_tmp, "Imagenes/".$file_name);
-            return $file_name;
-        }
-        else{
-            print_r($errores);
-        }
+
+    $errores=0;
+       
+	$extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+    $name = pathinfo($_FILES['imagen']['name'], PATHINFO_FILENAME).".".$extension;
+    $mimeType = $_FILES['imagen']['type'];
+
+	$extension2 = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+    $name2 = pathinfo($_FILES['imagen']['name'], PATHINFO_FILENAME).".".$extension;
+    $mimeType2 = $_FILES['imagen']['type'];
+
+    # Generate a new image resize object using a upload image:
+    $image = new Image($_FILES['imagen']['tmp_name']);
+    $image2 = new Image($_FILES['imagen']['tmp_name']);
+
+    if ($mimeType == "imagen/png" || $mimeType == "imagen/gif" || $mimeType == "imagen/svg+xml" || $mimeType == "imagen/svg") {
+	      
+        $image->setTransparency(true); // agregar transparencia si el formato de imagen acepta transparencia
+    } else {
+        $image->setTransparency(false); // no agregar transparencia si el formato de la imagen no acepta transparencia
     }
+	
+		
+
+    # Set the background to white:
+    $image->setBackgroundColor('#212121');
+
+    # Contain the image:
+    $image->contain(200);
+
+    $image->output("imagenes");
+	$image2->output("ImagenesOriginales"); // Asegurate que la carpeta donde lo vas a guardar permita lectura y escritura, tambien verifica sus carpetas padres
+
+    # Renombrar la imagen genereda por el metodo output
+    
+    rename($image->getOutputFilename(), 'imagenes/'.$name);
+	rename($image2->getOutputFilename(), 'ImagenesOriginales/'.$name2);
+    }
+
+	if (empty($errores)==true) {
+		move_uploaded_file($image, "Imagenes/".$name);
+		move_uploaded_file($image2, "ImagenesOriginales/".$name2);
+		return $name;
+	}
+	else{
+		
+		print_r($errores);
+		
+	}
+
+	
 }
 if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	

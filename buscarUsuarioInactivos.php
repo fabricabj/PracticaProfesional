@@ -16,6 +16,9 @@
       header("location:buscarUsuariosInactivos.php?pagina=1");
       }
       include "conexion.php";
+
+      if (isset($_GET['pagina'])) {
+        require("header.php");
        $nombre_usuario=$_POST['nombre_usuario']; 
   $sql = "SELECT * FROM usuarios WHERE (nombre_usuario like '%$nombre_usuario%') AND idestado=2";
   $consulta = mysqli_query($conexion,$sql);
@@ -35,8 +38,6 @@
   $total_usuarios = mysqli_num_rows($consulta);
   $paginas = $total_usuarios / $usuarios_x_pag;
   $paginas = ceil($paginas);
-  if (isset($_GET['pagina'])) {
-    require("header.php");
     
     $iniciar = ($_GET['pagina'] - 1) * $usuarios_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$usuarios_x_pag");
@@ -103,16 +104,32 @@
       <?php }
       ?>
       <div class="container" style="padding-top:40px">
-                        <nav arial-label="page navigation">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
-                                <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
-                                <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="buscarUsuariosInactivos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+  <nav arial-label="page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+        <form action="buscarUsuarioInactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
+          <input id="nombre_usuario" name="nombre_usuario" value="<?php echo $nombre_usuario;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          
+        </form>
+      </li>
+      <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+       <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>">
+         <form action="buscarUsuarioInactivos.php?pagina=<?php echo $i ?>" method="POST">
+          <input id="nombre_usuario" name="nombre_usuario" value="<?php echo $nombre_usuario;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2"><?php echo $i ?></button>
+        </form>
+      </li>
+    <?php endfor ?>
+    <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+     <form action="buscarUsuarioInactivos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" method="POST">
+      <input id="nombre_usuario" name="nombre_usuario" value="<?php echo $nombre_usuario;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+      <button name="buscar" value="buscar" class="page-link" id="button-addon2">Siguiente</button>
+    </form>
+  </li>
+</ul>
+</nav>
+</div>
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {

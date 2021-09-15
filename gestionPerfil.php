@@ -84,7 +84,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
             <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
         </div>
          <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">Sexo</label>
+            <label class="form-label font-weight-bold text-white">Genero</label>
                             <select name="sexo" id="sexo" class="form-control" >
                             <option>Seleccione Genero</option>
 
