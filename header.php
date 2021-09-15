@@ -142,6 +142,27 @@ function killSession(){
                                 <a href="estrenos.php">Estrenos</a>
                                 <a href="#">Calendario</a>
                                 <a href="#">Contactenos</a>
+                                <form action="buscador.php?pagina=1" method="POST">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <select style="width:160px;background:black;color:white" class="form-control" id="selectTipo" name="genero">
+                                                <option>todo</option>
+                                                <option>Fantasia</option>
+                                                <option>Terror</option>
+                                                <option>accion</option>
+                                                <option>Aventura</option>
+                                                <option>Crimen</option>
+                                                <option>Ciencia Ficcion</option>
+                                                <option>Drama</option>
+                                                <option>Comedia</option>
+                                            </select>
+                                        </div>
+                                        <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese la pelicula a buscar">
+                                        <div class="input-group-append">
+                                            <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
                         </div>
                     </nav>
                 </div>
