@@ -16,6 +16,9 @@
       header("location:estrenosinactivas.php?pagina=1");
       }
       include "conexion.php";
+      
+      if (isset($_GET['pagina'])) {
+        require("header.php");
       $titulo=$_POST['titulo'];
   $sql = "SELECT * FROM peliculas WHERE(titulo like '%$titulo%') AND idestado=2 OR anio=2022 ";
 
@@ -36,8 +39,7 @@
   $total_estrenos = mysqli_num_rows($consulta);
   $paginas = $total_estrenos / $estrenos_x_pag;
   $paginas = ceil($paginas);
-  if (isset($_GET['pagina'])) {
-    require("header.php");
+  
     $iniciar = ($_GET['pagina'] - 1) * $estrenos_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$estrenos_x_pag");
     ?>

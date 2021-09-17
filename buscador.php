@@ -71,6 +71,32 @@
                                                 <h6 align="center"><strong>Descripcion </strong></h6>
                                                 <h6><?php echo $r['descripcion']; ?></h6>
                                             </div>
+                                            <?php if (isset($_SESSION['login']) && $_SESSION['login'] > 0) {
+                            
+                            $idgrupo=$_SESSION['grupo'];
+                            $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
+                            while($rs=mysqli_fetch_array($permisos)){
+
+                                    $nombrePermiso=$rs['nombre_permiso'];
+                                    switch($nombrePermiso) {
+                                    case "comprar pelicula": ?>
+                                        <div class="col-md-6">
+                                            <form method="POST" action="altacarrito.php">
+                                                <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
+                                                <input type="text" name="pagina" id="pagina" value="<?php echo $_GET['pagina']; ?>" hidden>
+                                                <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a carrito</button>
+                                                    
+                                                
+                                                </form>
+                                        </div>
+                                <?php break;
+                                    }
+                                        
+                                    }
+                                        
+                           }
+                                        ?>
                                             
                                         </div>
                                     </div>

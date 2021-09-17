@@ -34,17 +34,17 @@
                               </div>
                               <div class="form-group col-md-4">
                                   <label for="inputPassword4">Año</label>
-                                  <input type="text" class="form-control" value="<?php echo $datos_generos['anio'];?>" name="anio" id="anio">
+                                  <input type="text" class="form-control" value="<?php echo $datos_generos['anio'];?>" name="anio" id="anio" onkeyup="this.value=Numeros(this.value)" require>
                               </div>
                          </div>
                          <div class="form-row">
                              <div class="form-group col-md-3">
                                 <label>Duracion</label>
-                                <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required>
+                                <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required onkeyup="this.value=Numeros(this.value)">
                              </div>
                              <div class="form-group col-md-3">
                                 <label for="inputPassword4">Puntaje</label>
-                                <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required>
+                                <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required onkeypress="return filterFloat(event,this);">
                                
                              </div>
                            
@@ -140,7 +140,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Titulo</label>
-                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula"  onkeypress="return check(event)">
+                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula" require>
                             </div>
                             <div class="form-group col-md-4">
                                <label for="inputPassword4">año</label>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail4">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"  onkeypress="return check(event)"></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"></textarea>
                         </div>
                         <div class="form-row">       
                                 <div class="form-group col-md-8">

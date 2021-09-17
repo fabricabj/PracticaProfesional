@@ -29,7 +29,7 @@
                          <div class="form-row">
                              <div class="form-group col-md-4">
                                 <label>Titulo</label>
-                                <input type="text" class="form-control" name="nombre_noticia" onkeypress="return check(event)" id="nombre_noticia" value="<?php echo $datos['nombre_noticia'];?>">
+                                <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" value="<?php echo $datos['nombre_noticia'];?>">
                             </div>
                          </div>
                          <div class="form-row">
@@ -74,7 +74,7 @@
 						 </div>
                          <div class="form-group">
                             <label>Descripción</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" onkeypress="return check(event)" rows="5"><?php echo $datos['descripcion'];?></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="5"><?php echo $datos['descripcion'];?></textarea>
                          </div>                
                          <div class="form-group">
                              <input type="text" name="id" id="id" value="<?php echo $datos['idnoticia']; ?>" hidden>
@@ -89,7 +89,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Título</label>
-                               <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" onkeypress="return check(event)" required placeholder="Ingrese título">
+                               <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" required placeholder="Ingrese título">
                             </div>
                             <div class="form-group col-md-4">
 								<label>Estado</label>
@@ -132,7 +132,7 @@
                         
                         <div class="form-group">
                             <label for="inputEmail4">Descripción</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" onkeypress="return check(event)" required placeholder="Descripción"></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="Descripción"></textarea>
                         </div>
                         
                         <div class="form-group">

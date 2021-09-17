@@ -157,7 +157,7 @@ function killSession(){
                                                 <option>Comedia</option>
                                             </select>
                                         </div>
-                                        <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese la pelicula a buscar">
+                                        <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar peliculas">
                                         <div class="input-group-append">
                                             <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                                         </div>

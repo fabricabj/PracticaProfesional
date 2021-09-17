@@ -63,7 +63,7 @@
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="noticiasinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+          <th><a href="listarNoticias.php"><button type="button" class="btn btn-primary">Activas</button></a></th>
  
    
 </thead> 
@@ -92,7 +92,7 @@
                 </form>
             </td>";
               echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."'hidden>
+                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
                     <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                 </form>
             </td>";

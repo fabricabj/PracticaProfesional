@@ -110,7 +110,7 @@ color:white;
     overflow-y: auto;
   }
   body{
-    background: url('pantalla.png') no-repeat fixed center;
+    background: url('fondo.jpg') no-repeat fixed center;
     -webkit-background-size:cover;
     -moz-background-size:cover;
     -o-background-size:cover;
