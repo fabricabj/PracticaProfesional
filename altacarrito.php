@@ -17,7 +17,11 @@ if(isset($_SESSION['carrito'])){
             }
         }
         if ($encontro==true) {
-         header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=2");
+            if(!isset($_POST['pagina'])){
+                header("location:index.php?retorno=2");
+            }else{
+                header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=2");
+            }
         }else{
             $nombre="";
          $precio=0;
@@ -34,7 +38,12 @@ if(isset($_SESSION['carrito'])){
         );            
          array_push($arreglo, $peliNuevo);
          $_SESSION['carrito']=$arreglo;
-         header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=1");
+         if(!isset($_POST['pagina'])){
+            header("location:index.php?retorno=1");
+         }else{
+            header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=1");
+         }
+        
         }
     }
 }else{
@@ -52,7 +61,13 @@ if(isset($_SESSION['carrito'])){
                         'Precio'=>$precio
         );
          $_SESSION['carrito']=$arreglo;
-         header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=1");
+            if(!isset($_POST['pagina'])){
+                header("location:index.php?retorno=1");
+            }
+            else{
+                header("location:peliculas.php?genero=$categoria&pagina=$pagina&estadocarrito=1");
+            }
+         
      }
  }
 ?>

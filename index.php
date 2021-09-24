@@ -42,6 +42,7 @@
                                 <p><?php echo "<i class='fas fa-star'></i>".$r['puntaje'];?></p>
                                 <div class="card-body" style="height:70px">
                                      <p align="center" class="card-text"><?php echo $r['titulo'];?></p>
+                                     <p align="center" class="card-text"><?php echo '$'.$r['precio'];?></p>
                                 </div>
                                 <br>
                             
@@ -62,7 +63,7 @@
                                <div class="modal-body" style="background:#121212;color:white">
 		                               <div class="row">
 		                                   <div class="col-md-6">
-		                                        <img src="imagenes/<?php echo $r['imagen'];?>" style="width:50%"><br>
+		                                        <img src="ImagenesOriginales/<?php echo $r['imagen'];?>" style="width:50%"><br>
 		                                   </div>
 		                                  <div class="col-md-6">
 		                                        <h6><strong>Titulo: </strong><?php echo $r['titulo'];?></h6>
@@ -73,6 +74,30 @@
                                             <h6 align="center"><strong>Descripcion </strong></h6>
                                             <h6><?php echo $r['descripcion'];?></h6>
 		                                  </div>
+                                            <?php if (isset($_SESSION['login']) && $_SESSION['login'] > 0) {
+                                                
+                                                $idgrupo=$_SESSION['grupo'];
+                                                $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
+                                                while($rs=mysqli_fetch_array($permisos)){
+
+                                                        $nombrePermiso=$rs['nombre_permiso'];
+                                                        switch($nombrePermiso) {
+                                                        case "comprar pelicula": ?>
+                                                            <div class="col-md-6">
+                                                                <form method="POST" action="altacarrito.php">
+                                                                    <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
+                                                                    <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a carrito</button>
+                                                                        
+                                                                    
+                                                                    </form>
+                                                                    </div>
+                                                            <?php break;
+                                            }
+                                                                    
+                                                }
+                                                                    
+                                                        }
+                                                            ?>
                                   
                                    </div>
                                 </div>
@@ -96,7 +121,7 @@
       </div>
       <div class="col-md-4" style="color:white;background:#121212">
            <br>
-           <h3>Extrenos 2021</h3>
+           <h3>Películas 2021</h3>
            <?php $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021"); ?>
            <div class="parent">
               <div class="child"> 
@@ -125,6 +150,12 @@ if (isset($_GET['error'])&& $_GET['error']==2) {
 }
 if (isset($_GET['estado'])&& $_GET['estado']==1) {
     echo "<script type='text/javascript'>alert('fue registrado con exito');</script>";
+}
+if(isset($_GET['retorno'])&& $_GET['retorno']==2){
+    echo "<script>alert('La pelicula ya fue agregada al carrito anteriormente');</script>";
+}
+if(isset($_GET['retorno'])&& $_GET['retorno']==1){
+    echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
 }
 ?>
 </body>

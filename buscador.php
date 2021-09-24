@@ -83,8 +83,8 @@
                                         <div class="col-md-6">
                                             <form method="POST" action="altacarrito.php">
                                                 <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
-                                                <input type="text" name="pagina" id="pagina" value="<?php echo $_GET['pagina']; ?>" hidden>
-                                                <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                
+                                               
                                                 <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a carrito</button>
                                                     
                                                 
@@ -143,6 +143,14 @@
 
      </div>
    </div>
-
+   <?php 
+     if(isset($_GET['retorno'])&& $_GET['retorno']==2){
+        echo "<script>alert('La pelicula ya fue agregada al carrito anteriormente');</script>";
+     }
+     if(isset($_GET['retorno'])&& $_GET['retorno']==1){
+        echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
+     }
+   
+   ?>
  </body>
 </html>
