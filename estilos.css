@@ -164,3 +164,14 @@ color:white;
     background:#000;
     color:white;
 }
+
+.descrip{
+    color:#FFF; 
+    font-size:14px;
+}
+
+.descripNos{
+    color:#FFF; 
+    font-size:40px;
+    font-style: italic;    
+}
