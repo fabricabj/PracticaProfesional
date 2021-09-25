@@ -43,14 +43,14 @@
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Peliculas</h3>
+        <h3 class="text-center text-white">Listado de Películas</h3>
         <form action="buscarPelicula.php?pagina=1" method="POST">
          
              <div class="input-group-prepend">
    
     
       
-                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese película a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -61,10 +61,10 @@
           <thead>
           
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
+            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Título</a></th>
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" >Año</a></th>
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=precio&ascendente=<?php echo $asc; ?>" > Precio</a></th>
-            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=categorias&ascendente=<?php echo $asc; ?>" > Categorias </a></th>
+            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=categorias&ascendente=<?php echo $asc; ?>" > Categorías </a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaMod.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
             <th><a href="peliculasinactivas.php"><button type="button" class="btn btn-secondary">Inactivas</button></a></th>
@@ -120,7 +120,7 @@
       <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
         <form action="buscarPelicula.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
           <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
           
         </form>
       </li>

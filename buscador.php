@@ -63,12 +63,12 @@
                                                 <img src="ImagenesOriginales/<?php echo $r['imagen']; ?>" style="width:50%"><br>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6><strong>Titulo: </strong><?php echo $r['titulo']; ?></h6>
-                                                <h6><strong>Genero: </strong><?php echo $r['categorias']; ?></h6>
-                                                <h6><strong>Duracion: </strong><?php echo $r['duracion']." min"; ?></h6>
-                                                <h6><strong>puntaje: </strong><?php echo "<i class='fas fa-star'></i>".$r['puntaje']; ?></h6>
+                                                <h6><strong>Título: </strong><?php echo $r['titulo']; ?></h6>
+                                                <h6><strong>Género: </strong><?php echo $r['categorias']; ?></h6>
+                                                <h6><strong>Duración: </strong><?php echo $r['duracion']." min"; ?></h6>
+                                                <h6><strong>Puntaje: </strong><?php echo "<i class='fas fa-star'></i>".$r['puntaje']; ?></h6>
                                                 <h6><strong>Año: </strong><?php echo $r['anio']; ?></h6>
-                                                <h6 align="center"><strong>Descripcion </strong></h6>
+                                                <h6 align="center"><strong>Descripción </strong></h6>
                                                 <h6><?php echo $r['descripcion']; ?></h6>
                                             </div>
                                             <?php if (isset($_SESSION['login']) && $_SESSION['login'] > 0) {
@@ -117,7 +117,7 @@
                                     <form action="buscador.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
                                     <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
                                     <input id="genero" name="genero" value="<?php echo $genero;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-                                    <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+                                    <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
                                     
                                     </form>
                                 </li>

@@ -19,8 +19,8 @@
     <div class="px-lg-5 py-lg-4 p-4">
         <div class="form-row">
               <div class="col-6">
-                <label class="form-label font-weight-bold text-white">Razòn Social</label>
-                <input type="text"class="form-control bg-dark-x border-0" placeholder="Razòn Social" id="razon_social" name ="razon_social"/>
+                <label class="form-label font-weight-bold text-white">Razón Social</label>
+                <input type="text"class="form-control bg-dark-x border-0" placeholder="Razón Social" id="razon_social" name ="razon_social"/>
                 
               </div>
               <div class="col-6">
@@ -32,11 +32,11 @@
 
               <div class="form-row">
               <div class="col-6">
-                <label class="form-label font-weight-bold text-white">Email</label>
-                <input type="email" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresar Email" id="email" name="email"/>
+                <label class="form-label font-weight-bold text-white">Mail</label>
+                <input type="email" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresar Mail" id="email" name="email"/>
               </div><br>
               <div class="form-group col-md-6">
-              <label class="form-label font-weight-bold text-white">estado</label>
+              <label class="form-label font-weight-bold text-white">Estado</label>
                                 <select name="estado" id="estado" class="form-control" >
 
                                     <?php $selectEstado=mysqli_query($conexion,"SELECT descripcion FROM estados_provedores ORDER BY descripcion ASC");

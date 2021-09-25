@@ -58,7 +58,7 @@ function killSession(){
                             <ul class="navbar-nav mr-auto login">
                             <?php if ($id_usuario==0): ?>
                                 <li class="nav-item active">
-                                   <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#ingresar" onclick="ingresar();">Iniciar Sesion</a>
+                                   <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#ingresar" onclick="ingresar();">Iniciar Sesión</a>
                                 </li>
                                 <li class="nav-item active">
                                     <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#registrar" onclick="registrar();">Registrate</a>
@@ -93,7 +93,7 @@ function killSession(){
                                     <?php        break;
                                                 case "buscar pelicula": ?>
                                                     <form method="POST" action="listarpeliculas.php">
-                                                        <button type="submit" class="dropdown-item">Buscar peliculas</button>
+                                                        <button type="submit" class="dropdown-item">Buscar películas</button>
                                                     </form>
                                     <?php        break;
                                                  case "buscar usuarios": ?>
@@ -138,26 +138,26 @@ function killSession(){
                     <nav class="navbar navbar-light">
                         <div class="container-fluid menu colspan=1">
                                 <a href="noticias.php">Noticias</a>
-                                <a href="categorias.php">Peliculas</a>
+                                <a href="categorias.php">Películas</a>
                                 <a href="estrenos.php">Estrenos</a>
                                 <a href="#">Calendario</a>
-                                <a href="#">Contactenos</a>
+                                <a href="contactenos.php">Contáctenos</a>
                                 <form action="buscador.php?pagina=1" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <select style="width:160px;background:black;color:white" class="form-control" id="selectTipo" name="genero">
-                                                <option>todo</option>
-                                                <option>Fantasia</option>
+                                                <option>Todo</option>
+                                                <option>Fantasía</option>
                                                 <option>Terror</option>
-                                                <option>accion</option>
+                                                <option>Acción</option>
                                                 <option>Aventura</option>
                                                 <option>Crimen</option>
-                                                <option>Ciencia Ficcion</option>
+                                                <option>Ciencia Ficción</option>
                                                 <option>Drama</option>
                                                 <option>Comedia</option>
                                             </select>
                                         </div>
-                                        <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar peliculas">
+                                        <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Buscar películas">
                                         <div class="input-group-append">
                                             <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                                         </div>
@@ -179,11 +179,11 @@ function killSession(){
                           <form action="login.php" method="POST">
                              <div class="form-group" id="user-group">
                                 <label for="user">Usuario</label>
-                                <input type="text" class="form-control" name="usuario" id="usuario" onkeypress="return check(event)"  placeholder="ingrese su usuario" require>
+                                <input type="text" class="form-control" name="usuario" id="usuario" onkeypress="return check(event)"  placeholder="Ingrese su usuario" require>
                              </div>
                              <div class="form-group" id="password-group">
                                 <label for="contra">Contraseña</label>
-                                <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="ingrese su contraseña" require>
+                                <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" require>
                              </div>
                              <div align="center"><a style="color:black;text-decoration:none" href="#">¿Olvidaste tu contraseña?</a></div>
                                 <div align="center" class="form-group">
@@ -207,27 +207,27 @@ function killSession(){
                           <form  method="POST" action="registrar.php"  onsubmit="return registrar(this)">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <label>mail</label>
+                                    <label>Mail</label>
                                     <input type="email" class="form-control" name="email" id="mail"  placeholder="example@example.com" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label>usuario</label>
-                                    <input type="text" class="form-control" name="nombre_usu" id="nombre_usuario" onkeypress="return check(event)" placeholder="ingrese su usuario" required>
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control" name="nombre_usu" id="nombre_usuario" onkeypress="return check(event)" placeholder="Ingrese su usuario" required>
                                 </div>
                             </div>
                             <div class="row">
                                <div class="form-group col-md-6">
                                   <label>Contraseña</label>
-                                  <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="ingrese su contraseña" required>
+                                  <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" required>
                                </div>
                                <div class="form-group col-md-6">
                                   <label>Repetir Contraseña</label>
-                                  <input type="password" class="form-control" id="contrasenia2" onkeypress="return check(event)" placeholder="ingrese su contraseña" required>
+                                  <input type="password" class="form-control" id="contrasenia2" onkeypress="return check(event)" placeholder="Ingrese su contraseña" required>
                                </div>
                             </div>
                             <div class="col-md-12" align="center">
                                <div class="form-group">
-                                    <button style="width: 50%;" name="registrado" value="registrado" id="btn2" class="btn btn-light" onclick="registrar();">registrar</button>
+                                    <button style="width: 50%;" name="registrado" value="registrado" id="btn2" class="btn btn-light" onclick="registrar();">Registrar</button>
                                </div>
                             </div>
                           </form>

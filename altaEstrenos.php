@@ -28,7 +28,7 @@
                        <form method="POST" action="abm_estrenos.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-8">
-                                <label>Titulo</label>
+                                <label>Título</label>
                                 <input type="text" class="form-control" name="titulo" id="titulo" value="<?php echo $datos_generos['titulo'];?>" required>
                                 <input type="text" class="form-control" name="titulo_anterior" id="titulo_anterior" value="<?php echo $datos_generos['titulo'];?>" hidden>
                               </div>
@@ -39,7 +39,7 @@
                          </div>
                          <div class="form-row">
                              <div class="form-group col-md-3">
-                                <label>Duracion</label>
+                                <label>Duración</label>
                                 <input type="text" class="form-control" name="duracion" id="duracion" value="<?php echo $datos_generos['duracion'];?>" required onkeyup="this.value=Numeros(this.value)">
                              </div>
                              <div class="form-group col-md-3">
@@ -49,7 +49,7 @@
                              </div>
                            
                              <div class="form-group col-md-3">
-                                <label for="inputPassword4">fecha de publicacion</label>
+                                <label for="inputPassword4">Fecha de publicación</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" value="<?php echo $datos_generos['fecha_publicacion'];?>" required>
                              </div>
 							<div class="form-group col-md-3">
@@ -65,19 +65,19 @@
 							</div>
 						 </div>
                          <div class="form-group">
-                            <label>Descripcion</label>
+                            <label>DescripciÓn</label>
                             <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"><?php echo $datos_generos['descripcion'];?></textarea>
                          </div>
                          <div class="form-row">
                               <div class="form-group col-md-8">
-                                 <label for="imagen">imagen</label>
+                                 <label for="imagen">Imagen</label>
  					             <input type="file" name="imagen" class="form-control" id="imagen" >
                               </div>
                               <div class="form-group col-md-4">
                                   <img src="<?php echo "imagenes/". $datos_generos["imagen"]; ?>" width =100>
                              </div>
                           </div>
-                         <p style="color:#fafafa;float:left">Generos</p><br>
+                         <p style="color:#fafafa;float:left">Géneros</p><br>
                          <div class="form-row"  style="border: 1px solid white;color:#fafafa;padding-top:20px;float:left;width:100%">
                              <div class="form-group">
                                 <label class="checkbox">
@@ -91,7 +91,7 @@
                                     <span class="check"></span>
                                 </label>
                                 <label class="checkbox">
-                                    Accion
+                                    Acción
                                    <input type="checkbox" name="nombre_genero[]" value="accion" <?php if(in_array('accion',$generos)){?> checked <?php }?>>
                                    <span class="check"></span>
                                 </label>
@@ -139,29 +139,29 @@
                     <form method="POST" action="abm_estrenos.php" enctype="multipart/form-data" style="width:70%;">
                         <div class="form-row">
                             <div class="form-group col-md-8">
-                               <label for="inputEmail4">Titulo</label>
-                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="ingrese nombre de la pelicula" require>
+                               <label for="inputEmail4">Título</label>
+                               <input type="text" class="form-control" name="titulo" id="titulo" required placeholder="Ingrese nombre de la película" require>
                             </div>
                             <div class="form-group col-md-4">
-                               <label for="inputPassword4">año</label>
-                               <input type="text" class="form-control" name="anio" id="anio" required placeholder="ingrese solo numeros enteros" onkeyup="this.value=Numeros(this.value)">
+                               <label for="inputPassword4">Año</label>
+                               <input type="text" class="form-control" name="anio" id="anio" required placeholder="Ingrese números enteros" onkeyup="this.value=Numeros(this.value)">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                               <label for="inputPassword4">Duracion</label>
-                               <input type="text" class="form-control" name="duracion" id="duracion" required placeholder="ingrese duracion en minutos" onkeyup="this.value=Numeros(this.value)">
+                               <label for="inputPassword4">Duración</label>
+                               <input type="text" class="form-control" name="duracion" id="duracion" required placeholder="Ingrese duración en minutos" onkeyup="this.value=Numeros(this.value)">
                             </div>
                             <div class="form-group col-md-3">
                                <label for="inputPassword4">Puntaje</label>
-                               <input type="text" class="form-control" name="puntaje" id="puntaje" required placeholder="ingrese solo numeros" onkeypress="return filterFloat(event,this);">
+                               <input type="text" class="form-control" name="puntaje" id="puntaje" required placeholder="Ingrese solo números" onkeypress="return filterFloat(event,this);">
                             </div>
                              <div class="form-group col-md-3">
-                                <label for="inputPassword4">fecha de publicacion</label>
+                                <label for="inputPassword4">Fecha de publicación</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" required>
                              </div>
 							<div class="form-group col-md-3">
-								<label>estado</label>
+								<label>Estado</label>
 								<select name="estado" class="form-control" >
 									
 									<?php $selectEstado=mysqli_query($conexion,"SELECT descripcion FROM pelicula_estados ORDER BY descripcion ASC");
@@ -173,21 +173,21 @@
 							</div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail4">Descripcion</label>
-                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="ingrese descripcion de la pelicula"></textarea>
+                            <label for="inputEmail4">Descripción</label>
+                            <textarea type="text" class="form-control" name="descripcion" id="descripcion" required placeholder="Ingrese descripción de la película"></textarea>
                         </div>
                         <div class="form-row">       
                                 <div class="form-group col-md-8">
-                                     <label for="imagen">imagen</label>
+                                     <label for="imagen">Imagen</label>
  					                <input type="file" name="imagen" class="form-control" id="imagen" >
                                 </div>
                                 
                         </div>
-                        <p style="color:#fafafa;float:left">Generos</p><br>
+                        <p style="color:#fafafa;float:left">Géneros</p><br>
                         <div class="form-row"  style="border: 1px solid white;padding-top:20px;color:#fafafa;float:left;width:100%">
                             <div class="form-group generos">
                                 <label class="checkbox">
-                                    Fantasia
+                                    Fantasía
                                     <input type="checkbox" name="nombre_genero[]" value="Fantasia">
                                     <span class="check"></span>
                                 </label>
@@ -197,7 +197,7 @@
                                     <span class="check"></span>
                                 </label>
                                 <label class="checkbox">
-                                    Accion
+                                    Acción
                                     <input type="checkbox" name="nombre_genero[]" value="accion">
                                     <span class="check"></span>
                                 </label>

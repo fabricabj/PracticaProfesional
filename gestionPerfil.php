@@ -70,7 +70,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
         <div class="form-group col-md-6">
             <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
                             <select name="idtipodocumento" id="idtipodocumento" class="form-control" >
-                            <option>Seleccione Tipo documentacion</option>
+                            <option>Seleccione Tipo documentación</option>
 
                                 <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM documento_tipos ORDER BY idtipodocumento ASC");
                                 while($r=mysqli_fetch_array($selectEstado)){?>
@@ -80,13 +80,13 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                             </select>
                         </div>
                         <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Numero de Documento</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
+             <label class="form-label font-weight-bold text-white">Número de Documento</label>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
         </div>
          <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">Genero</label>
+            <label class="form-label font-weight-bold text-white">Género</label>
                             <select name="sexo" id="sexo" class="form-control" >
-                            <option>Seleccione Genero</option>
+                            <option>Seleccione Género</option>
 
                                 <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM generos ORDER BY idgenero ASC");
                                 
@@ -97,13 +97,13 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                             </select>
                         </div>
                                    <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Numero de Telefono</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Numero de Telefono" id="telefono" name ="telefono" onkeyup="this.value=NumerosTel(this.value)" />
+             <label class="form-label font-weight-bold text-white">Número de Teléfono</label>
+            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Teléfono" id="telefono" name ="telefono" onkeyup="this.value=NumerosTel(this.value)" />
         </div>
          <div class="form-group col-md-4">
-         <label class="form-label font-weight-bold text-white">Pais</label>
+         <label class="form-label font-weight-bold text-white">País</label>
                                 <select class="form-control" id="cbxpais" name="cbxpais">
-               	                  <option>Seleccione Pais</option>
+               	                  <option>Seleccione País</option>
                                   <?php while ($rsTP = $select3->fetch_assoc()){?>
                                      <option <?php if(mysqli_num_rows($select5)>0){ if($rsTP['idpais']==$datosPais['idpais']){echo "selected";}}?>><?php echo $rsTP['nombre'];?></option>
                                   <?php } ?>
@@ -120,7 +120,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                          <?php    }
                                  }
                                  else{?>
-                                    <option>seleccione Provincia</option>
+                                    <option>Seleccione Provincia</option>
                         <?php    }
                         ?>
 
@@ -129,7 +129,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                         <div class="form-group col-md-4">
                             <label class="form-label font-weight-bold text-white">Ciudad</label>
                             <select name="cbxciudad" id="cbxciudad" class="form-control" >
-                                 <option>seleccione Ciudad</option>
+                                 <option>Seleccione Ciudad</option>
                                  <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM ciudades ORDER BY idciudad ASC");
                                 
                                 while($r=mysqli_fetch_array($selectEstado)){?>

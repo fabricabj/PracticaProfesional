@@ -46,7 +46,7 @@
         <h3 class="text-center text-white">Listado de Estrenos</h3>
          <form action="buscarEstrenos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese noticia a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -57,7 +57,7 @@
           
             <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
             <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
+            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripción</a></th>
             <<th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Año</a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
@@ -109,7 +109,7 @@
       <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
         <form action="buscarEstrenos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
           <input id="titulo" name="titulo" value="<?php echo $titulo;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
           
         </form>
       </li>

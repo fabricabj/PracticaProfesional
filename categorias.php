@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Categorias</title>
+    <title>Categorías</title>
 </head>
 <body>
    <?php 

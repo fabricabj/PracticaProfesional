@@ -44,7 +44,7 @@
         <h3 class="text-center text-white">Listado de Estrenos</h3>
          <form action="buscarEstrenos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -54,8 +54,8 @@
           <thead>
           
             <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
-            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
+            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Título</a></th>
+            <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripción</a></th>
             <<th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Año</a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>

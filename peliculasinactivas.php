@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peliculas inactivas</title>
+    <title>Películas inactivas</title>
 </head>
 
 <body>
@@ -41,15 +41,15 @@
     ?>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Listado de Peliculas</h3>
+        <h3 class="text-center text-white">Listado de Películas</h3>
         <table class="table table-light">
           <thead>
           
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=idpelicula&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Titulo</a></th>
+            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>" >Título</a></th>
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" >Año</a></th>
             <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=precio&ascendente=<?php echo $asc; ?>" > Precio</a></th>
-            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=categorias&ascendente=<?php echo $asc; ?>" > Categorias </a></th>
+            <th scope ="col"><a href="listarpeliculas.php?pagina=1&orden=categorias&ascendente=<?php echo $asc; ?>" > Categorías </a></th>
             <th scope ="col">Estado</th>
             <th><form action="altaMod.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
             <th><a href="listarpeliculas.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>

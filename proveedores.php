@@ -44,7 +44,7 @@ $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag")
     <h3 class="text-center text-white">Listado de Proveedores</h3>
     <form action="buscarProveedores.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="razon_social" name="razon_social" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="razon_social" name="razon_social" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese proveedor a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -54,7 +54,7 @@ $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag")
       <thead>
       
         <th scope ="col"><a href="proveedores.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
-        <th scope ="col"><a href="proveedores.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
+        <th scope ="col"><a href="proveedores.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razón Social</a></th>
         <th scope ="col"><a href="proveedores.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
         <th scope ="col"><a href="proveedores.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
         <th scope ="col">Estado</th>

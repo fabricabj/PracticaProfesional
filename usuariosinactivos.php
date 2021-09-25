@@ -44,7 +44,7 @@
         <h3 class="text-center text-white">Listado de Usuarios Inactivos</h3>
         <form action="buscarUsuarioInactivos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese usuario a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>

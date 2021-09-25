@@ -28,13 +28,13 @@
                        <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-4">
-                                <label>Titulo</label>
+                                <label>TÍtulo</label>
                                 <input type="text" class="form-control" name="nombre_noticia" id="nombre_noticia" value="<?php echo $datos['nombre_noticia'];?>">
                             </div>
                          </div>
                          <div class="form-row">
                               <div class="form-group col-md-8">
-                                 <label for="imagen">imagen</label>
+                                 <label for="imagen">Imagen</label>
  					             <input type="file" name="imagen" class="form-control" id="imagen" >
                               </div>
                               <div class="form-group col-md-4">
@@ -78,7 +78,7 @@
                          </div>                
                          <div class="form-group">
                              <input type="text" name="id" id="id" value="<?php echo $datos['idnoticia']; ?>" hidden>
-                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Modificar Noticia</button>
+                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar cambios</button>
                          </div>
                        </form>
                       <?php 
@@ -108,7 +108,7 @@
                         <div class="form-row">       
                                 <div class="form-row">       
                                         <div class="form-group col-md-8">
-                                            <label for="imagen">imagen</label>
+                                            <label for="imagen">Imagen</label>
                                             <input type="file" name="imagen" class="form-control" id="imagen" >
                                         </div>
                                         
