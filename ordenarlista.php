@@ -33,7 +33,7 @@
           <thead>
           
             <th scope ="col">Id</th>
-            <th scope ="col">Razòn Social</th>
+            <th scope ="col">Razón Social</th>
             <th scope ="col">Cuit</th>
             <th scope ="col">Mail</th>
             <th scope ="col">Estado</th>

@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="modal-body" style="background:#121212;color:white">
                                     <div class="col-md-6">
-                                    <h6><strong>Titulo: </strong><?php echo $r['titulo']; ?></h6>
+                                    <h6><strong>Título: </strong><?php echo $r['titulo']; ?></h6>
                                         <img src="ImagenesOriginales/<?php echo $r['imagen']; ?>" style="width:50%"><br>
                                     </div>
                                         <div >                                

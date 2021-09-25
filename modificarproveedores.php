@@ -33,7 +33,7 @@
     <div class="px-lg-5 py-lg-4 p-4">
         <div class="form-row">
               <div class="col-6">
-                <label class="form-label font-weight-bold text-white">Razòn Social</label>
+                <label class="form-label font-weight-bold text-white">Razón Social</label>
                 <input type="text"class="form-control bg-dark-x border-0" placeholder="Razòn Social" id="razon_social" name ="razon_social"  value="<?php echo $datos_generos['razon_social'];?>"/>
                  
                 
@@ -47,7 +47,7 @@
 
               <div class="form-row">
               <div class="col-6">
-                <label class="form-label font-weight-bold text-white">Email</label>
+                <label class="form-label font-weight-bold text-white">Mail</label>
                 <input type="email" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresar Email" id="email" value="<?php echo $datos_generos['mail'];?>" name="email"/>
               </div>
             

@@ -47,7 +47,7 @@
         <h3 class="text-center text-white">Listado de Proveedores Inactivos</h3>
         <form action="buscarProveedoresInactivos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="razon_social" name="razon_social" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="razon_social" name="razon_social" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese proveedor a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -57,7 +57,7 @@
           <thead>
           
             <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razòn Social</a></th>
+            <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razón Social</a></th>
             <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
             <th scope ="col"><a href="proveedoresinactivos.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
             <th scope ="col">Estado</th>
@@ -110,7 +110,7 @@
       <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
         <form action="buscarProveedoresInactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
           <input id="razon_social" name="razon_social" value="<?php echo $razon_social;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
           
         </form>
       </li>

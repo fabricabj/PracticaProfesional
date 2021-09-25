@@ -109,7 +109,7 @@
       <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
         <form action="buscarUsuarioInactivos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
           <input id="nombre_usuario" name="nombre_usuario" value="<?php echo $nombre_usuario;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
           
         </form>
       </li>
