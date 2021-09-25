@@ -237,6 +237,7 @@ function killSession(){
            </div>
        </div> 
        </div>
+
        <script type="text/javascript" src="jquery.min.js"></script>
        <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
        <script src="https://kit.fontawesome.com/2be8605e79.js"></script>

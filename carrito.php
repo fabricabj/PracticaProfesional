@@ -57,28 +57,11 @@ $cont=0;
 </tbody>
   </table>
   <div align="center">  
-           <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#metodo">
-                 Comprar
-           </a>
-           <div data-backdrop="static"  class="modal fade" id="metodo">
-            <div class="col-md-12 modal-dialog" >
-                <div class="modal-content">
-                   <div class="modal-header">
-                       <h4 class="modal-title">Metodo de pago</h4>
-                       <button type="button" class="close" data-dismiss="modal">X</button>
-                   </div>
-                   <div class="col-md-12" style="background:#e0e0e0">
-                       <div class="modal-body" >
-                          <h3 align="center"> Seleccione el metodo de pago</h3>
-                          <form action="metodoPago.php" method="POST">
-                             <button style="margin-top:7%;width:50%" name="tarjeta" value="tarjeta" type="submit" class="btn btn-dark">Tarjeta</button>                      
-                             <button style="margin-top:7%;width:50%" name="transferencia" value="transferencia" type="submit" class="btn btn-dark">Transferencia</button>  
-                          </form>
-                       </div>
-                   </div> 
-                </div>
-            </div>
-       </div>
+        <form action="elegirMetodoPago.php" method="POST">
+            <input type="text" name="total" id="total" value="<?php echo $cont;?>" hidden>
+                  <button name="comprar" value="comprar" type="submit" class="btn btn-dark">Comprar</button>
+                
+        </form>
        </div>
   <?php }else{
        echo "<h3 style='color:white;' align='center'>El carrito esta vacio</h3>";
