@@ -185,7 +185,7 @@ function killSession(){
                                 <label for="contra">Contraseña</label>
                                 <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" require>
                              </div>
-                             <div align="center"><a style="color:black;text-decoration:none" href="#">¿Olvidaste tu contraseña?</a></div>
+                             <div align="center"><a style="color:black;text-decoration:none" data-toggle="modal" href="#" data-target="#recuperar">¿Olvidaste tu contraseña?</a></div>
                                 <div align="center" class="form-group">
                                     <button style="margin-top:7%;width:50%" name="ingresar" value="ingresar" type="submit" class="btn btn-light">Ingresar</button>
                                 </div>
@@ -236,6 +236,29 @@ function killSession(){
                 </div>
            </div>
        </div> 
+       </div>
+        <div data-backdrop="static"  class="modal fade" id="recuperar">
+            <div class="col-md-12 modal-dialog" >
+                <div class="modal-content">
+                   <div class="modal-header">
+                       <h4 class="modal-title">Recuperar Contraseña</h4>
+                       <button type="button" class="close" data-dismiss="modal">X</button>
+                   </div>
+                   <div class="col-md-12" style="background:#e0e0e0">
+                       <div class="modal-body" >
+                          <form action="recuperarContra.php" method="POST">
+                             <div class="form-group" id="user-group">
+                                <label for="user">Ingrese su email</label>
+                                <input type="email" class="form-control" name="mail" id="mail" require placeholder="Ingrese su email">
+                             </div>
+                             
+                                    <button style="margin-top:7%;width:50%" name="buscar" value="buscar" type="submit" class="btn btn-light">buscar</button>
+                                </div>
+                          </form>
+                       </div>
+                   </div> 
+                </div>
+            </div>
        </div>
 
        <script type="text/javascript" src="jquery.min.js"></script>

@@ -24,4 +24,15 @@ if (isset($_POST['ingresar']) && !empty($_POST['ingresar'])) {
 	header("location:index.php?error=2");
 	}	
 }
+if (isset($_GET['recuperar'])&& $_GET['recuperar']==1){
+			echo '<script> alert("se ha enviado un mail a su correo con el link de restablecer contraseña");</script>';
+			header("location:index.php");
+		}
+		if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
+			echo '<script> alert("problemas");</script>';
+			header("location:index.php");
+		}
+		if (isset($_GET['recuperar'])&& $_GET['recuperar']==3){
+			echo '<script> alert("el usuario no existe");</script>';
+		}
  ?>
