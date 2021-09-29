@@ -8,12 +8,12 @@ if (isset($_POST['buscar'])){
  include('sendmail.php');//Mando a llamar la funcion que se encarga de enviar el correo electronico
  $consulta=mysqli_query($conexion,"SELECT * FROM usuarios WHERE mail='$user'");
  if($r=mysqli_fetch_array($consulta)){
-     echo '<script>alert ("enviar email a"'. $r['mail'].'")</script>';
+     echo "enviar email a ". $r['mail'];
      $token=uniqid();// genera un ID único
      $sql=mysqli_query($conexion,"UPDATE usuarios set token='$token' WHERE mail='{$r['mail']}'");
 	 $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-     $smtpUsuario = ("jorgeurquiza837@gmail.com");  // Mi cuenta de correo
-     $smtpClave = "14Riverplate14";  // Mi contraseña
+     $smtpUsuario = ("francocolave1@gmail.com");  // Mi cuenta de correo
+     $smtpClave = "irene1936";  // Mi contraseña
      $mail = new PHPMailer();
      $mail->IsSMTP();
      $mail->SMTPAuth = true;
@@ -51,13 +51,13 @@ if (isset($_POST['buscar'])){
      );
      $estadoEnvio = $mail->Send(); 
      if($estadoEnvio){
-          //header("location:login.php?recuperar=1");
+          header("location:login.php?recuperar=1");
      } else {
-          //header("location:login.php?recuperar=2");
+          header("location:login.php?recuperar=2");
            exit();
      }
  }else{
-   // header("location:login.php?recuperar=3");
+   header("location:login.php?recuperar=3");
  }
 }
         
