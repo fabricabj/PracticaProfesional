@@ -15,7 +15,7 @@
     }
     
 </style>
-<title>Inicio Peliculas AFL cinema</title>
+<title>Recuperar Contraseña AFLcinema</title>
 </head>
 <body>
 <?php
@@ -30,18 +30,18 @@
             if($r=mysqli_fetch_array($select)){
                   $update=mysqli_query($conexion,"UPDATE usuarios SET token= null WHERE idusuario={$r['idusuario']}");?>
                   <div class="col-md-12 form" align="center">
-                       <form action="recuperar.php?idusuario=<?php echo $r['idusuario'];?>&cambiar" method="POST" onsubmit="return form(this)" style="width:50%" class="rp">
+                       <form action="recuperar.php?idusuario=<?php echo $r['idusuario'];?>&cambiar" method="POST" style="width:50%" class="rp">
                             <div class="form-row">
                                <div class="form-group col-md-12">
-                                  <label for="inputEmail4">Contraseña nueva</label>
+                                  <label for="inputEmail4" style="color:white">Contraseña nueva</label>
                                   <input type="password" class="form-control" name="contr" id="contr" placeholder="ingrese su contraseña nueva">
                                </div>
                                <div class="form-group col-md-12">
-                                  <label for="inputPassword4">Repetir contraseña</label>
+                                  <label for="inputPassword4" style="color:white">Repetir contraseña</label>
                                   <input type="password" class="form-control" id="contr2" placeholder="Repetir contraseña">
                                </div>
                             </div>
-                            <button  class="btn btn-dark" style="width: 100%;" onclick="form()"><i class="fas fa-save"></i> Restablecer contraseña</button>
+                            <button  class="btn btn-dark" style="width: 100%;"><i class="fas fa-save"></i> Restablecer Contraseña</button>
                        </form>
                   </div>
         <?php
