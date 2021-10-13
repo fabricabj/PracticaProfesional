@@ -51,7 +51,8 @@
             $id=$_GET['idusuario'];
             $password=sha1($_POST['contr']);
             $actualizar=mysqli_query($conexion,"UPDATE usuarios SET contrasenia='$password',token=null WHERE idusuario='$id'");
-            header('location:index.php');
+           
+           //revisar el header no funciona header('location:index.php');
            
          }?>
  </body>
