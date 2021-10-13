@@ -35,4 +35,5 @@ if (isset($_GET['recuperar'])&& $_GET['recuperar']==1){
 		if (isset($_GET['recuperar'])&& $_GET['recuperar']==3){
 			echo '<script> alert("el usuario no existe");</script>';
 		}
+		
  ?>

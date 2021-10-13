@@ -12,8 +12,8 @@ if (isset($_POST['buscar'])){
      $token=uniqid();// genera un ID único
      $sql=mysqli_query($conexion,"UPDATE usuarios set token='$token' WHERE mail='{$r['mail']}'");
 	 $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-     $smtpUsuario = ("francocolave1@gmail.com");  // Mi cuenta de correo
-     $smtpClave = "irene1936";  // Mi contraseña
+     $smtpUsuario = ("jorgeurquiza837@gmail.com");  // Mi cuenta de correo
+     $smtpClave = "14Riverplate";  // Mi contraseña
      $mail = new PHPMailer();
      $mail->IsSMTP();
      $mail->SMTPAuth = true;
@@ -33,11 +33,10 @@ if (isset($_POST['buscar'])){
      $mail->Body = "<html> 
                         <body> 
                              <h1 align='center'>AFLcinema</h1>
-                             <div style='background:black;color:white;padding:20px'><h2>Solicitud de restablecimiento de contraseña</h2></div>
+                             <h2>Solicitud de restablecimiento de contraseña</h2></div>
                              <p>Usted ha solicitado una nueva contraseña para la siguiente cuenta en AFLcinema</p>
-                             <p>usuario: {$r['nombre_usuario']}</p>
                              <p>Si no hiciste esta solicitud simplemente ignora este correo electrónico. Si quiere proceder: </p>
-                             <a href='http://localhost/PracticaProfesional/recuperarContra.php?token=$token'>Haz clic aquí para restablecer tu contraseña</a>
+                             <a href='http://localhost/PracticaProfesional/recuperar.php?token=$token'>Haz clic aquí para restablecer tu contraseña</a>
                         </body> 
                     </html>
                     <br />"; // Texto del email en formato HTML
