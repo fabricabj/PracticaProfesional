@@ -55,17 +55,28 @@
             if (isset($_GET['pagina'])) {
                $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
                $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
-               while ($r = mysqli_fetch_array($consulta2)) {?>
+               while ($r = mysqli_fetch_array($consulta2)) {
+                   $seletFavoritos=mysqli_query($conexion,"SELECT * FROM favoritos WHERE idusuario={$_SESSION['login']} AND idpelicula={$r['idpelicula']}");?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
                               <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top"></a>
                               <p><?php echo "<i class='fas fa-star'></i>" . $r['puntaje']; ?></p>
-                              <div class="card-body" style="height:70px">
+                              <div class="card-body" style="height:80px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
-                                  <label><strong>Precio: </strong><?php echo "$".$r['precio']; ?></label>
-                                 
+                                  <p><strong>Precio: </strong><?php echo "$".$r['precio']; ?></p>
                               </div>
-                              <div style="padding-top:40px">
+                              <br>
+                                  <?php if($f=mysqli_fetch_array($seletFavoritos)){?>
+                                                 <input type="text" name="quitar" id="quitar" value="quitar" hidden>
+                                                 <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                 <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="eliminarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Quitar</a>
+                                        <?php }else{?>
+                                                 <input type="text" name="agregar" id="agregar" value="agregar" hidden>
+                                                 <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
+                                                 <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="agregarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Agregar</a>
+                                        <?php }?>
+                              
+                              <div style="padding-top:50px">
                               <?php 
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
                               $idgrupo=$_SESSION['grupo'];
@@ -80,7 +91,8 @@
                                    </form>
                                    <?php break;
                                      case "baja pelicula": ?>
-                                     <a style="float: left;margin: 5px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                        
+                                        <a style="float: left;margin: 5px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-trash-alt"></i></a>
                                    <?php break;
                                     }
                                   }
@@ -90,9 +102,7 @@
                                         <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-info-circle"></i></a>
                                         
                                     </div>
-                                    <div>
-                                       <a style="float: right;margin-right:7px;border-radius:30px" class="btn btn-dark card-text" href="peliculas.php?genero=<?php echo $peliculas;?>&pagina=<?php echo $_GET['pagina'];?>&idpelicula=<?php echo $r['idpelicula']; ?>&estado=4"><i class="fas fa-bookmark"></i></a>
-                                    </div>
+                                    
                                 </div>
                           </div>
                     </div>
@@ -128,13 +138,11 @@
                                                         switch($nombrePermiso) {
                                                         case "baja pelicula": ?>
                                                             <div class="col-md-6">
-                                                                <form method="POST" action="ABM.php">
-                                                                <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
-                                                                    <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
-                                                                        <button style="margin: 5px;" type="submit" name="idpelicula" value="idpelicula" class="btn btn-dark">Eliminar</button>
-                                                                        
-                                                                        
-                                                                    </form>
+                                                                <input type="text" name="pag" id="pag" value="<?php echo $_GET['pagina'];?>" hidden>
+                                                                <input type="text" name="categ" id="categ" value="<?php echo $peliculas;?>" hidden>
+                                                                <input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
+                                                                <a style="margin: 5px;" href="#" onclick="eliminarPelicula(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>)" class="btn btn-dark">Eliminar</a>
+                                                            
                                                             </div>
                                                     <?php break;
                                                         case "comprar pelicula": ?>
@@ -198,5 +206,91 @@
                         }
                                             
                     ?>
+                    <script>
+                        function eliminarPelicula(idPelicula,pagina){
+                            var eliminar = confirm('De verdad desea eliminar esta pelicula');
+                            var categoria=document.getElementById('categ').value;
+                            var eliminarPelicula=document.getElementById('eliminarPelicula').value;
+                            if ( eliminar ) {
+                                
+                                $.ajax({
+                                    url: 'ABM.php',
+                                    type: 'POST',
+                                    data: { 
+                                        id: idPelicula,
+                                        delete: eliminarPelicula,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('La pelicula ha sido eliminada');
+                                window.location.href ='peliculas.php?genero='+categoria+'&pagina='+pagina;
+                            }
+                        } 
+                        function eliminarFav(idPelicula,idUsuario,pagina){
+                            var eliminar = confirm('De verdad desea quitar esta pelicula de favoritos?');
+                            
+                            var quitar=document.getElementById('quitar').value;
+                            var genero=document.getElementById('genero').value;
+                            if ( eliminar ) {
+                                
+                                $.ajax({
+                                    url: 'ABfavoritos.php',
+                                    type: 'POST',
+                                    data: { 
+                                        idpelicula: idPelicula,
+                                        idusuario: idUsuario,
+                                        categ: genero,
+                                        pag: pagina,
+                                        delete: quitar,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('se ha quitado de favoritos');
+                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina;
+                            }
+                    } 
+                    function agregarFav(idPelicula,idUsuario,pagina){
+                            var agregar = confirm('De verdad desea agregar esta pelicula de favoritos?');
+                            
+                            var agregar=document.getElementById('agregar').value;
+                            var genero=document.getElementById('genero').value;
+                            if ( agregar ) {
+                                
+                                $.ajax({
+                                    url: 'ABfavoritos.php',
+                                    type: 'POST',
+                                    data: { 
+                                        idpelicula: idPelicula,
+                                        idusuario: idUsuario,
+                                        categ: genero,
+                                        pag: pagina,
+                                        alta: agregar,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('se ha agregado a favoritos');
+                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina;
+                            }
+                    } 
+
+                    </script>
     </body>
 </html>

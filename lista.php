@@ -27,7 +27,7 @@
           $idUser = $_SESSION['login'];
           $consulta = mysqli_query($conexion, "SELECT p.idpelicula, p.titulo,p.puntaje,
                     p.imagen,p.anio,p.duracion,p.categorias,p.descripcion,f.idusuario from peliculas AS p,favoritos AS f
-                   where p.idpelicula=f.idpelicula and f.idusuario='$idUser'");
+                   where p.idpelicula=f.idpelicula and f.idusuario='$idUser' and p.idestado=1");
           while ($r = mysqli_fetch_array($consulta)) { ?>
             <div class="row" style="padding-top:20px">
               <div class="col-md-2">

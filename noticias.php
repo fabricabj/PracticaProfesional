@@ -106,11 +106,9 @@
                                                         switch($nombrePermiso) {
                                                         case "baja noticias": ?>
                                                                     <div class="col-md-6">
-                                                                        <form method="POST" action="abm_noticias.php">
-                                                                                <button style="margin: 5px;" type="submit" name="idnoticia" value="<?php echo $r['idnoticia']; ?>" class="btn btn-dark">Eliminar</button>
-                                                                                <input type="text" name="genero" id="genero" value="<?php echo $noticias;?>" hidden>
-                                                                               
-                                                                            </form>
+                             
+                                                                       <input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
+                                                                       <a style="margin: 5px;" href="#" onclick="eliminarNoticia(<?php echo $r['idnoticia']?>)" class="btn btn-dark">Eliminar</a>
                                                                     </div>
                                                     <?php break;
                                                         }
@@ -129,5 +127,31 @@
          </div>
          </div>
          </div>
+         <script>
+                        function eliminarNoticia(idNoticia){
+                            var eliminar = confirm('De verdad desea eliminar esta noticia');
+                            var eliminarNoticia=document.getElementById('eliminarNoticia').value;
+                            if ( eliminar ) {
+                                
+                                $.ajax({
+                                    url: 'abm_noticias.php',
+                                    type: 'POST',
+                                    data: { 
+                                        id: idNoticia,
+                                        delete: eliminarNoticia,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('La noticia ha sido eliminada');
+                                window.location.href ='noticias.php';
+                            }
+                        } 
+         </script>
     </body>
 </html>

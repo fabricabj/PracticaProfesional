@@ -88,11 +88,9 @@
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-              echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
-                </form>
-            </td>";
+              echo '<td><input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
+                    <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
+                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].')" class="btn btn-dark">Eliminar</a></td>';
      
     }
 
@@ -120,7 +118,32 @@
             echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
-
+      <script>
+                        function eliminarNoticia(idNoticia,pagina){
+                            var eliminar = confirm('De verdad desea eliminar esta noticia');
+                            var eliminarNoticia=document.getElementById('eliminarNoticia').value;
+                            if ( eliminar ) {
+                                
+                                $.ajax({
+                                    url: 'abm_noticias.php',
+                                    type: 'POST',
+                                    data: { 
+                                        id: idNoticia,
+                                        delete: eliminarNoticia,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('La noticia ha sido eliminada');
+                                window.location.href ='listarNoticias.php?pagina='+pagina;
+                            }
+                        } 
+         </script>
 </body>
 
 </html>

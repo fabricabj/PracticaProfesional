@@ -160,11 +160,10 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 
 
 
-	if (isset($_POST['idnoticia']) && !empty($_POST['idnoticia'])) {
+	if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 		
-		$idNoticia = $_POST['idnoticia'];
+		$idNoticia = $_POST['id'];
 		$delete=mysqli_query($conexion, "update noticias set idestado = 2 where idnoticia='$idNoticia'");
-		header("location:listarNoticias.php");
 	}
 
 	if (isset($_POST['activar']) && !empty($_POST['activar'])) {

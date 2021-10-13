@@ -206,11 +206,10 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 }
 
 
-if (isset($_POST['idpelicula']) && !empty($_POST['idpelicula'])) {
+if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-	header("location:listarpeliculas.php");
 
 }
 
