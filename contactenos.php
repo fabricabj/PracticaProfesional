@@ -89,26 +89,26 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="asunto">Asunto</label>
-                            <input type="input" class="form-control" id="asunto" placeholder="Asunto">
-                        </div>
-                        <div class="form-group">
-                            <label for="mail">Email</label>
-                            <input type="email" class="form-control" id="mail" placeholder="nombre@ejemplo.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="txtarea">Mensaje</label>
-                            <textarea class="form-control" id="txtarea" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </div>
+                <form method="POST" action="mailcontacto.php">
+                    <div class="modal-body">                    
+                            <div class="form-group">
+                                <label for="asunto">Asunto</label>
+                                <input type="input" class="form-control" name="asunto" id="asunto" placeholder="Asunto">
+                            </div>
+                            <div class="form-group">
+                                <label for="mail">Email</label>
+                                <input type="email" class="form-control" name="mail" id="mail" placeholder="nombre@ejemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje</label>
+                                <textarea class="form-control" name="mensaje" id="mensaje" rows="3"></textarea>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button value="enviarMail" name="enviarMail" class="btn btn-primary" >Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -121,18 +121,20 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="txtarea1">Mensaje</label>
-                            <textarea class="form-control" id="txtarea1" maxlength="99" placeholder="Agreguen Buscando a Nemo, please!" rows="3"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
-                </div>
+                <form method="POST" action="abm_sugerencia.php">
+                    <div class="modal-body">
+                        
+                            <div class="form-group">
+                                <label for="txtarea1">Mensaje</label>
+                                <textarea class="form-control" id="descripcion" name ="descripcion" maxlength="99" placeholder="Agreguen Buscando a Nemo, please!" rows="3"></textarea>
+                            </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button value="guardarSugerencia" name="guardarSugerencia" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
