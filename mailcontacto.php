@@ -8,9 +8,9 @@ if (isset($_POST['enviarMail']) && !empty($_POST['enviarMail'])) {
     $message = $_POST['mensaje'];
     $headers = "From:" . $_POST['mail'];
 
-    echo $to, $subject, $message, $headers;
     
     mail($to, $subject, $message, $headers);
 
+	header("location:contactenos.php");
 } 
 ?>
