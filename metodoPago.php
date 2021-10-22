@@ -49,8 +49,13 @@
                   <br><br>
                   <h4>Inserte comprobante de pago</h4>
                   <br>
-                  <input type="file" name="imagen">
-                  <input type="button name="enviar" value="enviar" class="btn btn-dark">
+                  <form action="comprar.php" method="POST">
+                    <input type="file" name="imagen">
+                    <input type="text" class="form-control" name="fechaPago" id="fechaPago" value="'.$fechaActual.'" hidden>
+                    <input type="text" class="form-control" name="tipoPago" id="tipoPago" value="2" hidden>
+                    <input type="text" name="totalpagar" id="totalpagar" value="'.$total.'" hidden>
+                    <button type="submit" name="enviar" value="enviar" class="btn btn-dark">enviar</button>
+                  </form>
               </div>';
     }
 

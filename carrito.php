@@ -39,7 +39,7 @@ $cont=0;
       echo "<td><a href='#' id='btnBaja' class='btn btn-dark eliminar' data-id='{$datos[$i]['Id']}'>Eliminar</a></td>";
       
     echo "</tr>";
-    $precio=$datos[$i]['Precio'];
+    
     $cont+=$datos[$i]['Precio'];
 
   }
@@ -60,8 +60,6 @@ $cont=0;
   <div align="center">  
         <form action="elegirMetodoPago.php" method="POST">
             <input type="text" name="total" id="total" value="<?php echo $cont;?>" hidden>
-            <input type="text" name="titulo" id="titulo" value="<?php echo $cont;?>" hidden>
-            <input type="text" name="precio" id="precio" value="<?php echo $precio;?>" hidden>
                   <button name="comprar" value="comprar" type="submit" class="btn btn-dark">Comprar</button>
                 
         </form>

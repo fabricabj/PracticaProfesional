@@ -77,7 +77,16 @@
         </div>
         <div class="text-center mt-5">
             <button type="button" class="btn btn-dark mr-5" data-toggle="modal" data-target="#contactar">Contactar</button>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#sugerencia">Sugerencia</button>
+                        <?php $idgrupo=$_SESSION['grupo'];
+                                $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
+                                while($rs=mysqli_fetch_array($permisos)){
+                                    $nombrePermiso=$rs['nombre_permiso'];
+                                    switch($nombrePermiso) {
+                                        case "alta sugerencias": ?>     
+                                            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#sugerencia">Sugerencia</button>
+                        <?php        break;
+                                    }
+                                    } ?>
         </div>
     </div>
     <div class="modal fade" id="contactar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

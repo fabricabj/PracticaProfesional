@@ -56,7 +56,9 @@
                $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
                $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
                while ($r = mysqli_fetch_array($consulta2)) {
-                   $seletFavoritos=mysqli_query($conexion,"SELECT * FROM favoritos WHERE idusuario={$_SESSION['login']} AND idpelicula={$r['idpelicula']}");?>
+                 if(isset($_SESSION['login'])){
+                   $seletFavoritos=mysqli_query($conexion,"SELECT * FROM favoritos WHERE idusuario={$_SESSION['login']} AND idpelicula={$r['idpelicula']}");
+                 }?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
                               <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top"></a>
@@ -66,7 +68,15 @@
                                   <p><strong>Precio: </strong><?php echo "$".$r['precio']; ?></p>
                               </div>
                               <br>
-                                  <?php if($f=mysqli_fetch_array($seletFavoritos)){?>
+                                  <?php  
+                                  if(isset($_SESSION['login'])){
+                                  $idgrupo=$_SESSION['grupo'];
+                                  $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
+                                  while($rs=mysqli_fetch_array($permisos)){
+                                      $nombrePermiso=$rs['nombre_permiso'];
+                                      switch($nombrePermiso) {
+                                          case "favoritos":    
+                                              if($f=mysqli_fetch_array($seletFavoritos)){?>
                                                  <input type="text" name="quitar" id="quitar" value="quitar" hidden>
                                                  <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
                                                  <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="eliminarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Quitar</a>
@@ -74,10 +84,15 @@
                                                  <input type="text" name="agregar" id="agregar" value="agregar" hidden>
                                                  <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
                                                  <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="agregarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Agregar</a>
-                                        <?php }?>
+                                        <?php }
+                                        break;
+                                      }
+                                      } 
+                                    }?>
                               
                               <div style="padding-top:50px">
                               <?php 
+                 
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
                               $idgrupo=$_SESSION['grupo'];
                               $permisos=mysqli_query($conexion,"SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
