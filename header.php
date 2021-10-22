@@ -11,14 +11,6 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
  
 }
 
-function killSession(){
-  if (isset($_POST['borrarSesion'])) {
-    session_destroy();
-    $id_usuario=0;
-    $nombre_usuario="";
-    header("location:index.php");
-  }
-}
 
   ?>
 <!DOCTYPE html>
@@ -124,8 +116,8 @@ function killSession(){
                                               }
                       
                                             }?>
-                                         <form action="index.php" method="POST">
-                                             <button  type="submit" class="dropdown-item" name="borrarSesion" onclick="<?php killSession();?>">Cerrar Sesión</button>
+                                         <form action="logout.php" method="POST">
+                                             <button  type="submit" class="dropdown-item" name="borrar">Cerrar Sesión</button>
                                          </form>
                                     </div>
                                 </li>

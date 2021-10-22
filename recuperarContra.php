@@ -36,7 +36,7 @@ if (isset($_POST['buscar'])){
                              <h2>Solicitud de restablecimiento de contraseña</h2></div>
                              <p>Usted ha solicitado una nueva contraseña para la siguiente cuenta en AFLcinema</p>
                              <p>Si no hiciste esta solicitud simplemente ignora este correo electrónico. Si quiere proceder: </p>
-                             <a href='http://localhost/PracticaProfesional/recuperar.php?token=$token'>Haz clic aquí para restablecer tu contraseña</a>
+                             <a href='http://localhost/practicapro/recuperar.php?token=$token'>Haz clic aquí para restablecer tu contraseña</a>
                         </body> 
                     </html>
                     <br />"; // Texto del email en formato HTML

@@ -1,3 +1,4 @@
+<?php require("header.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 </head>
 <body>
 <?php
-    require("header.php");
+    
     
     require("conexion.php");
     
@@ -28,7 +29,7 @@
        <div class="row">
         <?php
         
-           $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021");
+           $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021 and idestado=1");
            ?>
             <div class="col-md-8" style="background:#212121">
               <div align="center" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
