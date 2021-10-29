@@ -25,11 +25,12 @@ $datos=$_SESSION['carrito'];
 for ($i=0; $i<count($datos);$i++) {
     $Insert3=mysqli_query($conexion,"INSERT INTO venta_detalles values({$datos[$i]['Id']},$idventa,{$datos[$i]['Precio']})");
 }
+$_SESSION['venta']=$idventa;
 unset($_SESSION['carrito']);
 
 
 
-header("location:index.php");
+header("location:altafactura.php");
 }
 
 if (isset($_POST['enviar']) && !empty($_POST['enviar'])) {
@@ -52,11 +53,10 @@ $datos=$_SESSION['carrito'];
 for ($i=0; $i<count($datos);$i++) {
     $Insert3=mysqli_query($conexion,"INSERT INTO venta_detalles values({$datos[$i]['Id']},$idventa,{$datos[$i]['Precio']})");
 }
+$_SESSION['venta']=$idventa;
 unset($_SESSION['carrito']);
 
-
-
-header("location:index.php");
+header("location:altafactura.php");
 }
 
 ?>

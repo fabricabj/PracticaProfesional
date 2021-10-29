@@ -158,6 +158,10 @@ if(isset($_GET['retorno'])&& $_GET['retorno']==2){
 if(isset($_GET['retorno'])&& $_GET['retorno']==1){
     echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
 }
+if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
+    echo '<script> alert("Hubo problemas con el envio");</script>';
+    
+   }
 ?>
 </body>
 </html>
