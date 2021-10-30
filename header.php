@@ -121,6 +121,11 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                             <button type="submit" class="dropdown-item">Ver sugerencias</button>
                                                         </form>
                                                     <?php break;
+                                                    case "ver estadisticas": ?>
+                                                        <form method="POST" action="verEstadisticas.php">
+                                                            <button type="submit" class="dropdown-item">Ver estadísticas</button>
+                                                        </form>
+                                                    <?php break;
                                                 }
                                             } ?>
                                             <form action="logout.php" method="POST">

@@ -150,7 +150,7 @@ if (isset($_POST['guardar']) && !empty($_POST['guardar'])) {
 		while($r=mysqli_fetch_array($selectEstado)){
 			$idestado=$r['idestado'];
 		}
-		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,$precio,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
+		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,$precio,'$duracion','$nombreImg',$idestado,'$generos',0,0,'$fecha_publicacion')");
 		header("location:categorias.php?genero=$generos&estado=1");
 
 	}
