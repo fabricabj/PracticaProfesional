@@ -82,7 +82,16 @@
             echo $fila['cantidad_visto'];
             echo "</td>";
             echo "<td>";
-            echo ($fila['cantidad_vendida'] + $fila['cantidad_visto']) / 2;
+
+            // divido la cant de vistas sobre cant vendida, calculo cada cuanto se hizo una venta. 
+              // no estoy segura, estoy ebria
+            if(($fila['cantidad_visto'] != 0) && ($fila['cantidad_vendida'] != 0)){              
+              $numero = ($fila['cantidad_visto'] / $fila['cantidad_vendida']) ;
+              //formateo dos decimales
+              echo number_format($numero, 2, '.', '');
+            }else{
+              echo 0;
+            }
             echo "</td>";
             $tipoestado = mysqli_query($conexion, "SELECT idestado FROM peliculas WHERE idpelicula='{$fila['idpelicula']}'");
             while ($i = mysqli_fetch_array($tipoestado)) {
