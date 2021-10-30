@@ -54,10 +54,10 @@
                     <thead>
 
                         <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=idsugerencia&ascendente=<?php echo $asc; ?>">Id</a></th>
-                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=fecha&ascendente=<?php echo $asc; ?>">Fecha</a></th>
+                        <th scope="col" class="col-2"><a href="listadoSugerencia.php?pagina=1&orden=fecha&ascendente=<?php echo $asc; ?>">Fecha</a></th>
                         <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>">Descripción</a></th>
                         <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>">Usuario</a></th>
-                        <th scope="col">Estado</th>
+                        <th scope="col" class="col-1">Estado</th>
                         <th><a href="sugerenciasleidas.php"><button type="button" class="btn btn-primary">Leídas</button></a></th>
 
                     </thead>
@@ -79,12 +79,20 @@
                         while ($i = mysqli_fetch_array($tipoestado)) {
                             $idTipoEstado = $i['idestado'];
                         }
-                        echo "<td>";
-                        echo $fila['idusuario'];
+                        $usuario = mysqli_query($conexion, "SELECT idusuario FROM sugerencias WHERE idusuario='{$fila['idusuario']}'");
+                        while ($i = mysqli_fetch_array($usuario)) {
+                            $idUsuario = $i['idusuario'];
+                        }
+                        echo "<td>";                       
+                        echo $nombre_usuario;
                         echo "</td>";
                         $selectEstado = mysqli_query($conexion, "SELECT idestado,descripcion FROM sugerencia_estados WHERE idestado = $idTipoEstado ORDER BY descripcion ASC");
                         while ($i = mysqli_fetch_array($selectEstado)) {
                             $descripcion = $i['descripcion'];
+                        }
+                        $selectUsuario = mysqli_query($conexion, "SELECT idusuario,nombre_usuario FROM usuarios WHERE idusuario = $idUsuario");
+                        while ($usu = mysqli_fetch_array($selectUsuario)) {
+                            $nombre_usuario = $usu['nombre_usuario'];
                         }
                         echo "<td>";
                         echo $descripcion;
