@@ -226,5 +226,13 @@ if (isset($_POST['idPelicula']) && !empty($_POST['idPelicula'])) {
 
 }
 
+if (isset($_POST['delete']) && !empty($_POST['delete'])) {
+	
+	$idPelicula = $_POST['idPelicula'];
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
+	header("location:estrenos.php");
+
+}
+
 
 ?>

@@ -90,7 +90,7 @@
             </td>";
               echo '<td><input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
                     <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].')" class="btn btn-dark">Eliminar</a></td>';
+                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].')" class="btn btn-danger">Eliminar</a></td>';
      
     }
 
