@@ -80,9 +80,13 @@ $cont=0;
                   $(this).parentsUntil('.carrito').remove();
                   $.post('bajaCarrito.php',{
                         IdPelicula:id
+                  },function(a){
+                     if(a=='0'){
+                        location.href="carrito.php";
+                     }
                   });
             }
-            window.location.href="carrito.php";
+         
          });
       </script>
   

@@ -99,11 +99,8 @@
                                                         switch($nombrePermiso) {
                                                         case "baja estrenos": ?>
                                                                     <div class="col-md-6">
-                                                                        <form method="POST" action="abm_estrenos.php">
-                                                                                <button style="margin: 5px;" type="submit" name="idpelicula" value="<?php echo $r['idpelicula']; ?>" class="btn btn-dark">Eliminar</button>
-                                                                                <input type="text" name="genero" id="genero" value="<?php echo $noticias;?>" hidden>
-                                                                               
-                                                                            </form>
+                                                                         <input type="text" name="eliminarEstrenos" id="eliminarEstrenos" value="eliminarEstrenos" hidden>
+                                                                         <a style="margin: 5px;" href="#" onclick="eliminarEstrenos(<?php echo $r['idpelicula']?>)" class="btn btn-dark">Eliminar</a>
                                                                     </div>
                                                     <?php break;
                                                         }
@@ -122,5 +119,33 @@
          </div>
          </div>
          </div>
+         <script>
+             function eliminarEstrenos(idPelicula){
+                var eliminar = confirm('Desea eliminar este estreno?');
+                var estreno=document.getElementById('eliminarEstrenos').value;
+                if ( eliminar ) {
+                        
+                        $.ajax({
+                        url: 'ABM.php',
+                        type: 'POST',
+                        data: { 
+                            id: idPelicula,
+                            delete: estreno,
+                            
+                        },
+                        })
+                        .done(function(response){
+                        $("#result").html(response);
+                        })
+                        .fail(function(jqXHR){
+                        console.log(jqXHR.statusText);
+                        });
+                        alert('El estreno ha sido eliminado');
+                        window.location.href='estrenos.php';
+   }
+} 
+
+
+         </script>
     </body>
 </html>

@@ -213,6 +213,13 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	header("location:listarpeliculas.php");
 
 }
+if (isset($_POST['deleteEstreno']) && !empty($_POST['deleteEstreno'])) {
+	
+	$idPelicula = $_POST['id'];
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
+    header("location:estrenos.php");
+
+}
 
 if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	

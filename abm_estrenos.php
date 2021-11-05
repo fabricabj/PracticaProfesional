@@ -214,7 +214,7 @@ if (isset($_POST['idpelicula']) && !empty($_POST['idpelicula'])) {
 if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 3 where idpelicula=$idPelicula");
-	header("location:listadoEstrenos.php");
+	header("location:estrenos.php");
 
 }
 //Se elimina listadoEstrenos.php
@@ -222,7 +222,7 @@ if (isset($_POST['idPelicula']) && !empty($_POST['idPelicula'])) {
 	
 	$idPelicula = $_POST['idPelicula'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-	header("location:listadoEstrenos.php");
+	header("location:estrenos.php");
 
 }
 
