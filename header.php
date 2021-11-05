@@ -137,7 +137,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                 <form action="buscador.php?pagina=1" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <select style="width:160px;background:black;color:white" class="form-control" id="selectTipo" name="genero">
+                                            <select style="width:160px;background:black;color:white" class="form-control" id="genero" name="genero">
                                                 <option>Todo</option>
                                                 <option>Fantasía</option>
                                                 <option>Terror</option>

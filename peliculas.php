@@ -114,7 +114,9 @@
                                 }
                                 ?>
                                     <div style="padding-top:5px;">
-                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-info-circle"></i></a>
+
+                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" <?php $contador=1 ?>><i class="fas fa-info-circle"></i></a>
+                                        
                                         
                                     </div>
                                     
@@ -127,6 +129,19 @@
                                     <div class="modal-header" style="background:#212121;color:white">
                                         <h4 class="modal-title">Información de la película</h4>
                                         <button style="color:white" type="button" class="close" data-dismiss="modal">X</button>
+                                        <?php/*
+                                        
+                                        $contador=1;
+                                        $id=$r['idpelicula'];
+                                        echo $id;
+                                        $cantidadvisto=mysqli_query($conexion,"SELECT cantidad_visto FROM peliculas Where idpelicula=$id");
+                                        while($c=mysqli_fetch_array($cantidadvisto)){
+                                            $canti=$c['cantidad_visto'];
+                                        }
+                                        $cantis=$canti+$contador;
+                                        mysqli_query($conexion,"UPDATE peliculas SET cantidad_visto=$cantis Where idpelicula=$id");
+                                        
+                                       */?>
                                     </div>
                                     <div class="modal-body" style="background:#121212;color:white">
                                         <div class="row">

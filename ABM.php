@@ -210,6 +210,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
+	header("location:listarpeliculas.php");
 
 }
 

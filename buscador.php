@@ -13,7 +13,7 @@
             $genero=$_POST['genero'];
             $titulo=$_POST['titulo']; 
             $sql="SELECT * FROM peliculas WHERE idestado=1";
-            if($genero=="todo"){
+            if($genero=="Todo"){
             $sql="SELECT * FROM peliculas WHERE (titulo like '%$titulo%') AND idestado=1";
             }else{
             $sql="SELECT * FROM peliculas WHERE (titulo like '%$titulo%') AND (categorias like '%$genero%') AND idestado=1";

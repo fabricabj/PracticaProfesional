@@ -97,7 +97,7 @@
             </td>";
               echo "<td><form action='ABM.php' method='post'>
                     <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
-                    <button class='btn btn-danger' name='idpelicula' id='idpelicula' value='idpelicula'>Eliminar</button>
+                    <button class='btn btn-danger' name='delete' id='delete' value='idpelicula'>Eliminar</button>
                 </form>
  
             </td>";
