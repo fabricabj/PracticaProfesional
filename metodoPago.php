@@ -11,19 +11,19 @@
                     <div class="row">
                         <div class="col-md-4 form-group" id="user-group">
                             <label for="user">Dueño/a</label>
-                            <input type="text" class="form-control" name="cliente" id="cliente" placeholder="Dueño/a" require>
+                            <input type="text" class="form-control" name="cliente" id="cliente" placeholder="Dueño/a" required>
                         </div>
                         <div class="col-md-4 form-group" id="user-group">
                             <label for="user">Codigo de seguridad</label>
-                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="ej: 123" require>
+                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="ej: 123" onkeyup="this.value=Numeros(this.value)" required>
                         </div>
                         <div class="col-md-4 form-group" id="password-group">
                             <label for="contra">Fecha de vto</label>
-                            <input type="date" class="form-control" name="fechaVto" id="fechaVto" require>
+                            <input type="date" class="form-control" name="fechaVto" id="fechaVto" required>
                         </div>
                         <div class="col-md-12 form-group" id="password-group">
                             <label for="contra">Nro tarjeta</label>
-                            <input type="text" class="form-control" name="nTarjeta" id="nTarjeta" require>
+                            <input type="text" class="form-control" name="nTarjeta" id="nTarjeta" onkeyup="this.value=NumerosTar(this.value)" required>
                             <input type="text" class="form-control" name="fechaPago" id="fechaPago" value="'.$fechaActual.'" hidden>
                             <input type="text" class="form-control" name="tipoPago" id="tipoPago" value="1" hidden>
                         </div>
@@ -58,5 +58,42 @@
                   </form>
               </div>';
     }
+    echo "<script>
+    function Numeros(string){
+        var out = '';
+        ok=true;
+        var filtro = '1234567890';
+        for (var i=0; i<4; i++)
+           if (filtro.indexOf(string.charAt(i)) != -1)
+             out += string.charAt(i);
+        
+             return out;
+    }   
+    </script>"
 
 ?>
+<script>
+function Numeros(string){
+    var out = '';
+    ok=true;
+    var filtro = '1234567890';
+    for (var i=0; i<3; i++)
+       if (filtro.indexOf(string.charAt(i)) != -1)
+         out += string.charAt(i);
+    
+         return out;
+}
+function NumerosTar(string){
+    var out = '';
+    ok=true;
+    var filtro = '1234567890';
+    for (var i=0; i<16; i++)
+        if (filtro.indexOf(string.charAt(i)) != -1)
+            out += string.charAt(i);
+    
+            return out;
+}   
+
+
+
+</script>
