@@ -86,7 +86,7 @@
             // divido la cant de vistas sobre cant vendida, calculo cada cuanto se hizo una venta. 
               // no estoy segura, estoy ebria
             if(($fila['cantidad_visto'] != 0) && ($fila['cantidad_vendida'] != 0)){              
-              $numero = ($fila['cantidad_visto'] / $fila['cantidad_vendida']) ;
+              $numero = (($fila['cantidad_vendida'] * 100) / $fila['cantidad_visto']);
               //formateo dos decimales
               echo number_format($numero, 2, '.', '');
             }else{
