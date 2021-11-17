@@ -144,7 +144,6 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                             <a href="noticias.php">Noticias</a>
                             <a href="categorias.php">Películas</a>
                             <a href="estrenos.php">Estrenos</a>
-                            <a href="#">Calendario</a>
                             <a href="contactenos.php">Contáctenos</a>
                             <form action="buscador.php?pagina=1" method="POST">
                                 <div class="input-group mb-3">

@@ -5,12 +5,14 @@
     <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./estilos.css">
     <title>Contáctenos</title>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
     <?php
     require("header.php");
     ?>
+    
 
     <div class="container">
         <div class="row justify-content-around mt-3">
@@ -106,20 +108,21 @@
                     <div class="modal-body">                    
                             <div class="form-group">
                                 <label for="asunto">Asunto</label>
-                                <input type="input" class="form-control" name="asunto" id="asunto" placeholder="Asunto">
+                                <input type="input" class="form-control" name="asunto" id="asunto" placeholder="Asunto" required>
                             </div>
                             <div class="form-group">
                                 <label for="mail">Email</label>
-                                <input type="email" class="form-control" name="mail" id="mail" placeholder="nombre@ejemplo.com">
+                                <input type="email" class="form-control" name="mail" id="mail" placeholder="nombre@ejemplo.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="mensaje">Mensaje</label>
-                                <textarea class="form-control" name="mensaje" id="mensaje" rows="3"></textarea>
+                                <textarea class="form-control" name="mensaje" id="mensaje" rows="3" required></textarea> 
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button value="enviarMail" name="enviarMail" class="btn btn-primary" >Enviar</button>
+                            <div class="g-recaptcha" data-sitekey="6LeDXT8dAAAAAOpD-ZH499PkUdjtyJUeImuiVG1r"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button value="enviarMail" name="enviarMail" class="btn btn-primary" >Enviar</button>
+                            </div>
                     </div>
                 </form>
             </div>
@@ -151,6 +154,18 @@
             </div>
         </div>
     </div>
+    <?php
+        if (isset($_GET['error'])&& $_GET['error']==1) {
+            echo "<script type='text/javascript'>alert('verifique el captcha.');</script>";
+        }
+        if (isset($_GET['error'])&& $_GET['error']==1) {
+            echo "<script type='text/javascript'>alert('no se puede enviar el correo.');</script>";
+        }
+        if (isset($_GET['exito'])&& $_GET['exito']==1) {
+            echo "<script type='text/javascript'>alert('el mail ha sido enviado.');</script>";
+        }
+    ?>
 </body>
+
 
 </html>
