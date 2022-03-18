@@ -155,7 +155,7 @@ try {
 	$mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
 	$mail->Username   = 'cinemaafl@gmail.com';                     // SMTP username
-	$mail->Password   = 'aflcinema';                             // SMTP password
+	$mail->Password   = 'aflcinema123';                             // SMTP password
 	$mail->SMTPOptions = array(
 		'ssl' => array(
 			'verify_peer' => false,

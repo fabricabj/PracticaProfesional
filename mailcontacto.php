@@ -32,8 +32,8 @@
                          // mail($to, $subject, $message, $headers);
 
                               $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-                              $smtpUsuario = ("aflcinema.contacto@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
-                              $smtpClave = "aflcontacto";  // Mi contraseña,  alfsugerencias
+                              $smtpUsuario = ("cinemaafl@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
+                              $smtpClave = "aflcinema123";  // Mi contraseña,  alfsugerencias
                               $mail = new PHPMailer();
                               $mail->IsSMTP();
                               $mail->SMTPAuth = true;
@@ -46,7 +46,7 @@
                               $mail->Username = $smtpUsuario; 
                               $mail->Password = $smtpClave;
                               $mail->setFrom = $smtpUsuario;
-                              $mail->FromName= "AFLcinema Contacto"; // Email desde donde envío el correo.
+                              $mail->FromName= "AFLcinema"; // Email desde donde envío el correo.
                               $mail->AddCC($cc); // Se deja en copia el mail del usuario que envía la sugerencia.
                               $mail->AddAddress($sugerencia); // Esta es la dirección a donde enviamos los datos del formulario
                               $mail->Subject = ($subject); // Este es el titulo del email.

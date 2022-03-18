@@ -13,7 +13,7 @@ if (isset($_POST['buscar'])){
      $sql=mysqli_query($conexion,"UPDATE usuarios set token='$token' WHERE mail='{$r['mail']}'");
 	 $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
      $smtpUsuario = ("cinemaafl@gmail.com");  // Mi cuenta de correo
-     $smtpClave = "aflcinema";  // Mi contraseña
+     $smtpClave = "aflcinema123";  // Mi contraseña
      $mail = new PHPMailer();
      $mail->IsSMTP();
      $mail->SMTPAuth = true;
