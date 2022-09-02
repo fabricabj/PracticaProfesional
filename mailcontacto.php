@@ -33,7 +33,7 @@
 
                               $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
                               $smtpUsuario = ("cinemaafl@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
-                              $smtpClave = "aflcinema123";  // Mi contraseña,  alfsugerencias
+                              $smtpClave = "vrlbszgsljkjmthu";  // Mi contraseña,  alfsugerencias
                               $mail = new PHPMailer();
                               $mail->IsSMTP();
                               $mail->SMTPAuth = true;

@@ -115,7 +115,7 @@
                                 ?>
                                     <div style="padding-top:5px;">
 
-                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" <?php $contador=1 ?>><i class="fas fa-info-circle"></i></a>
+                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" onclick="vistos(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>);"><i class="fas fa-info-circle"></i></a>
                                         
                                         
                                     </div>
@@ -128,20 +128,24 @@
                                 <div class="modal-content">
                                     <div class="modal-header" style="background:#212121;color:white">
                                         <h4 class="modal-title">Información de la película</h4>
-                                        <button style="color:white" type="button" class="close" data-dismiss="modal">X</button>
-                                        <?php/*
+                                        <a style="color:white"  href="peliculas.php?genero=<?php echo $peliculas;?>&pagina=<?php echo $paginas;?>" class="close" data-dismiss="modal">X</a>
+                                        <?php
                                         
-                                        $contador=1;
-                                        $id=$r['idpelicula'];
+                                        
+                                        /*$id=$r['idpelicula'];
                                         echo $id;
                                         $cantidadvisto=mysqli_query($conexion,"SELECT cantidad_visto FROM peliculas Where idpelicula=$id");
                                         while($c=mysqli_fetch_array($cantidadvisto)){
                                             $canti=$c['cantidad_visto'];
                                         }
-                                        $cantis=$canti+$contador;
-                                        mysqli_query($conexion,"UPDATE peliculas SET cantidad_visto=$cantis Where idpelicula=$id");
-                                        
-                                       */?>
+                                        $cantis=$canti+1;
+                                        echo $cantis;
+                                        if(mysqli_num_rows($cantidadvisto)>0){ 
+                                          $canti=$r['cantidad_visto'];  
+                                          $cantis=$canti+1;
+                                          $update=mysqli_query($conexion,"UPDATE peliculas SET cantidad_visto=$cantis Where idpelicula=$id");
+                                        }*/
+                                       ?>
                                     </div>
                                     <div class="modal-body" style="background:#121212;color:white">
                                         <div class="row">
@@ -320,6 +324,25 @@
                                 window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina;
                             }
                     } 
+                    function vistos(idPelicula,pagina){
+
+                        $.ajax({
+                                    url: 'visitas.php',
+                                    type: 'POST',
+                                    data: { 
+                                        idpelicula: idPelicula,
+                                        pag: pagina,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                }); 
+                                
+                    }
 
                     </script>
     </body>

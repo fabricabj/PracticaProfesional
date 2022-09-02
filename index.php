@@ -49,7 +49,7 @@
                             
                                 <div>
                                    <div style="padding-top:25px;">
-                                       <a title="más informacion" style="float:right;margin-right:25px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>"><i class="fas fa-info-circle"></i></a>
+                                       <a title="más informacion" style="float:right;margin-right:25px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" onclick="vistos(<?php echo $r['idpelicula']?>);"><i class="fas fa-info-circle"></i></a>
                                    </div>     
                                 </div>
                             </div> 
@@ -129,7 +129,7 @@
                   <?php while ($r=mysqli_fetch_array($consulta)) { ?>
                           <div style="padding:2%;color:grey">
                              <p style="margin-right:20px">
-	                               <a href="#" style="text-decoration:none;color:white" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>"><img src="imagenes/<?php echo $r['imagen'];?>" style="width:30%" align="left">
+	                               <a href="#" style="text-decoration:none;color:white" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" onclick="vistos(<?php echo $r['idpelicula']?>);"><img src="imagenes/<?php echo $r['imagen'];?>" style="width:30%" align="left">
                                  <h4><?php echo $r['titulo'];?></h4></a>
                                  <?php echo $r['descripcion'];?>
                              </p>
@@ -162,6 +162,29 @@ if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
     echo '<script> alert("Hubo problemas con el envio");</script>';
     
    }
+   
 ?>
+<script>
+
+function vistos(idPelicula){
+
+    $.ajax({
+                url: 'visitas.php',
+                type: 'POST',
+                data: { 
+                    idpelicula: idPelicula,
+                
+                },
+            })
+            .done(function(response){
+                $("#result").html(response);
+            })
+            .fail(function(jqXHR){
+                console.log(jqXHR.statusText);
+            }); 
+        }
+
+</script>
+
 </body>
 </html>

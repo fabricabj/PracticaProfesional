@@ -7,17 +7,23 @@
     </head>
     <body>
         <?php
-        
-        // if (isset($_GET['genero'])) {
-        //    $noticias = $_GET['genero'];
-        //     if(!isset($_GET['pagina'])){
-        //       header("location:peliculas.php?genero=$peliculas&pagina=1");
-        //     }
-       
-        // }
-        require("header.php");
-         $consulta = mysqli_query($conexion, "SELECT * FROM noticias where idestado=1"); ?>
+        if (!isset($_GET['pagina'])) {
+            header("location:noticias.php?pagina=1");
+        }
+        require("conexion.php");
+        $sql = "SELECT * FROM noticias where idestado=1";
+        $consulta = mysqli_query($conexion, $sql);
 
+         
+    $noticias_x_pag = 8;
+    $total_noticias = mysqli_num_rows($consulta);
+    $paginas = $total_noticias / $noticias_x_pag;
+    $paginas = ceil($paginas);
+    if (isset($_GET['pagina'])) {
+        require("header.php");
+        $iniciar = ($_GET['pagina'] - 1) * $noticias_x_pag;
+        $resultado = mysqli_query($conexion, $sql . " limit $iniciar,$noticias_x_pag");
+    ?>
        
             <div class="row">  
                 <div class="col-md-12 menualta">
@@ -47,7 +53,7 @@
             </div> 
             <div class="container">
               <div class="row">
-            <?php while ($r = mysqli_fetch_array($consulta)) { ?>
+            <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
                             <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" style="width: 200px; height: 200px;"></a>
@@ -127,6 +133,17 @@
          </div>
          </div>
          </div>
+         <div class="container" style="padding-top:40px">
+        <nav arial-label="page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="noticias.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="noticias.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php endfor ?>
+                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="noticias.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+            </ul>
+        </nav>
+    </div>
          <script>
                         function eliminarNoticia(idNoticia){
                             var eliminar = confirm('De verdad desea eliminar esta noticia');
@@ -151,7 +168,11 @@
                                 alert('La noticia ha sido eliminada');
                                 window.location.href ='noticias.php';
                             }
-                        } 
+                        }
+                    
          </script>
+         <?php } ?>
+         
+        
     </body>
 </html>

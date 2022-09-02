@@ -49,7 +49,7 @@
                   <br><br>
                   <h4>Inserte comprobante de pago</h4>
                   <br>
-                  <form action="comprar.php" method="POST">
+                  <form action="validarcomprobante.php" method="POST" enctype="multipart/form-data">
                     <input type="file" name="imagen">
                     <input type="text" class="form-control" name="fechaPago" id="fechaPago" value="'.$fechaActual.'" hidden>
                     <input type="text" class="form-control" name="tipoPago" id="tipoPago" value="2" hidden>

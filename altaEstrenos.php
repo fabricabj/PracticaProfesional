@@ -129,7 +129,6 @@
                          </div>   
                          <div class="form-group">
                              <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar</button>
-                             <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
                          </div>
                        </form>
                       <?php 
@@ -235,7 +234,7 @@
                         </div>
                         <div class="form-group">
                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardar" name="guardar"><i class="fas fa-save"></i> Guardar</button>
-                            <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
+                            
                         </div>
                     </form>
                     <?php

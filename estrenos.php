@@ -7,9 +7,23 @@
     </head>
     <body>
         <?php
-        
+         if (!isset($_GET['pagina'])) {
+            header("location:estrenos.php?pagina=1");
+        }
+        require("conexion.php");
+        $sql = "SELECT * FROM peliculas where idestado=3";
+        $consulta = mysqli_query($conexion, $sql);
+
+         
+    $estrenos_x_pag = 4;
+    $total_estrenos = mysqli_num_rows($consulta);
+    $paginas = $total_estrenos / $estrenos_x_pag;
+    $paginas = ceil($paginas);
+    if (isset($_GET['pagina'])) {
         require("header.php");
-         $consulta = mysqli_query($conexion, "SELECT * FROM peliculas where idestado=3"); ?>
+        $iniciar = ($_GET['pagina'] - 1) * $estrenos_x_pag;
+        $resultado = mysqli_query($conexion, $sql . " limit $iniciar,$estrenos_x_pag");
+    ?> ?>
 
        
             <div class="row">  
@@ -40,7 +54,7 @@
             </div> 
             <div class="container">
               <div class="row">
-            <?php while ($r = mysqli_fetch_array($consulta)) { ?>
+            <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
                           <div class="card" style="width: 12.5rem;background:#212121;color:white">
                               <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" style="width: 200px; height: 200px;"></a>
@@ -119,6 +133,17 @@
          </div>
          </div>
          </div>
+         <div class="container" style="padding-top:40px">
+        <nav arial-label="page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="estrenos.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="estrenos.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                <?php endfor ?>
+                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="estrenos.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+            </ul>
+        </nav>
+    </div>
          <script>
              function eliminarEstrenos(idPelicula){
                 var eliminar = confirm('Desea eliminar este estreno?');
@@ -147,5 +172,6 @@
 
 
          </script>
+         <?php } ?>
     </body>
 </html>

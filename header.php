@@ -111,6 +111,11 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                             <button type="submit" class="dropdown-item">Gestionar perfil</button>
                                                         </form>
                                                     <?php break;
+                                                    case "listado comprobantes": ?>
+                                                        <form method="POST" action="listadocomprobante.php">
+                                                            <button type="submit" class="dropdown-item">Listado comprobante</button>
+                                                        </form>
+                                                    <?php break;
                                                     case "buscar estrenos": ?>
                                                         <form method="POST" action="listadoEstrenos.php">
                                                             <button type="submit" class="dropdown-item">Buscar estrenos</button>
@@ -119,6 +124,11 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     case "baja sugerencias": ?>
                                                         <form method="POST" action="listadoSugerencia.php">
                                                             <button type="submit" class="dropdown-item">Ver sugerencias</button>
+                                                        </form>
+                                                    <?php break;
+                                                    case "reporte ventas": ?>
+                                                        <form method="POST" action="reporteventa.php">
+                                                            <button type="submit" class="dropdown-item">Ver ventas</button>
                                                         </form>
                                                     <?php break;
                                                     case "ver estadisticas": ?>

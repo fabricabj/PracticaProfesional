@@ -4,7 +4,7 @@ require("conexion.php");
 if (isset($_POST['ingresar']) && !empty($_POST['ingresar'])) {
 	$usuario=$_POST['usuario'];
 	$password=sha1($_POST['contrasenia']);
-	$consulta= mysqli_query($conexion,"SELECT idusuario,nombre_usuario,contrasenia FROM usuarios where nombre_usuario='$usuario' and contrasenia='$password' LIMIT 1"); 
+	$consulta= mysqli_query($conexion,"SELECT idusuario,nombre_usuario,contrasenia FROM usuarios where nombre_usuario='$usuario' and contrasenia='$password' and idestado=1 LIMIT 1"); 
 	if($p=mysqli_fetch_assoc($consulta)){
 
 	if ($p['nombre_usuario']==$usuario && $p['contrasenia']==$password) {

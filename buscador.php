@@ -45,7 +45,7 @@
                     <div>
                        
                                     <div style="padding-top:5px;">
-                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-info-circle"></i></a>
+                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>" onclick="vistos(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>);"><i class="fas fa-info-circle"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -152,5 +152,28 @@
      }
    
    ?>
+   <script>
+
+        function vistos(idPelicula,pagina){
+
+        $.ajax({
+                    url: 'visitas.php',
+                    type: 'POST',
+                    data: { 
+                        idpelicula: idPelicula,
+                        pag: pagina,
+                    
+                    },
+                })
+                .done(function(response){
+                    $("#result").html(response);
+                })
+                .fail(function(jqXHR){
+                    console.log(jqXHR.statusText);
+                }); 
+                
+        }
+
+    </script>
  </body>
 </html>
