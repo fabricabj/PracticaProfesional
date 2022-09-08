@@ -77,23 +77,23 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                         </form>
                                                     <?php break;
                                                     case "buscar proveedores": ?>
-                                                        <form method="POST" action="proveedores.php">
-                                                            <button type="submit" class="dropdown-item">Buscar proveedores</button>
-                                                        </form>
+                                                        <!--<form method="POST" action="proveedores.php">-->
+                                                        <a href="proveedores.php?pagina=1&est=1" class="dropdown-item">Listado proveedores</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "buscar noticias": ?>
                                                         <!--<form method="GET" action="listarNoticias.php?estado=1">-->
-                                                            <a href="listarNoticias.php?pagina=1&est=1" class="dropdown-item">Buscar noticias</a>
+                                                            <a href="listarNoticias.php?pagina=1&est=1" class="dropdown-item">Listado noticias</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar pelicula": ?>
-                                                        <form method="POST" action="listarpeliculas.php">
-                                                            <button type="submit" class="dropdown-item">Buscar películas</button>
-                                                        </form>
+                                                        <!--<form method="POST" action="listarpeliculas.php">-->
+                                                            <a href="listarpeliculas.php?pagina=1&est=1" class="dropdown-item">Listado Peliculas</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "buscar usuarios": ?>
                                                         <form method="POST" action="listarUsuario.php">
-                                                            <button type="submit" class="dropdown-item">Buscar usuarios</button>
+                                                            <button type="submit" class="dropdown-item">Listado usuarios</button>
                                                         </form>
                                                     <?php break;
                                                     case "favoritos": ?>
@@ -112,13 +112,13 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                         </form>
                                                     <?php break;
                                                     case "listado comprobantes": ?>
-                                                        <form method="POST" action="listadocomprobante.php">
-                                                            <button type="submit" class="dropdown-item">Listado comprobante</button>
-                                                        </form>
+                                                        <!--<form method="POST" action="listadocomprobante.php">-->
+                                                            <a href="listadocomprobante.php?pagina=1&est=3" class="dropdown-item">Listado comprobantes</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "buscar estrenos": ?>
                                                         <!--<form method="POST" action="listadoEstrenos.php">-->
-                                                        <a href="listadoEstrenos.php?pagina=1&est=3" class="dropdown-item">Buscar estreno</a>
+                                                        <a href="listadoEstrenos.php?pagina=1&est=3" class="dropdown-item">Listado estreno</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "baja sugerencias": ?>

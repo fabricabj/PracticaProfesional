@@ -38,18 +38,18 @@ if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
         header("location:proveedores.php");
 
 } 
-if (isset($_POST['btnEliminar'])) {
-
-		$cuit = $_POST['cuit'];
-		$delete=mysqli_query($conexion, "UPDATE proveedores SET idestado = 2 WHERE cuit='$cuit' ");
-		header("location:proveedores.php");
+if (isset($_POST['Delete'])  && !empty($_POST['Delete'])) {
+		$est = $_POST['est'];
+		$id = $_POST['id'];
+		$delete=mysqli_query($conexion, "UPDATE proveedores SET idestado = 2 WHERE idproveedor=$id ");
+		header("location:proveedores.php?pagina=1&est=$est");
 	}
 
-    if (isset($_POST['btnActivar'])) {
+    if (isset($_POST['Activar'])) {
 
 		$cuit = $_POST['cuit'];
 		$delete=mysqli_query($conexion, "UPDATE proveedores SET idestado = 1 WHERE cuit='$cuit' ");
-		header("location:proveedoresinactivos.php");
+		header("location:proveedores.php?pagina=1&est=2");
 	}
  
 ?>

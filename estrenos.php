@@ -155,7 +155,7 @@
                         type: 'POST',
                         data: { 
                             id: idPelicula,
-                            delete: estreno,
+                            deleteEstreno: estreno,
                             
                         },
                         })

@@ -16,7 +16,9 @@ if(!isset($_GET['pagina'])){
   header("location:proveedores.php?pagina=1");
   }
   include "conexion.php";
-$sql = "SELECT * FROM proveedores WHERE idestado = 1";
+  $est=$_GET['est'];
+$sql = "SELECT * FROM proveedores WHERE idestado = $est";
+$estados=mysqli_query($conexion,"SELECT * FROM estados_provedores ORDER BY descripcion ASC");
 $consulta = mysqli_query($conexion,$sql);
 if(isset($_GET['orden'])){
 if(isset($_GET['ascendente'])){
@@ -39,6 +41,22 @@ require("header.php");
 $iniciar = ($_GET['pagina'] - 1) * $proveedores_x_pag;
 $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag");
 ?>
+<script language="javascript">
+      
+      $(document).ready(function(){
+      
+        $("#Est").change(function () {	
+          $("#Est option:selected").each(function () {
+            id_estado = $(this).val();
+          
+            window.location.href="proveedores.php?pagina=1&est="+id_estado;
+                      
+          });
+          
+        });
+        
+      });
+ </script>
 <div class="container">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h3 class="text-center text-white">Listado de Proveedores</h3>
@@ -53,13 +71,26 @@ $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag")
     <table class="table table-light">
       <thead>
       
-        <th scope ="col"><a href="proveedores.php?pagina=1&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
-        <th scope ="col"><a href="proveedores.php?pagina=1&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razón Social</a></th>
-        <th scope ="col"><a href="proveedores.php?pagina=1&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
-        <th scope ="col"><a href="proveedores.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
+        <th scope ="col"><a href="proveedores.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idproveedor&ascendente=<?php echo $asc; ?>" >Id</a></th>
+        <th scope ="col"><a href="proveedores.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=razon_social&ascendente=<?php echo $asc; ?>" >Razón Social</a></th>
+        <th scope ="col"><a href="proveedores.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=cuit&ascendente=<?php echo $asc; ?>" >Cuit</a></th>
+        <th scope ="col"><a href="proveedores.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>
         <th scope ="col">Estado</th>
-        <th><a href="altaproveedores.php"><button type="button" class="btn btn-warning">Nuevo</button></a></th>
-        <th><a href="proveedoresinactivos.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+        <th>
+        <?php if($_GET['est']==1){ ?>
+          <a href="altaproveedores.php">
+            <button type="button" class="btn btn-warning">Nuevo</button>
+          </a>
+          <?php }?>
+        </th>
+        <th>
+          <select name="Est" id="Est">
+              <option value='0'>Todos</option>
+              <?php while($rs=mysqli_fetch_array($estados)){?>
+                <option value="<?php echo $rs['idestado'] ?>" <?php if($_GET['est']==$rs['idestado']) echo 'Selected'?>><?php echo $rs['descripcion'];?></option>
+              <?php }; ?>
+          </select>
+        </th>
         
 </thead> 
 <?php
@@ -81,17 +112,23 @@ while($fila = $resultado->fetch_assoc()){
                   } 
                   echo "<td>"; echo $descripcion; echo "</td>";
 
-  echo "<td><form action='modificarproveedores.php' method='post'>
+          echo "<td><form action='modificarproveedores.php' method='post'>
                 <input name='cuit' id='cuit' value='".$fila['cuit']."' hidden>
                 <button type='submit' class='btn btn-success'>Modificar</button>
             </form>
         </td>";
+        if($_GET['est']==1){
+          echo '<td><input type="text" name="eliminarProveedor" id="eliminarProveedor" value="eliminarProveedor" hidden>
+                <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
+                <a style="margin: 5px;" href="#" onclick="eliminarProveedor('.$fila['idproveedor'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
+        }else{  
           echo "<td><form action='abmproveedores.php' method='post'>
                 <input name='cuit' id='cuit' value='".$fila['cuit']."'hidden>
-                <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+                <button type='submit' class='btn btn-danger' name='Activar' id='Activar' value='Activar'>Activar</button>
             </form>
         </td>";
-// echo "<td><a href='abmproveedores.php'><button type='button' class='btn btn-danger'>Eliminar</button></a></td>";
+        }
+
 }
 
 ?>
@@ -105,11 +142,11 @@ while($fila = $resultado->fetch_assoc()){
   <div class="container" style="padding-top:40px">
                     <nav arial-label="page navigation">
                         <ul class="pagination justify-content-center">
-                            <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                            <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&est=<?php echo $_GET['est'];?>">Anterior</a></li>
                             <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $i ?>&est=<?php echo $_GET['est'];?>"><?php echo $i ?></a></li>
                             <?php endfor ?>
-                            <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                            <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="proveedores.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&est=<?php echo $_GET['est'];?>">Siguiente</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -119,6 +156,34 @@ while($fila = $resultado->fetch_assoc()){
         echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
     }
     ?>
+
+<script>
+                        function eliminarProveedor(idproveedor,pagina,estado){
+                            var eliminar = confirm('De verdad desea inactivar este proveedor');
+                            var eliminarProveedor=document.getElementById('eliminarProveedor').value;
+                            if ( eliminar ) {
+                                
+                                $.ajax({
+                                    url: 'abmproveedores.php',
+                                    type: 'POST',
+                                    data: { 
+                                        id: idproveedor,
+                                        Delete: eliminarProveedor,
+                                        est: estado,
+                                    
+                                    },
+                                })
+                                .done(function(response){
+                                    $("#result").html(response);
+                                })
+                                .fail(function(jqXHR){
+                                    console.log(jqXHR.statusText);
+                                });
+                                alert('El proveedor ha sido inactivado');
+                                window.location.href ='proveedores.php?pagina='+pagina+'&est='+estado;
+                            }
+                        } 
+         </script>
 
 </body>
 

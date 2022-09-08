@@ -210,22 +210,23 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-	header("location:listarpeliculas.php");
+	header("location:peliculas.php");
 
 }
 if (isset($_POST['deleteEstreno']) && !empty($_POST['deleteEstreno'])) {
 	
 	$idPelicula = $_POST['id'];
-	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-    header("location:estrenos.php");
+	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 4 where idpelicula=$idPelicula");
+	header("location:estrenos.php");
 
 }
+
 
 if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 1 where idpelicula=$idPelicula");
-	header("location:peliculasinactivas.php");
+	header("location:listarpeliculas.php?pagina=1&est=2");
 
 }
 
