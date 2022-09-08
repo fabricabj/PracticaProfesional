@@ -126,6 +126,11 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                             <button type="submit" class="dropdown-item">Ver sugerencias</button>
                                                         </form>
                                                     <?php break;
+                                                    case "Mis compras": ?>
+                                                        <form method="POST" action="miscompras.php">
+                                                            <button type="submit" class="dropdown-item">Ver mis compras</button>
+                                                        </form>
+                                                    <?php break;
                                                     case "reporte ventas": ?>
                                                         <form method="POST" action="reporteventa.php">
                                                             <button type="submit" class="dropdown-item">Ver ventas</button>
