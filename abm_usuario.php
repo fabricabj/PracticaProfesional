@@ -36,4 +36,26 @@ if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 if (isset($_POST['Cancelar']) && !empty($_POST['Cancelar'])) {
 	header("location:listarUsuario.php");
 }
+
+if (isset($_POST['Enviar']) && !empty($_POST['Enviar'])) {
+	$password=sha1($_POST['contrasenia']);
+	$idusu=$_POST['id'];
+	$consulta= mysqli_query($conexion,"SELECT * FROM usuarios where idusuario=$idusu LIMIT 1"); 
+	if($p=mysqli_fetch_assoc($consulta)){	
+		if ($p['contrasenia']==$password) {
+			header("location:Cambiarcontra.php");
+		}else{
+			header("location:gestionPerfil.php?error=1");
+		}
+	
+	}	
+}
+
+if (isset($_POST['Cambiar']) && !empty($_POST['Cambiar'])) {
+	$idusua=$_POST['idusu'];
+	$password=sha1($_POST['contr']);
+	echo $idusua . "   " . $password;
+    $actualizar=mysqli_query($conexion,"UPDATE usuarios SET contrasenia='$password' WHERE idusuario=$idusua");
+	header("location:gestionPerfil.php?estado=1");
+}
 ?>

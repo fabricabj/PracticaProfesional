@@ -15,7 +15,7 @@
     }
     
 </style>
-<title>Recuperar Contraseña AFLcinema</title>
+<title>Nueva Contraseña AFLcinema</title>
 </head>
 <body>
 <?php

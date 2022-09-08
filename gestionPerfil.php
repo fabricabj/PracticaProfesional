@@ -7,10 +7,12 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Perfil de Usuario</title>
+<title>Inicio de afl cinema</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
@@ -52,108 +54,132 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                                         WHERE u.idusuario={$_SESSION['login']}");
     $datosProvincia=mysqli_fetch_assoc($select6);
 ?>
-<form action="abm_gestionPerfil.php" method ="POST" style="width:95%;">
+
 <div class="container"  style="padding-top:100px;">
-<div style="background:#212121; border-radius:30px;">
-<H1 align="center" class="text-white">Perfil</H1>
-<div class="px-lg-5 py-lg-4 p-4">
-    <div class="form-row">
-        <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Nombre</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['nombre'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre_usuario" name ="nombre_usuario" onkeypress="return check(event)"/>
-        </div>
-
-        <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Apellido</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['apellido'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Apellido" id="apellido" name ="apellido" onkeypress="return check(event)"/>
-        </div>
-        <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
-                            <select name="idtipodocumento" id="idtipodocumento" class="form-control" >
+    <div style="background:#212121; border-radius:30px;">
+    <H1 align="center" class="text-white">Perfil</H1>
+        <div class="px-lg-5 py-lg-4 p-4">
+            <form action="abm_gestionPerfil.php" method ="POST" style="width:95%;">
+                <div class="form-row">
+                    <div class="col-6">
+                        <label class="form-label font-weight-bold text-white">Nombre</label>
+                        <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['nombre'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Nombre" id="nombre_usuario" name ="nombre_usuario" onkeypress="return check(event)"/>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label font-weight-bold text-white">Apellido</label>
+                        <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['apellido'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Apellido" id="apellido" name ="apellido" onkeypress="return check(event)"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label font-weight-bold text-white">Tipo de Documento</label>
+                        <select name="idtipodocumento" id="idtipodocumento" class="form-control" >
                             <option>Seleccione Tipo documentación</option>
-
-                                <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM documento_tipos ORDER BY idtipodocumento ASC");
+                            <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM documento_tipos ORDER BY idtipodocumento ASC");
                                 while($r=mysqli_fetch_array($selectEstado)){?>
-
                                     <option value="<?php echo $r['idtipodocumento'];?>" <?php if(mysqli_num_rows($select4)>0){ if($r['idtipodocumento']==$datos['idtipodocumento']){echo "selected";}}?>><?php echo $r['nombre_documento'];?></option>
                                 <?php }?>
-                            </select>
-                        </div>
-                        <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Número de Documento</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
-        </div>
-         <div class="form-group col-md-6">
-            <label class="form-label font-weight-bold text-white">Género</label>
-                            <select name="sexo" id="sexo" class="form-control" >
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label font-weight-bold text-white">Número de Documento</label>
+                        <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['numero_documento'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Documento" id="numero_documento" name ="numero_documento" required onkeyup="this.value=Numeros(this.value)"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label font-weight-bold text-white">Género</label>
+                        <select name="sexo" id="sexo" class="form-control" >
                             <option>Seleccione Género</option>
-
-                                <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM generos ORDER BY idgenero ASC");
-                                
+                            <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM generos ORDER BY idgenero ASC");
                                 while($r=mysqli_fetch_array($selectEstado)){?>
-
                                     <option value="<?php echo $r['idgenero'];?>" <?php if(mysqli_num_rows($select4)>0){ if($r['idgenero']==$datos['idgenero']){echo "selected";}}?>><?php echo $r['nombre'];?></option>
                                 <?php }?>
-                            </select>
-                        </div>
-                                   <div class="col-6">
-             <label class="form-label font-weight-bold text-white">Número de Teléfono</label>
-            <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Teléfono" id="telefono" name ="telefono" onkeyup="this.value=NumerosTel(this.value)" />
-        </div>
-         <div class="form-group col-md-4">
-         <label class="form-label font-weight-bold text-white">País</label>
-                                <select class="form-control" id="cbxpais" name="cbxpais">
-               	                  <option>Seleccione País</option>
-                                  <?php while ($rsTP = $select3->fetch_assoc()){?>
-                                     <option <?php if(mysqli_num_rows($select5)>0){ if($rsTP['idpais']==$datosPais['idpais']){echo "selected";}}?>><?php echo $rsTP['nombre'];?></option>
-                                  <?php } ?>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="form-label font-weight-bold text-white">Provincia</label>
-                            <select name="cbxprovincia" id="cbxprovincia" class="form-control" >
-                              
-                               <?php 
-                                 if(mysqli_num_rows($select6)>0){
-                                  while ($rsTP = $selectProvincias->fetch_assoc()){?>
-                                   <option <?php if($rsTP['idprovincia']==$datosProvincia['idprovincia']){echo "selected";}?>><?php echo $rsTP['nombre_provincia'];?></option>
-                         <?php    }
-                                 }
-                                 else{?>
-                                    <option>Seleccione Provincia</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label font-weight-bold text-white">Número de Teléfono</label>
+                        <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['telefono'];}?>" type="text"class="form-control bg-dark-x border-0" placeholder="Número de Teléfono" id="telefono" name ="telefono" onkeyup="this.value=NumerosTel(this.value)" />
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label font-weight-bold text-white">Mail</label>
+                        <input value="<?php if(mysqli_num_rows($select4)>0){ echo $datos['mail'];}?>" type="mail" class="form-control bg-dark-x border-0" placeholder="Mail" id="mail" name ="mail"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label font-weight-bold text-white">País</label>
+                        <select class="form-control" id="cbxpais" name="cbxpais">
+               	            <option>Seleccione País</option>
+                            <?php while ($rsTP = $select3->fetch_assoc()){?>
+                                <option <?php if(mysqli_num_rows($select5)>0){ if($rsTP['idpais']==$datosPais['idpais']){echo "selected";}}?>><?php echo $rsTP['nombre'];?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label font-weight-bold text-white">Provincia</label>
+                        <select name="cbxprovincia" id="cbxprovincia" class="form-control" >
+                        <?php 
+                                if(mysqli_num_rows($select6)>0){
+                                while ($rsTP = $selectProvincias->fetch_assoc()){?>
+                                <option <?php if($rsTP['idprovincia']==$datosProvincia['idprovincia']){echo "selected";}?>><?php echo $rsTP['nombre_provincia'];?></option>
                         <?php    }
-                        ?>
-
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="form-label font-weight-bold text-white">Ciudad</label>
-                            <select name="cbxciudad" id="cbxciudad" class="form-control" >
-                                 <option>Seleccione Ciudad</option>
-                                 <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM ciudades ORDER BY idciudad ASC");
-                                
+                                }else{?>
+                                <option>Seleccione Provincia</option>
+                    <?php    }
+                    ?>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label font-weight-bold text-white">Ciudad</label>
+                        <select name="cbxciudad" id="cbxciudad" class="form-control" >
+                                <option>Seleccione Ciudad</option>
+                                <?php $selectEstado=mysqli_query($conexion,"SELECT * FROM ciudades ORDER BY idciudad ASC");
                                 while($r=mysqli_fetch_array($selectEstado)){?>
-
                                     <option value="<?php echo $r['idciudad'];?>" <?php if(mysqli_num_rows($select4)>0){ if($r['idciudad']==$datos['idciudad']){echo "selected";}}?>><?php echo $r['nombre_ciudad'];?></option>
                                 <?php }?>
-                            </select>
-                        </div>
-                        <div>
-                            <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardarPerfil" name="guardarPerfil"><i class="fas fa-save"></i> Guardar Usuario</button>
-                        </div>
+                        </select>
+                    </div>
+                    <div>
+                        <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardarPerfil" name="guardarPerfil"><i class="fas fa-save"></i> Guardar Usuario</button>
+                    </div>
+            </form>
+            <div class="form-group col-md-4">
+            </div>
+                <div>
+                    <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#contra">Cambiar Contraseña</a>
+                    <!--<a  class="btn btn-dark" style="margin-top: 3%;width: 100%;" href="#" data-toggle="modal" data-target="#contrasenia"><i class="fas fa-save"></i> Cambiar contraseña</a>-->
+                </div>
+            </div>            
         </div>
     </div>
-
+</div>
+<div data-backdrop="static" class="modal fade" id="contra">
+    <div class="col-md-12 modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Cambiar contraseña</h4>
+                <button type="button" class="close" data-dismiss="modal">X</button>
+            </div>
+            <div class="col-md-12" style="background:#e0e0e0">
+                <div class="modal-body">
+                    <form action="abm_usuario.php" method="POST">
+                        <div class="form-group" id="password-group">
+                            <label for="contra">Contraseña</label>
+                            <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" require>
+                            <input type="text" cñass="form-control" name="id" id="id" value="<?php echo $_SESSION['login'];?>" hidden>
+                        </div>
+                        <div align="center" class="form-group">
+                            <button style="margin-top:7%;width:50%" name="Enviar" value="Enviar" type="submit" class="btn btn-light">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-</div>
- </div>
-                                  </form>
 <?php if(isset($_GET['estado'])&& $_GET['estado']==1){
     echo "<script>alert('Perfil actualizado con exito');</script>";
 }?>
-
+<script type="text/javascript" src="jquery.min.js"></script>
+<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/2be8605e79.js"></script>
   <script>
 
 function Numeros(string){
@@ -224,5 +250,13 @@ function filterFloat(evt,input){
     }
 
     </script>
+    <?php
+    if (isset($_GET['error'])&& $_GET['error']==1) {
+        echo "<script type='text/javascript'>alert('Contraseña incorrecta.');</script>";
+    }
+    if (isset($_GET['estado'])&& $_GET['estado']==1) {
+        echo "<script type='text/javascript'>alert('Contraseña cambiada correctamente.');</script>";
+    }
+    ?>
 </body>
 </html>

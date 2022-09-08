@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias</title>
+        
 </head>
 
 <body>
@@ -16,7 +17,9 @@
       header("location:listarNoticias.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM noticias WHERE idestado = 1";
+      $est=$_GET['est'];
+  $sql = "SELECT * FROM noticias WHERE idestado = $est";
+  $estados=mysqli_query($conexion,"SELECT * FROM estados_noticias ORDER BY descripcion ASC");
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -40,27 +43,56 @@
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$noticias_x_pag");
       }
     ?>
+    <script language="javascript">
+      
+      $(document).ready(function(){
+      
+        $("#Est").change(function () {	
+          $("#Est option:selected").each(function () {
+            id_estado = $(this).val();
+          
+            window.location.href="listarNoticias.php?pagina=1&est="+id_estado;
+                      
+          });
+          
+        });
+        
+      });
+ </script>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Noticias</h3>
-        <form action="buscarNoticia.php?pagina=1" method="POST">
+        <!--<form action="buscarNoticia.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
-                  <div class="input-group-append">
+                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">-->
+                  <a href="buscarNoticia.php?pagina=1&est=<?php echo GET['est']?>" class="dropdown-item">Buscar Noticia</a>
+                  <!--<div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
             </div>
-        </form>
+        </form>-->
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
-            <th scope ="col"><a href="listarNoticias.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripción</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
+            <th scope ="col"><a href="listarNoticias.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripción</a></th>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
-            <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="noticiasinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+            <th>
+              <?php if($_GET['est']==1){ ?>
+              <form action="altaNoticia.php" method="POST"> 
+                  <button name='alta' value='alta' class="btn btn-warning">Nuevo</button>
+              </form></th>
+              <?php }?>
+            <th>
+              <select name="Est" id="Est">
+							   <option value='0'>Todos</option>
+							    <?php while($rs=mysqli_fetch_array($estados)){?>
+								    <option value="<?php echo $rs['idestado'] ?>" <?php if($_GET['est']==$rs['idestado']) echo 'Selected'?>><?php echo $rs['descripcion'];?></option>
+							    <?php }; ?>
+						  </select>
+            </th>
  
    
 </thead> 
@@ -88,10 +120,16 @@
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
+            if($_GET['est']==1){   
               echo '<td><input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
                     <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].')" class="btn btn-danger">Eliminar</a></td>';
-     
+                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Eliminar</a></td>';
+            }else{
+              echo "<td><form action='abm_noticias.php' method='post'>
+                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
+                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
+                </form>";
+            }
     }
 
   ?>
@@ -104,11 +142,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&est=<?php echo $_GET['est'];?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $i ?>&est=<?php echo $_GET['est'];?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarNoticias.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&est=<?php echo $_GET['est'];?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -119,7 +157,7 @@
         }
         ?>
       <script>
-                        function eliminarNoticia(idNoticia,pagina){
+                        function eliminarNoticia(idNoticia,pagina,estado){
                             var eliminar = confirm('De verdad desea eliminar esta noticia');
                             var eliminarNoticia=document.getElementById('eliminarNoticia').value;
                             if ( eliminar ) {
@@ -130,6 +168,7 @@
                                     data: { 
                                         id: idNoticia,
                                         delete: eliminarNoticia,
+                                        est: estado,
                                     
                                     },
                                 })
@@ -140,7 +179,7 @@
                                     console.log(jqXHR.statusText);
                                 });
                                 alert('La noticia ha sido eliminada');
-                                window.location.href ='listarNoticias.php?pagina='+pagina;
+                                window.location.href ='listarNoticias.php?pagina='+pagina+'&est='+estado;
                             }
                         } 
          </script>

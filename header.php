@@ -82,9 +82,9 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                         </form>
                                                     <?php break;
                                                     case "buscar noticias": ?>
-                                                        <form method="POST" action="listarNoticias.php">
-                                                            <button type="submit" class="dropdown-item">Buscar noticias</button>
-                                                        </form>
+                                                        <!--<form method="GET" action="listarNoticias.php?estado=1">-->
+                                                            <a href="listarNoticias.php?pagina=1&est=1" class="dropdown-item">Buscar noticias</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "buscar pelicula": ?>
                                                         <form method="POST" action="listarpeliculas.php">
@@ -117,9 +117,9 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                         </form>
                                                     <?php break;
                                                     case "buscar estrenos": ?>
-                                                        <form method="POST" action="listadoEstrenos.php">
-                                                            <button type="submit" class="dropdown-item">Buscar estrenos</button>
-                                                        </form>
+                                                        <!--<form method="POST" action="listadoEstrenos.php">-->
+                                                        <a href="listadoEstrenos.php?pagina=1&est=3" class="dropdown-item">Buscar estreno</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "baja sugerencias": ?>
                                                         <form method="POST" action="listadoSugerencia.php">
