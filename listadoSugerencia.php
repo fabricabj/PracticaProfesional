@@ -24,7 +24,9 @@
         header("location:listadoSugerencia.php?pagina=1");
     }
     include "conexion.php";
-    $sql = "SELECT * FROM sugerencias WHERE idestado = 2";
+    $est=$_GET['est'];
+    $sql = "SELECT * FROM sugerencias WHERE idestado = $est";
+    $estados=mysqli_query($conexion,"SELECT * FROM sugerencia_estados ORDER BY descripcion ASC");
     $consulta = mysqli_query($conexion, $sql);
     if (isset($_GET['orden'])) {
         if (isset($_GET['ascendente'])) {
@@ -47,18 +49,41 @@
         $iniciar = ($_GET['pagina'] - 1) * $sugerencias_x_pag;
         $resultado = mysqli_query($conexion, $sql . " limit $iniciar,$sugerencias_x_pag");
     ?>
+    <script language="javascript">
+      
+      $(document).ready(function(){
+      
+        $("#Est").change(function () {	
+          $("#Est option:selected").each(function () {
+            id_estado = $(this).val();
+          
+            window.location.href="listadoSugerencia.php?pagina=1&est="+id_estado;
+                      
+          });
+          
+        });
+        
+      });
+ </script>
         <div class="container">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <h3 class="text-center text-white">Listado de Sugerencias</h3>
                 <table class="table table-light">
                     <thead>
 
-                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=idsugerencia&ascendente=<?php echo $asc; ?>">Id</a></th>
-                        <th scope="col" class="col-2"><a href="listadoSugerencia.php?pagina=1&orden=fecha&ascendente=<?php echo $asc; ?>">Fecha</a></th>
-                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>">Descripción</a></th>
-                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>">Usuario</a></th>
+                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idsugerencia&ascendente=<?php echo $asc; ?>">Id</a></th>
+                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fecha&ascendente=<?php echo $asc; ?>">Fecha</a></th>
+                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=descripcion&ascendente=<?php echo $asc; ?>">Descripción</a></th>
+                        <th scope="col"><a href="listadoSugerencia.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idusuario&ascendente=<?php echo $asc; ?>">Usuario</a></th>
                         <th scope="col" class="col-1">Estado</th>
-                        <th><a href="sugerenciasleidas.php"><button type="button" class="btn btn-primary">Leídas</button></a></th>
+                        <th>
+                            <select name="Est" id="Est">
+							   <option value='0'>Todos</option>
+							    <?php while($rs=mysqli_fetch_array($estados)){?>
+								    <option value="<?php echo $rs['idestado'] ?>" <?php if($_GET['est']==$rs['idestado']) echo 'Selected'?>><?php echo $rs['descripcion'];?></option>
+							    <?php }; ?>
+						  </select>
+                        </th>
 
                     </thead>
                     <?php
@@ -97,12 +122,13 @@
                         echo "<td>";
                         echo $descripcion;
                         echo "</td>";
-
+                        if($_GET['est']==2){
                         echo "<td>
                             <form method='POST'>
                                 <button type='submit' name='leido' value='".$fila['idsugerencia']."' class='btn btn-success'>Leer</button>
                             </form>
                         </td>";
+                        }
                         
                         // echo "<td><a href='abmproveedores.php'><button type='button' class='btn btn-danger'>Eliminar</button></a></td>";
                     }
@@ -118,11 +144,11 @@
     <div class="container" style="padding-top:40px">
         <nav arial-label="page navigation">
             <ul class="pagination justify-content-center">
-                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&est=<?php echo $_GET['est'];?>">Anterior</a></li>
                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $i ?>&est=<?php echo $_GET['est'];?>"><?php echo $i ?></a></li>
                 <?php endfor ?>
-                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listadosugerencia.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&est=<?php echo $_GET['est'];?>">Siguiente</a></li>
             </ul>
         </nav>
     </div>

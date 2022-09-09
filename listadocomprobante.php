@@ -71,9 +71,9 @@
                 <table class="table table-light">
                     <thead>
 
-                        <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idsugerencia&ascendente=<?php echo $asc; ?>">Id</a></th>
-                        <th scope="col" class="col-2"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fecha&ascendente=<?php echo $asc; ?>">Fecha</a></th>
-                        <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=descripcion&ascendente=<?php echo $asc; ?>">Descripción</a></th>
+                        <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idcomprobante&ascendente=<?php echo $asc; ?>">Id</a></th>
+                        <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fechapago&ascendente=<?php echo $asc; ?>">Fecha</a></th>
+                        <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=imagen&ascendente=<?php echo $asc; ?>">Descripción</a></th>
                         <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idusuario&ascendente=<?php echo $asc; ?>">Usuario</a></th>
                         <th scope="col" class="col-1">Estado</th>
                         <th>

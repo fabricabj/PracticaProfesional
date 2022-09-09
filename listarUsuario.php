@@ -16,7 +16,9 @@
       header("location:listarUsuario.php?pagina=1");
       }
       include "conexion.php";
-  $sql = "SELECT * FROM usuarios WHERE idestado = 1";
+      $est=$_GET['est'];
+  $sql = "SELECT * FROM usuarios WHERE idestado = $est";
+  $estados=mysqli_query($conexion,"SELECT * FROM usuario_estados ORDER BY descripcion ASC");
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -39,6 +41,22 @@
     $iniciar = ($_GET['pagina'] - 1) * $usuarios_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$usuarios_x_pag");
     ?>
+    <script language="javascript">
+      
+      $(document).ready(function(){
+      
+        $("#Est").change(function () {	
+          $("#Est option:selected").each(function () {
+            id_estado = $(this).val();
+          
+            window.location.href="listarUsuario.php?pagina=1&est="+id_estado;
+                      
+          });
+          
+        });
+        
+      });
+ </script>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Usuarios</h3>
@@ -53,14 +71,20 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=nombre_usuario&ascendente=<?php echo $asc; ?>" >Nombre Usuario</a></th>
-            <th scope ="col"><a href="listarUsuario.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" >Mail</a></th>
+            <th scope ="col"><a href="listarUsuario.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idusuario&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="listarUsuario.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=nombre_usuario&ascendente=<?php echo $asc; ?>" >Nombre Usuario</a></th>
+            <th scope ="col"><a href="listarUsuario.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=mail&ascendente=<?php echo $asc; ?>" >Mail</a></th>
             <th scope ="col">Grupo</a></th>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
-           <!-- <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>-->
-          <th><a href="usuariosinactivos.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+          <th>
+            <select name="Est" id="Est">
+                <option value='0'>Todos</option>
+                <?php while($rs=mysqli_fetch_array($estados)){?>
+                  <option value="<?php echo $rs['idestado'] ?>" <?php if($_GET['est']==$rs['idestado']) echo 'Selected'?>><?php echo $rs['descripcion'];?></option>
+                <?php }; ?>
+						</select>
+          </th>
 </thead> 
 <?php
   
@@ -70,7 +94,6 @@
       echo "<td>"; echo $fila['idusuario']; echo "</td>";
       echo "<td>"; echo $fila['nombre_usuario']; echo "</td>";
       echo "<td>"; echo $fila['mail']; echo "</td>";
-      //echo "<td>"; echo $fila['idestado']; echo "</td>";
       $selectGrupo=mysqli_query($conexion,"SELECT g.nombre_grupo FROM grupo AS g
       JOIN grupo_usuarios AS gu ON gu.idgrupo=g.idgrupo
       WHERE gu.idusuario={$fila['idusuario']}");
@@ -92,11 +115,17 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
+            if($_GET['est']==1){
+              echo '<td><input type="text" name="eliminarUsuario" id="eliminarUsuario" value="eliminarUsuario" hidden>
+                    <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
+                    <a style="margin: 5px;" href="#" onclick="eliminarUsuario('.$fila['idusuario'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
+            }else{  
               echo "<td><form action='abm_usuario.php' method='post'>
                     <input name='idusuario' id='idusuario' value='".$fila['idusuario']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+                    <button type='submit' class='btn btn-danger' name='Activar' id='Activar' value='Activar'>Activar</button>
                 </form>
             </td>";
+            }
     
     }
 
@@ -111,11 +140,11 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&est=<?php echo $_GET['est'];?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $i ?>&est=<?php echo $_GET['est'];?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="listarUsuario.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&est=<?php echo $_GET['est'];?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -125,6 +154,34 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
             echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
+
+<script>
+  function eliminarUsuario(idusuario,pagina,estado){
+      var eliminar = confirm('De verdad desea inactivar este usuario?');
+      var eliminarUsuario=document.getElementById('eliminarUsuario').value;
+      if ( eliminar ) {
+          
+          $.ajax({
+              url: 'abm_usuario.php',
+              type: 'POST',
+              data: { 
+                  id: idusuario,
+                  delete: eliminarUsuario,
+                  est: estado,
+              
+              },
+          })
+          .done(function(response){
+              $("#result").html(response);
+          })
+          .fail(function(jqXHR){
+              console.log(jqXHR.statusText);
+          });
+          alert('El usuario ha sido inactivado');
+          window.location.href ='listarUsuario.php?pagina='+pagina+'&est='+estado;
+      }
+  } 
+</script>
 
 </body>
 

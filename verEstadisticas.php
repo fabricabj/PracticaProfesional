@@ -18,7 +18,7 @@
     header("location:verEstadisticas.php?pagina=1");
   }
   include "conexion.php";
-  $sql = "SELECT * FROM peliculas WHERE idestado != 3";
+  $sql = "SELECT * FROM peliculas WHERE idestado = 1 OR idestado = 2";
   $consulta = mysqli_query($conexion, $sql);
   if (isset($_GET['orden'])) {
     if (isset($_GET['ascendente'])) {

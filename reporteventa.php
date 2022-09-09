@@ -12,11 +12,13 @@
     <?php   
     $asc = 0;
     
-    if(!isset($_GET['pagina'])){
-      header("location:reporteventa.php?pagina=1");
-      }
-      include "conexion.php";
-  $sql = "SELECT * FROM ventas WHERE idestados=1 ";
+if(!isset($_GET['pagina'])){
+  header("location:reporteventa.php?pagina=1");
+  }
+  include "conexion.php";
+  $est=$_GET['est'];
+  $sql = "SELECT * FROM ventas WHERE idestados=$est ";
+  $estados=mysqli_query($conexion,"SELECT * FROM venta_estados ORDER BY descripcion ASC");
   $consulta = mysqli_query($conexion,$sql);
   if(isset($_GET['orden'])){
     if(isset($_GET['ascendente'])){
@@ -39,6 +41,22 @@
     $iniciar = ($_GET['pagina'] - 1) * $ventas_x_pag;
     $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$ventas_x_pag");
     ?>
+    <script language="javascript">
+      
+      $(document).ready(function(){
+      
+        $("#Est").change(function () {	
+          $("#Est option:selected").each(function () {
+            id_estado = $(this).val();
+          
+            window.location.href="reporteventa.php?pagina=1&est="+id_estado;
+                      
+          });
+          
+        });
+        
+      });
+ </script>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Ventas</h3>
@@ -53,13 +71,20 @@
         <table class="table table-light">
           <thead>
           
-            <th scope ="col"><a href="reporteventa.php?pagina=1&orden=idventa&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="reporteventa.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>" >Usuario</a></th>
-            <th scope ="col"><a href="reporteventa.php?pagina=1&orden=precio_total&ascendente=<?php echo $asc; ?>" >Precio Total</a></th>
-            <<th scope ="col"><a href="reporteventa.php?pagina=1&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha venta</a></th>
+            <th scope ="col"><a href="reporteventa.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idventa&ascendente=<?php echo $asc; ?>" >Id</a></th>
+            <th scope ="col"><a href="reporteventa.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idusuario&ascendente=<?php echo $asc; ?>" >Usuario</a></th>
+            <th scope ="col"><a href="reporteventa.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=precio_total&ascendente=<?php echo $asc; ?>" >Precio Total</a></th>
+            <<th scope ="col"><a href="reporteventa.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha venta</a></th>
             <th scope ="col">Estado</th>
-          <th><a href="reporteventainactiva.php"><button type="button" class="btn btn-secondary">Inactivas</button></a></th>
-</thead> 
+            <th>
+              <select name="Est" id="Est">
+                <option value='0'>Todos</option>
+                  <?php while($rs=mysqli_fetch_array($estados)){?>
+                    <option value="<?php echo $rs['idestados'] ?>" <?php if($_GET['est']==$rs['idestados']) echo 'Selected'?>><?php echo $rs['descripcion'];?></option>
+                  <?php }; ?>
+              </select>
+            </th>
+          </thead> 
 <?php
         
   
@@ -108,11 +133,11 @@
       <div class="container" style="padding-top:40px">
                         <nav arial-label="page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $_GET['pagina'] - 1 ?>">Anterior</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&est=<?php echo $_GET['est'];?>">Anterior</a></li>
                                 <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                    <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $i ?>&est=<?php echo $_GET['est'];?>"><?php echo $i ?></a></li>
                                 <?php endfor ?>
-                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $_GET['pagina'] + 1 ?>">Siguiente</a></li>
+                                <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>"><a class="page-link" href="reporteventa.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&est=<?php echo $_GET['est'];?>">Siguiente</a></li>
                             </ul>
                         </nav>
                     </div>

@@ -14,23 +14,13 @@ if (isset($_POST['btnModificar']) && !empty($_POST['btnModificar'])) {
 
 	$update=mysqli_query($conexion,"UPDATE grupo_usuarios SET idgrupo=$rol WHERE idusuario=$usuario_anterior");
    header("location:listarUsuario.php");
-
-	
-
 }
-if (isset($_POST['idusuario']) && !empty($_POST['idusuario'])) {
+
+if (isset($_POST['Activar']) && !empty($_POST['Activar'])) {
 	
 	$idUsuario = $_POST['idusuario'];
-	$delete=mysqli_query($conexion, "Update usuarios set idestado = 2 where idusuario=$idUsuario");
-	header("location:listarUsuario.php");
-
-}
-
-if (isset($_POST['activar']) && !empty($_POST['activar'])) {
-	
-	$idUsuario = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update usuarios set idestado = 1 where idusuario=$idUsuario");
-	header("location:usuariosinactivos.php");
+	header("location:listarUsuario.php?pagina=1&est=2");
 
 }
 if (isset($_POST['Cancelar']) && !empty($_POST['Cancelar'])) {
@@ -57,5 +47,12 @@ if (isset($_POST['Cambiar']) && !empty($_POST['Cambiar'])) {
 	echo $idusua . "   " . $password;
     $actualizar=mysqli_query($conexion,"UPDATE usuarios SET contrasenia='$password' WHERE idusuario=$idusua");
 	header("location:gestionPerfil.php?estado=1");
+}
+
+if (isset($_POST['delete']) && !empty($_POST['delete'])) {
+	$idUsuario = $_POST['id'];
+	$est=$_POST['est'];
+	$delete=mysqli_query($conexion, "Update usuarios Set idestado = 2 where idusuario=$idUsuario");
+	header("location:listarUsuario.php?pagina=1&est=1");
 }
 ?>
