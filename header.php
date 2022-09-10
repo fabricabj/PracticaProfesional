@@ -64,6 +64,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                         <a class="btn btn-light user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <?php echo $nombre_usuario; ?><i class="fas fa-user-alt"></i>
                                         </a>
+                                                   
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <?php
                                             $idgrupo = $_SESSION['grupo'];
@@ -101,11 +102,6 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                             <button type="submit" class="dropdown-item">Mis favoritos</button>
                                                         </form>
                                                     <?php break;
-                                                    case "comprar pelicula": ?>
-                                                        <form method="POST" action="carrito.php">
-                                                            <button type="submit" class="dropdown-item">Carrito</button>
-                                                        </form>
-                                                    <?php break;
                                                     case "gestion perfil": ?>
                                                         <form method="POST" action="gestionPerfil.php">
                                                             <button type="submit" class="dropdown-item">Gestionar perfil</button>
@@ -127,9 +123,9 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "Mis compras": ?>
-                                                        <form method="POST" action="miscompras.php">
-                                                            <button type="submit" class="dropdown-item">Ver mis compras</button>
-                                                        </form>
+                                                        <!--<form method="POST" action="miscompras.php">-->
+                                                        <a href="miscompras.php?pagina=1&est=1" class="dropdown-item">Ver mis compras</a>
+                                                        <!--</form>-->
                                                     <?php break;
                                                     case "reporte ventas": ?>
                                                         <!--<form method="POST" action="reporteventa.php">-->
@@ -148,6 +144,23 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                             </form>
                                         </div>
                                     </li>
+                                <li>
+                                <?php
+                                        $idgrupo = $_SESSION['grupo'];
+                                        $permisos2 = mysqli_query($conexion, "SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
+                                        while ($ss = mysqli_fetch_array($permisos2)) {
+                                        $nombrePermiso1 = $ss['nombre_permiso'];
+                                            switch ($nombrePermiso1) {
+                                                case "comprar pelicula": ?>
+                                                        <!--<form method="POST" action="carrito.php">
+                                                            <button type="submit" class="dropdown-item"><i class='fa-solid fa-shop'></i></button>-->
+                                                            <a href="carrito.php" style="float: left;margin: 2px;border-radius:30px" class="btn btn-light"><i class='fa fa-cart-arrow-down'></i></a>
+                                                        <!--</form>-->
+                                                    <?php break;
+                                            }
+                                        }
+                                                    ?>
+                                </li>
                                 <?php endif ?>
                             </ul>
                         </div>

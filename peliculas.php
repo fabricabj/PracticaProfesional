@@ -68,6 +68,7 @@
                                   <p><strong>Precio: </strong><?php echo "$".$r['precio']; ?></p>
                               </div>
                               <br>
+                              <div style="padding-top:50px">
                                   <?php  
                                   if(isset($_SESSION['login'])){
                                   $idgrupo=$_SESSION['grupo'];
@@ -79,18 +80,18 @@
                                               if($f=mysqli_fetch_array($seletFavoritos)){?>
                                                  <input type="text" name="quitar" id="quitar" value="quitar" hidden>
                                                  <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
-                                                 <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="eliminarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Quitar</a>
+                                                 <a style="float: left;margin: 4px;border-radius:30px" class="btn btn-dark" href="#" onclick="eliminarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)"><i class='fa fa-heart'></i></a>
                                         <?php }else{?>
                                                  <input type="text" name="agregar" id="agregar" value="agregar" hidden>
                                                  <input type="text" name="genero" id="genero" value="<?php echo $peliculas;?>" hidden>
-                                                 <a style="width:100%" class="btn btn-dark card-text" href="#" onclick="agregarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)">Agregar</a>
+                                                 <a style="float: left;margin: 4px;border-radius:30px" class="btn btn-dark" href="#" onclick="agregarFav(<?php echo $r['idpelicula']?>,<?php echo $_SESSION['login'];?>,<?php echo $_GET['pagina']?>)"><i class='fa fa-heart-o'></i></a>
                                         <?php }
                                         break;
                                       }
                                       } 
                                     }?>
                               
-                              <div style="padding-top:50px">
+                              
                               <?php 
                  
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
@@ -102,24 +103,20 @@
                                     switch($nombrePermiso) {
                                     case "modificar pelicula": ?>     
                                    <form method="POST" action="altaMod.php">
-                                        <button style="float: left;margin: 5px;border-radius:30px" type="submit" name="titulo" value="<?php echo $r['titulo']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
+                                        <button style="float: left;margin: 4px;border-radius:30px" type="submit" name="titulo" value="<?php echo $r['titulo']; ?>" class="btn btn-dark"><i class="fas fa-pencil-alt"></i></button>
                                    </form>
                                    <?php break;
                                      case "baja pelicula": ?>
                                         
-                                        <a style="float: left;margin: 5px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                        <a style="float: left;margin: 4px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula']; ?>"><i class="fas fa-trash-alt"></i></a>
                                    <?php break;
                                     }
                                   }
                                 }
                                 ?>
-                                    <div style="padding-top:5px;">
 
-                                        <a title="más informacion" style="float: right;margin-right:5px;border-radius:30px" class="btn btn-dark card-text" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" onclick="vistos(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>);"><i class="fas fa-info-circle"></i></a>
-                                        
-                                        
-                                    </div>
-                                    
+                                <a title="más informacion" style="float: right;margin: 4px;border-radius:30px" class="btn btn-dark" href="#" data-toggle="modal" data-target="#info<?php echo $r['idpelicula'];?>" onclick="vistos(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>);"><i class="fas fa-info-circle"></i></a>
+    
                                 </div>
                           </div>
                     </div>
