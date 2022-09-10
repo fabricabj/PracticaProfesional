@@ -23,11 +23,11 @@ $cont=$_POST['total'];
                         <div class="row">
                             <div class="col-md-6 form-group" id="password-group">
                                 <input type="text" name="total" id="total" value="<?php echo $cont?>" hidden>
-                                <button align="center" style="margin-top:7%;width:50%" name="tarjeta" value="tarjeta" type="submit" class="btn btn-dark">Tarjeta</button>
+                                <button align="center" style="margin-top:7%;width:50%" name="tarjeta" value="tarjeta" type="submit" class="btn btn-dark"><i class='fa fa-credit-card-alt'></i> Tarjeta</button>
                             </div>
                             <div class="col-md-6 form-group" id="password-group">
                                 <input type="text" name="total" id="total" value="<?php echo $cont?>" hidden>
-                                <button align="center" style="margin-top:7%;width:50%" name="transferencia" value="transferencia" type="submit" class="btn btn-dark">Transferencia</button>
+                                <button align="center" style="margin-top:7%;width:50%" name="transferencia" value="transferencia" type="submit" class="btn btn-dark"><i class='fa fa-bank'></i> Transferencia</button>
                             </div>
                         </div>
                     </div>  

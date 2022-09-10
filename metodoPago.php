@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-12 form-group" id="password-group">
                             <label for="contra">Nro tarjeta</label>
-                            <input type="text" class="form-control" name="nTarjeta" id="nTarjeta" onkeyup="this.value=NumerosTar(this.value)" required>
+                            <input type="text" class="form-control" name="nTarjeta" id="nTarjeta" placeholder="0000-0000-0000-0000" onkeyup="this.value=NumerosTar(this.value)" required>
                             <input type="text" class="form-control" name="fechaPago" id="fechaPago" value="'.$fechaActual.'" hidden>
                             <input type="text" class="form-control" name="tipoPago" id="tipoPago" value="1" hidden>
                         </div>

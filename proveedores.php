@@ -18,7 +18,7 @@ if(!isset($_GET['pagina'])){
   include "conexion.php";
   $est=$_GET['est'];
 $sql = "SELECT * FROM proveedores WHERE idestado = $est";
-$estados=mysqli_query($conexion,"SELECT * FROM estados_provedores ORDER BY descripcion ASC");
+$estados=mysqli_query($conexion,"SELECT * FROM estados_provedores ORDER BY descripcion DESC");
 $consulta = mysqli_query($conexion,$sql);
 if(isset($_GET['orden'])){
 if(isset($_GET['ascendente'])){

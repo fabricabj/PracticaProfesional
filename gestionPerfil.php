@@ -144,34 +144,35 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
                     <a class="btn btn-dark" href="#" data-toggle="modal" data-target="#contra">Cambiar Contraseña</a>
                     <!--<a  class="btn btn-dark" style="margin-top: 3%;width: 100%;" href="#" data-toggle="modal" data-target="#contrasenia"><i class="fas fa-save"></i> Cambiar contraseña</a>-->
                 </div>
-            </div>            
+            </div>          
         </div>
     </div>
-</div>
-<div data-backdrop="static" class="modal fade" id="contra">
-    <div class="col-md-12 modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Cambiar contraseña</h4>
-                <button type="button" class="close" data-dismiss="modal">X</button>
-            </div>
-            <div class="col-md-12" style="background:#e0e0e0">
-                <div class="modal-body">
-                    <form action="abm_usuario.php" method="POST">
-                        <div class="form-group" id="password-group">
-                            <label for="contra">Contraseña</label>
-                            <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" require>
-                            <input type="text" cñass="form-control" name="id" id="id" value="<?php echo $_SESSION['login'];?>" hidden>
-                        </div>
-                        <div align="center" class="form-group">
-                            <button style="margin-top:7%;width:50%" name="Enviar" value="Enviar" type="submit" class="btn btn-light">Enviar</button>
-                        </div>
-                    </form>
+    <div data-backdrop="static" class="modal fade" id="contra">
+        <div class="col-md-12 modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cambiar contraseña</h4>
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                </div>
+                <div class="col-md-12" style="background:#e0e0e0">
+                    <div class="modal-body">
+                        <form action="abm_usuario.php" method="POST">
+                            <div class="form-group" id="password-group">
+                                <label for="contra">Contraseña</label>
+                                <input type="password" class="form-control" name="contrasenia" id="contrasenia" onkeypress="return check(event)" placeholder="Ingrese su contraseña" require>
+                                <input type="text" cñass="form-control" name="id" id="id" value="<?php echo $_SESSION['login'];?>" hidden>
+                            </div>
+                            <div align="center" class="form-group">
+                                <button style="margin-top:7%;width:50%" name="Enviar" value="Enviar" type="submit" class="btn btn-light">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <?php if(isset($_GET['estado'])&& $_GET['estado']==1){

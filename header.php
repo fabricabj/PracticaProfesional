@@ -74,73 +74,73 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                 switch ($nombrePermiso) {
                                                     case "asignar permisos": ?>
                                                         <form method="POST" action="asignarpermisos.php">
-                                                            <button type="submit" class="dropdown-item">Asignar permisos</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-users'></i> Asignar permisos</button>
                                                         </form>
                                                     <?php break;
                                                     case "buscar proveedores": ?>
                                                         <!--<form method="POST" action="proveedores.php">-->
-                                                        <a href="proveedores.php?pagina=1&est=1" class="dropdown-item">Listado proveedores</a>
+                                                        <a href="proveedores.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado proveedores</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar noticias": ?>
                                                         <!--<form method="GET" action="listarNoticias.php?estado=1">-->
-                                                            <a href="listarNoticias.php?pagina=1&est=1" class="dropdown-item">Listado noticias</a>
+                                                            <a href="listarNoticias.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado noticias</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar pelicula": ?>
                                                         <!--<form method="POST" action="listarpeliculas.php">-->
-                                                            <a href="listarpeliculas.php?pagina=1&est=1" class="dropdown-item">Listado Peliculas</a>
+                                                            <a href="listarpeliculas.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Peliculas</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar usuarios": ?>
                                                         <!--<form method="POST" action="listarUsuario.php">-->
-                                                            <a href="listarUsuario.php?pagina=1&est=1" class="dropdown-item">Listado Usuarios</a>
+                                                            <a href="listarUsuario.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Usuarios</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "favoritos": ?>
                                                         <form method="POST" action="lista.php">
-                                                            <button type="submit" class="dropdown-item">Mis favoritos</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-heart'></i> Mis favoritos</button>
                                                         </form>
                                                     <?php break;
                                                     case "gestion perfil": ?>
                                                         <form method="POST" action="gestionPerfil.php">
-                                                            <button type="submit" class="dropdown-item">Gestionar perfil</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-address-card-o'></i> Gestionar perfil</button>
                                                         </form>
                                                     <?php break;
                                                     case "listado comprobantes": ?>
                                                         <!--<form method="POST" action="listadocomprobante.php">-->
-                                                            <a href="listadocomprobante.php?pagina=1&est=3" class="dropdown-item">Listado comprobantes</a>
+                                                            <a href="listadocomprobante.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado comprobantes</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar estrenos": ?>
                                                         <!--<form method="POST" action="listadoEstrenos.php">-->
-                                                        <a href="listadoEstrenos.php?pagina=1&est=3" class="dropdown-item">Listado estrenos</a>
+                                                        <a href="listadoEstrenos.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado estrenos</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "baja sugerencias": ?>
                                                         <!--<form method="POST" action="listadoSugerencia.php">-->
-                                                        <a href="listadoSugerencia.php?pagina=1&est=2" class="dropdown-item">Listado Sugerencias</a>
+                                                        <a href="listadoSugerencia.php?pagina=1&est=2" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Sugerencias</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "Mis compras": ?>
                                                         <!--<form method="POST" action="miscompras.php">-->
-                                                        <a href="miscompras.php?pagina=1&est=1" class="dropdown-item">Ver mis compras</a>
+                                                        <a href="miscompras.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-shopping-basket'></i> Ver mis compras</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "reporte ventas": ?>
                                                         <!--<form method="POST" action="reporteventa.php">-->
-                                                        <a href="reporteventa.php?pagina=1&est=1" class="dropdown-item">Ver ventas</a>
+                                                        <a href="reporteventa.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-shopping-basket'></i> Ver ventas</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "ver estadisticas": ?>
                                                         <form method="POST" action="verEstadisticas.php">
-                                                            <button type="submit" class="dropdown-item">Ver estadísticas</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-bar-chart-o'></i> Ver estadísticas</button>
                                                         </form>
                                                     <?php break;
                                                 }
                                             } ?>
                                             <form action="logout.php" method="POST">
-                                                <button type="submit" class="dropdown-item" name="borrar">Cerrar Sesión</button>
+                                                <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item" name="borrar"><i class='fa fa-sign-out'></i> Cerrar Sesión</button>
                                             </form>
                                         </div>
                                     </li>
@@ -328,3 +328,4 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
 </body>
 
 </html>
+
