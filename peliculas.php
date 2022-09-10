@@ -49,7 +49,9 @@
                 </div>     
             </div> 
             <div class="container">
+            <h1 align="center" style="color:white"><?php echo $peliculas;?></h1>
               <div class="row">
+                
             <?php 
             
             if (isset($_GET['pagina'])) {

@@ -119,14 +119,14 @@ color:white;
     height: 100%;
 }
 .permisos{
-    background-color: #7986cb;
+    background-color: #212121;
     padding:10px;
     width:100%;
     filter:alpha(opacity=90);
     -moz-opacity:.90;opacity:.90;
 }
 .permisos label{
-    background-color: #7986cb;
+    background-color: #212121;
     font-family: bold;
     font-size: 20px;
     font-style: normal;
@@ -134,18 +134,18 @@ color:white;
 }
 .gestiones{
     background:#fafafa;
-    border: 1px solid #121212;
+    border: 1px solid #4B5052;
 }
 .gestiones p{
     text-align-last: center;
-    background-color: #7986cb;
+    background-color: #4B5052;
     font-family: bold;
     font-size: 20px;
     font-style: italic;
     color:white;
 }
 .botonpermisos{
-    background-color: #5c6bc0;
+    background-color: #4495C4;
     color:white;
 }
 .botonpermisos:hover{

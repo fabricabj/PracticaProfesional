@@ -53,6 +53,7 @@
                 </div>     
             </div> 
             <div class="container">
+            <h1 align="center" style="color:white">Estrenos</h1>
               <div class="row">
             <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
@@ -60,8 +61,12 @@
                               <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" style="width: 200px; height: 200px;"></a>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
+                                  <strong>Duracion: </strong><?php echo $r['duracion']; ?>
+                                  <br><strong>Fecha: </strong><?php echo $r['fecha_publicacion']; ?>
+                                  <br><strong>Categorias: </strong><?php echo $r['categorias']; ?>
                               </div>
-                              <div>
+                              <br>
+                              <div style="padding-top:100px">
                               <?php 
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
                               $idgrupo=$_SESSION['grupo'];

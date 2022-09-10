@@ -52,6 +52,7 @@
                 </div>     
             </div> 
             <div class="container">
+            <h1 align="center" style="color:white">Noticias</h1>
               <div class="row">
             <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
@@ -60,7 +61,8 @@
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['nombre_noticia']; ?></p>
                               </div>
-                              <div>
+                              <br>
+                              <div style="padding-top:50px">
                               <?php 
                               if(isset($_SESSION['login']) && $_SESSION['login'] > 0){
                               $idgrupo=$_SESSION['grupo'];
