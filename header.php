@@ -62,7 +62,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
 
                                     <li class="nav-item">
                                         <a class="btn btn-light user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <?php echo $nombre_usuario; ?><i class="fas fa-user-alt"></i>
+                                            <?php echo $nombre_usuario;  ?>  <i class="fas fa-user-alt"></i>
                                         </a>
                                                    
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -23,8 +23,27 @@
     
     
     require("conexion.php");
+    if (isset($_GET['error'])&& $_GET['error']==1) {
+        echo "<div class='alert alert-danger'>El mail ingresado ya existe, por favor ingrese otro!</div>";
+    }
+    if (isset($_GET['error'])&& $_GET['error']==2) {
+        echo "<div class='alert alert-danger'>Usuario o contraseña incorrecta!</div>";
+    }
+    if (isset($_GET['estado'])&& $_GET['estado']==1) {
+        echo "<div class='alert alert-success'>Usuario registrado con exito!</div>";
+    }
+    if(isset($_GET['retorno'])&& $_GET['retorno']==2){
+        echo "<div class='alert alert-warning'>La pelicula ya fue agregada al carrito anteriormente!</div>";
+    }
+    if(isset($_GET['retorno'])&& $_GET['retorno']==1){
+        echo "<div class='alert alert-success'>Pelicula agregada exitosamente!</div>";
+    }
+    if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
+        echo '<script> alert("Hubo problemas con el envio");</script>';
+    }
     
     ?>
+    
 <div class="container" style="padding-top:40px">
        <div class="row">
         <?php
@@ -143,25 +162,7 @@
      </div>
    </div>
 <?php
-if (isset($_GET['error'])&& $_GET['error']==1) {
-    echo "<script type='text/javascript'>alert('el mail ingresado ya existe, intente con otro.');</script>";
-}
-if (isset($_GET['error'])&& $_GET['error']==2) {
-    echo "<script type='text/javascript'>alert('Usuario o contraseña incorrecto.');</script>";
-}
-if (isset($_GET['estado'])&& $_GET['estado']==1) {
-    echo "<script type='text/javascript'>alert('fue registrado con exito');</script>";
-}
-if(isset($_GET['retorno'])&& $_GET['retorno']==2){
-    echo "<script>alert('La pelicula ya fue agregada al carrito anteriormente');</script>";
-}
-if(isset($_GET['retorno'])&& $_GET['retorno']==1){
-    echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
-}
-if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
-    echo '<script> alert("Hubo problemas con el envio");</script>';
-    
-   }
+
    
 ?>
 <script>
