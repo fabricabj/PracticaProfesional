@@ -61,15 +61,15 @@
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Noticias</h3>
-        <!--<form action="buscarNoticia.php?pagina=1" method="POST">
+        <form action="buscarNoticia.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">-->
-                  <a href="buscarNoticia.php?pagina=1&est=<?php echo GET['est']?>" class="dropdown-item">Buscar Noticia</a>
-                  <!--<div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
+                  <input id="estado" name="estado" type="text" value="<?php echo $_GET['est'];?>" hidden>
+                  <div class="input-group-append">
+                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" name="Buscar" value="Buscar" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
             </div>
-        </form>-->
+        </form>
         <table class="table table-light">
           <thead>
           

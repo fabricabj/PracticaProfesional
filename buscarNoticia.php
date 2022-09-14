@@ -18,13 +18,16 @@
       include "conexion.php";
       
   if (isset($_GET['pagina'])) {
-    require("header.php");
-    $nombre_noticia=$_POST['nombre_noticia']; 
-  $sql = "SELECT * FROM noticias WHERE (nombre_noticia like '%$nombre_noticia%') AND idestado=1";
+    require("header.php"); 
+
+       $nombre_noticia=$_POST['nombre_noticia'];
+       $est=$_POST['estado'];
+
+  $sql = "SELECT * FROM noticias WHERE (nombre_noticia like '%$nombre_noticia%') AND idestado=$est";
   $consulta = mysqli_query($conexion,$sql);
-  if(isset($_GET['orden'])){
-    if(isset($_GET['ascendente'])){
-      if($_GET['ascendente']==1){
+  if(isset($_POST['orden'])){
+    if(isset($_POST['ascendente'])){
+      if($_POST['ascendente']==1){
         $sql2 = " ASC";
         $asc = 0;
       }else{
@@ -32,7 +35,7 @@
         $asc = 1;
       }
     }
-    $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
+    $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
   }
   $noticias_x_pag = 2;
   $total_noticias = mysqli_num_rows($consulta);
@@ -60,11 +63,30 @@
         </form>
         <table class="table table-light">
           <thead>
-          
-            <th scope ="col"><a href="buscarNoticia.php?pagina=1&orden=idnoticia&ascendente=<?php echo $asc; ?>" >Id</a></th>
-            <th scope ="col"><a href="buscarNoticia.php?pagina=1&orden=nombre_noticia&ascendente=<?php echo $asc; ?>" >Nombre Noticia</a></th>
-            <th scope ="col"><a href="buscarNoticia.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripciòn</a></th>
-
+            <form action="buscarNoticia.php?pagina=1" method="POST">
+               <th scope ="col">
+                <input type="text" id="orden" name="orden" value="idnoticia" hidden>
+                <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
+                <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
+                <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
+                <button type="submit" name="Id" value="Id">Id</button>
+            </form>
+            <form action="buscarNoticia.php?pagina=1" method="POST">
+               <th scope ="col">
+                <input type="text" id="orden" name="orden" value="nombre_noticia" hidden>
+                <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
+                <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
+                <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
+                <button type="submit" name="nombre" value="nomre">Nombre</button>
+            </form>
+            <form action="buscarNoticia.php?pagina=1" method="POST">
+               <th scope ="col">
+                <input type="text" id="orden" name="orden" value="descripcion" hidden>
+                <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
+                <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
+                <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
+                <button type="submit" name="descripcion" value="descripcion">Descripcion</button>
+            </form>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
             <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
