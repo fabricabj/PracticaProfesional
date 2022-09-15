@@ -4,15 +4,11 @@ $select3=mysqli_query($conexion,"SELECT idpais,nombre FROM paises ORDER BY nombr
 $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FROM provincias ORDER BY nombre_provincia ASC");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <title>Inicio de afl cinema</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="estilos.css">
+    
 </head>
 
 <body>
@@ -178,9 +174,6 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
 <?php if(isset($_GET['estado'])&& $_GET['estado']==1){
     echo "<script>alert('Perfil actualizado con exito');</script>";
 }?>
-<script type="text/javascript" src="jquery.min.js"></script>
-<script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/2be8605e79.js"></script>
   <script>
 
 function Numeros(string){

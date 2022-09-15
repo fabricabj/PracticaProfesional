@@ -163,7 +163,6 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 		
 		$idNoticia = $_POST['id'];
-		$est=$_POST['est'];
 		$delete=mysqli_query($conexion, "update noticias set idestado = 2 where idnoticia='$idNoticia'");
 	}
 

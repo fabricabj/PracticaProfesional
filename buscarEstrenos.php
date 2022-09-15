@@ -60,8 +60,6 @@
             <th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>" >Descripción</a></th>
             <<th scope ="col"><a href="listadoEstrenos.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>" > Año</a></th>
             <th scope ="col">Estado</th>
-            <th><form action="altaEstrenos.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="estrenosinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
 </thead> 
 <?php
   

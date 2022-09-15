@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias</title>
+    <style>
+      .ordenButton{
+         border: none;
+         color:#2979ff;
+         font-weight: bold;
+       
+       }
+       .ordenButton:hover{
+         color:#1565c0;
+         text-decoration: underline;
+       }
+       
+    </style>
+
 </head>
 
 <body>
@@ -49,16 +63,12 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Noticias</h3>
         <form action="buscarNoticia.php?pagina=1" method="POST">
-         
              <div class="input-group-prepend">
-   
-    
-      
-                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese noticia a buscar">
+                  <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
+                  <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
                   <div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" name="Buscar" value="Buscar" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
-
             </div>
         </form>
         <table class="table table-light">
@@ -69,7 +79,7 @@
                 <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
                 <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
                 <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
-                <button type="submit" name="Id" value="Id">Id</button>
+                <button type="submit" class="ordenButton" name="Id" value="Id">Id</button>
             </form>
             <form action="buscarNoticia.php?pagina=1" method="POST">
                <th scope ="col">
@@ -77,7 +87,7 @@
                 <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
                 <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
                 <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
-                <button type="submit" name="nombre" value="nomre">Nombre</button>
+                <button type="submit" class="ordenButton" name="nombre" value="nomre">Nombre</button>
             </form>
             <form action="buscarNoticia.php?pagina=1" method="POST">
                <th scope ="col">
@@ -85,12 +95,11 @@
                 <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
                 <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
                 <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
-                <button type="submit" name="descripcion" value="descripcion">Descripcion</button>
+                <button type="submit" class="ordenButton" name="descripcion" value="descripcion">Descripcion</button>
             </form>
             <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
-            <th><form action="altaNoticia.php" method="POST"> <button name='alta' value='alta' class="btn btn-warning">Nuevo</button></form></th>
-          <th><a href="noticiasinactivas.php"><button type="button" class="btn btn-secondary">Inactivos</button></a></th>
+            
  
    
 </thead> 
@@ -118,11 +127,19 @@
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-              echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='idnoticia' id='idnoticia' value='".$fila['idnoticia']."'hidden>
-                    <button type='submit' class='btn btn-danger' name='btnEliminar' id='btnEliminar' value='btnEliminar'>Eliminar</button>
+            if($est==1){   
+              echo "<td><input type='text' name='eliminarNoticia' id='eliminarNoticia' value='eliminarNoticia' hidden>
+                    <input type='text' name='pagina' id='pagina' value='".$_GET['pagina']."' hidden>
+                    <a style='margin: 5px;' href='#' onclick='eliminarNoticia(".$fila['idnoticia'].",".$_GET['pagina'].",".$est.")' class='btn btn-danger'>Inactivar</a></td>';
                 </form>
             </td>";
+            }else{
+              echo "<td><form action='abm_noticias.php' method='post'>
+                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
+                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
+                </form>
+            </td>";
+            }
      
     }
 
@@ -137,6 +154,7 @@
     <ul class="pagination justify-content-center">
       <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
         <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
+          <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
           <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
           <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
           
@@ -145,6 +163,7 @@
       <?php for ($i = 1; $i <= $paginas; $i++) : ?>
        <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>">
          <form action="buscarNoticia.php?pagina=<?php echo $i ?>" method="POST">
+          <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
           <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
           <button name="buscar" value="buscar" class="page-link" id="button-addon2"><?php echo $i ?></button>
         </form>
@@ -152,6 +171,7 @@
     <?php endfor ?>
     <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
      <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" method="POST">
+      <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
       <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
       <button name="buscar" value="buscar" class="page-link" id="button-addon2">Siguiente</button>
     </form>
@@ -165,6 +185,33 @@
             echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
+<script>
+  function eliminarNoticia(idNoticia,pagina,estado){
+      var eliminar = confirm('De verdad desea inactivar esta noticia');
+      var eliminarNoticia=document.getElementById('eliminarNoticia').value;
+      if ( eliminar ) {
+          
+          $.ajax({
+              url: 'abm_noticias.php',
+              type: 'POST',
+              data: { 
+                  id: idNoticia,
+                  delete: eliminarNoticia,
+                  est: estado,
+              
+              },
+          })
+          .done(function(response){
+              $("#result").html(response);
+          })
+          .fail(function(jqXHR){
+              console.log(jqXHR.statusText);
+          });
+          alert('La noticia ha sido inactivada');
+          window.location.href ='listarNoticias.php?pagina='+pagina+'&est='+estado;
+      }
+  } 
+</script>
 
 </body>
 
