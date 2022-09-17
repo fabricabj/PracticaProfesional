@@ -63,10 +63,11 @@
         <h3 class="text-center text-white">Listado de Estrenos</h3>
          <form action="buscarEstrenos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
-                  <div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
-                  </div>
+                  <input id="nombre_estreno" name="nombre_estreno" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
+                  <input id="estado" name="estado" type="text" value="<?php echo $_GET['est'];?>" hidden>
+                <div class="input-group-append">
+                  <button style="border-color: white" class="btn btn-outline-dark" type="submit" name="Buscar" value="Buscar" id="button-addon2"><i class="fas fa-search"></i></button>
+                </div>
             </div>
         </form>
         <table class="table table-light">
@@ -126,7 +127,7 @@
                     <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
                   </form>
             </td>";
-          }
+            }
     }
 
   ?>

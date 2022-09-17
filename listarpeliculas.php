@@ -62,14 +62,11 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Películas</h3>
         <form action="buscarPelicula.php?pagina=1" method="POST">
-         
              <div class="input-group-prepend">
-   
-    
-      
-                  <input id="titulo" name="titulo" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
-                  <div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+             <input id="nombre_pelicula" name="nombre_pelicula" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
+                  <input id="estado" name="estado" type="text" value="<?php echo $_GET['est'];?>" hidden>
+                <div class="input-group-append">
+                  <button style="border-color: white" class="btn btn-outline-dark" type="submit" name="Buscar" value="Buscar" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
 
             </div>

@@ -97,7 +97,6 @@
                 <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
                 <button type="submit" class="ordenButton" name="descripcion" value="descripcion">Descripcion</button>
             </form>
-            <!--<th scope ="col"><a href="listarNoticias.php?pagina=1&orden=mail&ascendente=<?php echo $asc; ?>" > Mail</a></th>-->
             <th scope ="col">Estado</th>
             
  
@@ -111,7 +110,6 @@
       echo "<td>"; echo $fila['idnoticia']; echo "</td>";
       echo "<td>"; echo $fila['nombre_noticia']; echo "</td>";
       echo "<td>"; echo $fila['descripcion']; echo "</td>";
-      //echo "<td>"; echo $fila['idestado']; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestado FROM noticias WHERE idnoticia='{$fila['idnoticia']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestado'];
@@ -127,19 +125,19 @@
                     <button type='submit' class='btn btn-success'>Modificar</button>
                 </form>
             </td>";
-            if($est==1){   
-              echo "<td><input type='text' name='eliminarNoticia' id='eliminarNoticia' value='eliminarNoticia' hidden>
-                    <input type='text' name='pagina' id='pagina' value='".$_GET['pagina']."' hidden>
-                    <a style='margin: 5px;' href='#' onclick='eliminarNoticia(".$fila['idnoticia'].",".$_GET['pagina'].",".$est.")' class='btn btn-danger'>Inactivar</a></td>';
-                </form>
-            </td>";
-            }else{
-              echo "<td><form action='abm_noticias.php' method='post'>
-                    <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
-                    <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
-                </form>
-            </td>";
-            }
+      if($est==1){   
+        echo "<td><input type='text' name='eliminarNoticia' id='eliminarNoticia' value='eliminarNoticia' hidden>
+              <input type='text' name='pagina' id='pagina' value='".$_GET['pagina']."' hidden>
+              <a style='margin: 5px;' href='#' onclick='eliminarNoticia(".$fila['idnoticia'].",".$_GET['pagina'].",".$est.")' class='btn btn-danger'>Inactivar</a></td>';
+          </form>
+      </td>";
+      }else{
+        echo "<td><form action='abm_noticias.php' method='post'>
+              <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
+              <button class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
+          </form>
+      </td>";
+      }
      
     }
 
@@ -150,35 +148,34 @@
       </div>
   </div>
   <div class="container" style="padding-top:40px">
-  <nav arial-label="page navigation">
-    <ul class="pagination justify-content-center">
-      <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
-        <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
-          <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
-          <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
-          
-        </form>
-      </li>
-      <?php for ($i = 1; $i <= $paginas; $i++) : ?>
-       <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>">
-         <form action="buscarNoticia.php?pagina=<?php echo $i ?>" method="POST">
-          <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
-          <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-          <button name="buscar" value="buscar" class="page-link" id="button-addon2"><?php echo $i ?></button>
-        </form>
-      </li>
-    <?php endfor ?>
-    <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
-     <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" method="POST">
-      <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
-      <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-      <button name="buscar" value="buscar" class="page-link" id="button-addon2">Siguiente</button>
-    </form>
-  </li>
-</ul>
-</nav>
-</div>
+    <nav arial-label="page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item <?php echo $_GET['pagina'] <= 1 ? 'disabled' : '' ?>">
+          <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
+            <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
+            <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+            <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+          </form>
+        </li>
+        <?php for ($i = 1; $i <= $paginas; $i++) : ?>
+        <li class="<?php echo $_GET['pagina'] == $i ? 'active' : '' ?>">
+          <form action="buscarNoticia.php?pagina=<?php echo $i ?>" method="POST">
+            <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
+            <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+            <button name="buscar" value="buscar" class="page-link" id="button-addon2"><?php echo $i ?></button>
+          </form>
+        </li>
+        <?php endfor ?>
+        <li class="page-item <?php echo $_GET['pagina'] >= $paginas ? 'disabled' : '' ?>">
+          <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" method="POST">
+            <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
+            <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
+            <button name="buscar" value="buscar" class="page-link" id="button-addon2">Siguiente</button>
+          </form>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {
