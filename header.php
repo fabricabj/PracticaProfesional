@@ -74,17 +74,17 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                 switch ($nombrePermiso) {
                                                     case "asignar permisos": ?>
                                                         <form method="POST" action="asignarpermisos.php">
-                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-users'></i> Asignar permisos</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-users'></i> Asignar Permisos</button>
                                                         </form>
                                                     <?php break;
                                                     case "buscar proveedores": ?>
                                                         <!--<form method="POST" action="proveedores.php">-->
-                                                        <a href="proveedores.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado proveedores</a>
+                                                        <a href="proveedores.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Proveedores</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar noticias": ?>
                                                         <!--<form method="GET" action="listarNoticias.php?estado=1">-->
-                                                            <a href="listarNoticias.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado noticias</a>
+                                                            <a href="listarNoticias.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Noticias</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar pelicula": ?>
@@ -99,22 +99,22 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     <?php break;
                                                     case "favoritos": ?>
                                                         <form method="POST" action="lista.php">
-                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-heart'></i> Mis favoritos</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-heart'></i> Mis Favoritos</button>
                                                         </form>
                                                     <?php break;
                                                     case "gestion perfil": ?>
                                                         <form method="POST" action="gestionPerfil.php">
-                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-address-card-o'></i> Gestionar perfil</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-address-card-o'></i> Gestionar Perfil</button>
                                                         </form>
                                                     <?php break;
                                                     case "listado comprobantes": ?>
                                                         <!--<form method="POST" action="listadocomprobante.php">-->
-                                                            <a href="listadocomprobante.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado comprobantes</a>
+                                                            <a href="listadocomprobante.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Comprobantes</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar estrenos": ?>
                                                         <!--<form method="POST" action="listadoEstrenos.php">-->
-                                                        <a href="listadoEstrenos.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado estrenos</a>
+                                                        <a href="listadoEstrenos.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Estrenos</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "baja sugerencias": ?>
@@ -134,7 +134,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     <?php break;
                                                     case "ver estadisticas": ?>
                                                         <form method="POST" action="verEstadisticas.php">
-                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-bar-chart-o'></i> Ver estadísticas</button>
+                                                            <button type="submit" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-bar-chart-o'></i> Ver Estadísticas</button>
                                                         </form>
                                                     <?php break;
                                                 }
@@ -254,7 +254,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Repetir Contraseña</label>
-                                            <input type="password" class="form-control" id="contrasenia2" onkeypress="return check(event)" placeholder="Ingrese su contraseña" required>
+                                            <input type="password" class="form-control" id="contrasenia2" onkeypress="return check(event)" placeholder="Repetir su contraseña" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12" align="center">
@@ -284,7 +284,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                     <input type="email" class="form-control" name="mail" id="mail" require placeholder="Ingrese su email">
                                 </div>
 
-                                <button style="margin-top:7%;width:50%" name="buscar" value="buscar" type="submit" class="btn btn-light">buscar</button>
+                                <button style="margin-top:7%;width:50%" name="buscar" value="buscar" type="submit" class="btn btn-light">Buscar</button>
                         </div>
                         </form>
                     </div>
@@ -302,7 +302,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
             var msg = "ERROR: \n";
 
             if (v.elements['contrasenia'].value != v.elements['contrasenia2'].value) {
-                msg += "las contraseñas no coinciden \n";
+                msg += "Las contraseñas no coinciden \n";
                 ok = false;
             }
             if (ok == false) {

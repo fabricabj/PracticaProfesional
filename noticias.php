@@ -38,7 +38,7 @@
                                 case "alta noticias": ?>
                                         <li class="nav-item" style="margin:3px">
                                             <form method="POST" action="altaNoticia.php">
-                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta noticia</button>
+                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta Noticia</button>
                                             </form>
                                         </li> 
                                         
@@ -148,7 +148,7 @@
     </div>
          <script>
                         function eliminarNoticia(idNoticia){
-                            var eliminar = confirm('De verdad desea eliminar esta noticia');
+                            var eliminar = confirm('De verdad desea eliminar está noticia');
                             var eliminarNoticia=document.getElementById('eliminarNoticia').value;
                             if ( eliminar ) {
                                 

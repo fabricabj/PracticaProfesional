@@ -37,7 +37,7 @@
                                 case "alta pelicula": ?>
                                         <li class="nav-item" style="margin:3px">
                                             <form method="POST" action="altaMod.php">
-                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta película</button>
+                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta Película</button>
                                             </form>
                                         </li> 
                         <?php     break;
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <h6><strong>Título: </strong><?php echo $r['titulo']; ?></h6>
-                                                <h6><strong>Genero: </strong><?php echo $r['categorias']; ?></h6>
+                                                <h6><strong>Género: </strong><?php echo $r['categorias']; ?></h6>
                                                 <h6><strong>Duración: </strong><?php echo $r['duracion']." min"; ?></h6>
                                                 <h6><strong>Puntaje: </strong><?php echo "<i class='fas fa-star'></i>" .$r['puntaje']; ?></h6>
                                                 <h6><strong>Año: </strong><?php echo $r['anio']; ?></h6>
@@ -225,23 +225,23 @@
                             $idPelicula = $_GET['idpelicula'];
                             $prod = mysqli_query($conexion, "select * from favoritos where idusuario={$_SESSION['login']} and idpelicula='$idPelicula'");
                             if (mysqli_num_rows($prod) > 0) {
-                                echo "<script>alert('no puede agregar una pelicula que ya se encuentra en la lista');</script>";
+                                echo "<script>alert('No puede agregar una película que ya se encuentra en la lista');</script>";
                             } else {
                                 $insertar = mysqli_query($conexion, "insert into favoritos(idusuario,idpelicula)values('{$_SESSION['login']}','$idPelicula')");
                                 echo "<script>alert('pelicula agregada');</script>";
                             }
                         }
                         if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==2){
-                            echo "<script>alert('La pelicula ya fue agregada al carrito anteriormente');</script>";
+                            echo "<script>alert('La película ya fue agregada al carrito anteriormente');</script>";
                         }
                         if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==1){
-                            echo "<script>alert('La pelicula fue agregada exitosamente!');</script>";
+                            echo "<script>alert('La película fue agregada exitosamente!');</script>";
                         }
                                             
                     ?>
                     <script>
                         function eliminarPelicula(idPelicula,pagina){
-                            var eliminar = confirm('De verdad desea eliminar esta pelicula');
+                            var eliminar = confirm('De verdad desea eliminar esta película');
                             var categoria=document.getElementById('categ').value;
                             var eliminarPelicula=document.getElementById('eliminarPelicula').value;
                             if ( eliminar ) {
@@ -261,12 +261,12 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La pelicula ha sido eliminada');
+                                alert('La película ha sido eliminada');
                                 window.location.href ='peliculas.php?genero='+categoria+'&pagina='+pagina;
                             }
                         } 
                         function eliminarFav(idPelicula,idUsuario,pagina){
-                            var eliminar = confirm('De verdad desea quitar esta pelicula de favoritos?');
+                            var eliminar = confirm('De verdad desea quitar está película de favoritos?');
                             
                             var quitar=document.getElementById('quitar').value;
                             var genero=document.getElementById('genero').value;
@@ -295,7 +295,7 @@
                             }
                     } 
                     function agregarFav(idPelicula,idUsuario,pagina){
-                            var agregar = confirm('De verdad desea agregar esta pelicula de favoritos?');
+                            var agregar = confirm('De verdad desea agregar está película de favoritos?');
                             
                             var agregar=document.getElementById('agregar').value;
                             var genero=document.getElementById('genero').value;

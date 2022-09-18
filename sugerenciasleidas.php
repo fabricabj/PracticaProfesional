@@ -50,7 +50,7 @@
                         <th scope="col"><a href="sugerenciasleidas.php?pagina=1&orden=descripcion&ascendente=<?php echo $asc; ?>">Descripción</a></th>
                         <th scope="col"><a href="sugerenciasleidas.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>">Usuario</a></th>
                         <th scope="col">Estado</th>
-                        <th><a href="listadoSugerencia.php"><button type="button" class="btn btn-primary">No leídas</button></a></th>
+                        <th><a href="listadoSugerencia.php"><button type="button" class="btn btn-primary">No Leídas</button></a></th>
 
                     </thead>
                     <?php
@@ -117,7 +117,7 @@
     <?php
 
     if (isset($_GET['estado']) && $_GET['estado'] == 1) {
-        echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+        echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
     }
     ?>
 

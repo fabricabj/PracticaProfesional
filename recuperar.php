@@ -33,11 +33,11 @@
                        <form action="recuperar.php?idusuario=<?php echo $r['idusuario'];?>&cambiar" method="POST" style="width:50%" class="rp">
                             <div class="form-row">
                                <div class="form-group col-md-12">
-                                  <label for="inputEmail4" style="color:white">Contraseña nueva</label>
-                                  <input type="password" class="form-control" name="contr" id="contr" placeholder="ingrese su contraseña nueva">
+                                  <label for="inputEmail4" style="color:white">Contraseña Nueva</label>
+                                  <input type="password" class="form-control" name="contr" id="contr" placeholder="Ingrese su contraseña nueva">
                                </div>
                                <div class="form-group col-md-12">
-                                  <label for="inputPassword4" style="color:white">Repetir contraseña</label>
+                                  <label for="inputPassword4" style="color:white">Repetir Contraseña</label>
                                   <input type="password" class="form-control" id="contr2" placeholder="Repetir contraseña">
                                </div>
                             </div>

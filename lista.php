@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Mi lista</title>
+  <title>Mi Lista</title>
   <style>
     .lista img {
       width: 120px;
@@ -45,7 +45,7 @@
                   </div>
                   <div align="center" class="col-md-4 lista">
                     <br><br><br>
-                    <a style="text-decoration:underline;cursor:pointer; float: left;margin-right:5px;border-radius:30px;margin-top: 2%" class="btn btn-danger card-text" href="#" onclick="eliminarDato(<?php echo $r['idpelicula']?>)">Quitar de favoritos</a>
+                    <a style="text-decoration:underline;cursor:pointer; float: left;margin-right:5px;border-radius:30px;margin-top: 2%" class="btn btn-danger card-text" href="#" onclick="eliminarDato(<?php echo $r['idpelicula']?>)">Quitar de Favoritos</a>
                   </div>
                   
                 </div>
@@ -58,7 +58,7 @@
     </div>
   </div>
   <?php if (isset($_GET['estado']) && $_GET['estado'] == 1) {
-    echo "<script>alert('pelicula eliminada de favoritos');</script>";
+    echo "<script>alert('Película eliminada de favoritos');</script>";
   } 
  
   ?>

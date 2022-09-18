@@ -147,7 +147,7 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
         <div class="col-md-12 modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Cambiar contraseña</h4>
+                    <h4 class="modal-title">Cambiar Contraseña</h4>
                     <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
                 <div class="col-md-12" style="background:#e0e0e0">

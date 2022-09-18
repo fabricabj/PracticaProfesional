@@ -20,7 +20,7 @@ require("header.php");
     <table class="table table-dark table-striped">
       <thead>
       
-        <th scope ="col">pelicula</th>
+        <th scope ="col">Película</th>
         <th scope ="col">Precio</th>
         <th scope ="col"></th>
         
@@ -74,7 +74,7 @@ $cont=0;
          
          $('.eliminar').click(function(e){
              e.preventDefault();
-             var eliminar = confirm('De verdad desea eliminar esta pelicula del carrito?');
+             var eliminar = confirm('De verdad desea eliminar esta película del carrito?');
              var id=$(this).attr('data-id');
              if(eliminar){
                   $(this).parentsUntil('.carrito').remove();
@@ -94,7 +94,7 @@ $cont=0;
 <?php 
   
     if (isset($_GET['estado'])&& $_GET['estado']==1) {
-        echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+        echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
     }
     
     ?>

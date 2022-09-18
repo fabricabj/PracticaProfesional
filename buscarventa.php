@@ -58,7 +58,7 @@
           <th scope ="col"><a href="buscarventa.php?pagina=1&orden=idventa&ascendente=<?php echo $asc; ?>" >Id</a></th>
             <th scope ="col"><a href="buscarventa.php?pagina=1&orden=idusuario&ascendente=<?php echo $asc; ?>" >Usuario</a></th>
             <th scope ="col"><a href="buscarventa.php?pagina=1&orden=precio_total&ascendente=<?php echo $asc; ?>" >Precio Total</a></th>
-            <<th scope ="col"><a href="buscarventa.php?pagina=1&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha venta</a></th>
+            <<th scope ="col"><a href="buscarventa.php?pagina=1&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha Venta</a></th>
             <th scope ="col">Estado</th>
           <th><a href="reporteventa.php"><button type="button" class="btn btn-secondary">Activas</button></a></th>
 </thead> 
@@ -137,7 +137,7 @@
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
 

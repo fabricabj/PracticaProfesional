@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar peliculas</title>
+    <title>Listar Películas</title>
     <style>
       .ordenButton{
          border: none;
@@ -107,7 +107,7 @@
                 <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
                 <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
                 <input type="text" id="nombre_pelicula" name="nombre_pelicula" value="<?php echo $_POST['nombre_pelicula'];?>" hidden>
-                <button type="submit" class="ordenButton" name="Id" value="Id">Categorias</button>
+                <button type="submit" class="ordenButton" name="Id" value="Id">Categorías</button>
             </form>
             <th scope ="col">Estado</th>
           </thead> 
@@ -196,7 +196,7 @@
         ?>
         <script>
           function eliminarPelicula(idpelicula,pagina,estado){
-              var eliminar = confirm('De verdad desea Inactivar esta pelicula');
+              var eliminar = confirm('De verdad desea Inactivar esta película');
               var eliminarPelicula=document.getElementById('eliminarPelicula').value;
               if ( eliminar ) {
                   

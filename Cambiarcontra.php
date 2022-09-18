@@ -26,11 +26,11 @@
             <form action="abm_usuario.php" method="POST" style="width:50%" class="rp" onsubmit="return registrar(this)">
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="inputEmail4" style="color:white">Contraseña nueva</label>
-                        <input type="password" class="form-control" name="contr" id="contr" onkeypress="return check(event)" placeholder="ingrese su contraseña nueva">
+                        <label for="inputEmail4" style="color:white">Contraseña Nueva</label>
+                        <input type="password" class="form-control" name="contr" id="contr" onkeypress="return check(event)" placeholder="Ingrese su contraseña nueva">
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="inputPassword4" style="color:white">Repetir contraseña</label>
+                        <label for="inputPassword4" style="color:white">Repetir Contraseña</label>
                         <input type="password" class="form-control" id="contr2" onkeypress="return check(event)" placeholder="Repetir contraseña">
                         <input type="text" class="form-control" id="idusu" name="idusu" value="<?php echo $_SESSION['login']; ?>" hidden>
                     </div>
@@ -45,7 +45,7 @@
             var msg = "ERROR: \n";
 
             if (v.elements['contr'].value != v.elements['contr2'].value) {
-                msg += "las contraseñas no coinciden \n";
+                msg += "Las contraseñas no coinciden \n";
                 ok = false;
             }
             if (ok == false) {

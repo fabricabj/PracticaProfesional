@@ -39,7 +39,7 @@
                                 case "alta estrenos": ?>
                                         <li class="nav-item" style="margin:3px">
                                             <form method="POST" action="altaEstrenos.php">
-                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta estrenos</button>
+                                                <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" name="alta" value="alta"><i class="far fa-arrow-alt-circle-up"></i>Alta Estrenos</button>
                                             </form>
                                         </li> 
                                         
@@ -61,9 +61,9 @@
                               <a href="#"><img src="imagenes/<?php echo $r['imagen']; ?>" class="card-img-top" style="width: 200px; height: 200px;"></a>
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
-                                  <strong>Duracion: </strong><?php echo $r['duracion']; ?>
+                                  <strong>Duración: </strong><?php echo $r['duracion']; ?>
                                   <br><strong>Fecha: </strong><?php echo $r['fecha_publicacion']; ?>
-                                  <br><strong>Categorias: </strong><?php echo $r['categorias']; ?>
+                                  <br><strong>Categorías: </strong><?php echo $r['categorias']; ?>
                               </div>
                               <br>
                               <div style="padding-top:100px">

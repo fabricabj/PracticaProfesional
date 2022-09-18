@@ -159,7 +159,7 @@ while($fila = $resultado->fetch_assoc()){
 
 <script>
                         function eliminarProveedor(idproveedor,pagina,estado){
-                            var eliminar = confirm('De verdad desea inactivar este proveedor');
+                            var eliminar = confirm('De verdad desea inactivar este Proveedor');
                             var eliminarProveedor=document.getElementById('eliminarProveedor').value;
                             if ( eliminar ) {
                                 
@@ -179,7 +179,7 @@ while($fila = $resultado->fetch_assoc()){
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('El proveedor ha sido inactivado');
+                                alert('El Proveedor ha sido inactivado');
                                 window.location.href ='proveedores.php?pagina='+pagina+'&est='+estado;
                             }
                         } 

@@ -39,11 +39,11 @@
         $total=$_POST['total'];
         echo '<div class="container" style="padding-top:70px">
                 <div align="center" style="background:white;border-radius:30px;padding:20px">
-                  <h3> Transferencia bancaria</h3>
+                  <h3> Transferencia Bancaria</h3>
                   <br><br>
                   <h4>Empresa: AFLcinema</h4>
                   <h4>CBU: 1234567890123456789012</h4>
-                  <h4>Direccion: Capital federal</h4>
+                  <h4>Dirección: Capital federal</h4>
                   <h4>Tipo de cuenta: Cuenta corriente</h4>
                   <h4>Monto a pagar: $'.$total.'</h4>
                   <br><br>

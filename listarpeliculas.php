@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar películas</title>
+    <title>Listar Películas</title>
 </head>
 
 <body>
@@ -156,12 +156,12 @@
       <?php
 
         if (isset($_GET['estado']) && $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
         <script>
                         function eliminarPelicula(idpelicula,pagina,estado){
-                            var eliminar = confirm('De verdad desea eliminar esta pelicula');
+                            var eliminar = confirm('De verdad desea eliminar esta película');
                             var eliminarPelicula=document.getElementById('eliminarPelicula').value;
                             if ( eliminar ) {
                                 
@@ -181,7 +181,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La pelicula ha sido eliminada');
+                                alert('La película ha sido eliminada');
                                 window.location.href ='listarpeliculas.php?pagina='+pagina+'&est='+estado;
                             }
                         } 

@@ -9,7 +9,7 @@
                    <form action="permisos.php" method="post" class="permisos">
                         <div class="row">
                             <div class="col-md-12">
-                                <label>Crear grupo</label>
+                                <label>Crear Grupo</label>
                                 <input type="text" name="nombreGrupo">
                                 <a style="float:right;width:15%" href="listarPermisos.php" class="btn botonpermisos">Listar</a>
                             </div>

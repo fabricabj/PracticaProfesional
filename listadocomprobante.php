@@ -180,7 +180,7 @@
                                                 $precio = $a['precio'];?>
                                                 
                                                 <div align="center" class="col-md-6">
-                                                <label style="color:white">Titulo: <?php echo $titulo;?></label>
+                                                <label style="color:white">Título: <?php echo $titulo;?></label>
                                                 </div>
                                                 <div align="center" class="col-md-6">
                                                 <label style="color:white">Precio: <?php echo $precio;?></label>
@@ -242,7 +242,7 @@
 
 
     if (isset($_GET['estado']) && $_GET['estado'] == 1) {
-        echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+        echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
     }
     ?>
 

@@ -55,7 +55,7 @@
                            
                           <div class="form-row">
                              <div class="form-group col-md-8">
-                                <label for="inputPassword4">Fecha de publicación</label>
+                                <label for="inputPassword4">Fecha de Publicación</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" value="<?php echo $datos_generos['fecha_publicacion'];?>" required>
                              </div>
 							<div class="form-group col-md-4">
@@ -170,7 +170,7 @@
                         
                         <div class="form-row">
                              <div class="form-group col-md-8">
-                                <label for="inputPassword4">Fecha de publicación</label>
+                                <label for="inputPassword4">Fecha de Publicación</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" required>
                              </div>
 							<div class="form-group col-md-4">
