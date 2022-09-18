@@ -89,7 +89,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     <?php break;
                                                     case "buscar pelicula": ?>
                                                         <!--<form method="POST" action="listarpeliculas.php">-->
-                                                            <a href="listarpeliculas.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Peliculas</a>
+                                                            <a href="listarpeliculas.php?pagina=1&est=1" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Películas</a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar usuarios": ?>
