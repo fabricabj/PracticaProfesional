@@ -16,7 +16,7 @@
     }
     
 </style>
-<title>Inicio Peliculas AFL cinema</title>
+<title>Inicio Películas AFL cinema</title>
 </head>
 <body>
 <?php
