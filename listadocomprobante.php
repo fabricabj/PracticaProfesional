@@ -70,7 +70,6 @@
                 <h3 class="text-center text-white">Listado de Comprobantes</h3>
                 <table class="table table-light">
                     <thead>
-
                         <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idcomprobante&ascendente=<?php echo $asc; ?>">Id</a></th>
                         <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fechapago&ascendente=<?php echo $asc; ?>">Fecha</a></th>
                         <th scope="col"><a href="listadocomprobante.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=imagen&ascendente=<?php echo $asc; ?>">Descripción</a></th>

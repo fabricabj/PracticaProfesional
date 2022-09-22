@@ -45,10 +45,10 @@ if (isset($_POST['Delete'])  && !empty($_POST['Delete'])) {
 		header("location:proveedores.php?pagina=1&est=$est");
 	}
 
-    if (isset($_POST['Activar'])) {
+    if (isset($_POST['activar'])) {
 
-		$cuit = $_POST['cuit'];
-		$delete=mysqli_query($conexion, "UPDATE proveedores SET idestado = 1 WHERE cuit='$cuit' ");
+		$idproveedor = $_POST['id'];
+		$activar=mysqli_query($conexion, "UPDATE proveedores SET idestado = 1 WHERE idproveedor='$idproveedor' ");
 		header("location:proveedores.php?pagina=1&est=2");
 	}
  

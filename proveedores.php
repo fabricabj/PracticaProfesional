@@ -62,9 +62,10 @@ $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag")
     <h3 class="text-center text-white">Listado de Proveedores</h3>
     <form action="buscarProveedores.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="razon_social" name="razon_social" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese proveedor a buscar">
-                  <div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
+             <input id="razonsocial" name="razonsocial" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
+                  <input id="estado" name="estado" type="text" value="<?php echo $_GET['est'];?>" hidden>
+                <div class="input-group-append">
+                  <button style="border-color: white" class="btn btn-outline-dark" type="submit" name="Buscar" value="Buscar" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
             </div>
         </form>
