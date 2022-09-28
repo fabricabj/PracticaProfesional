@@ -35,7 +35,7 @@ if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
 
     $Insert=mysqli_query($conexion,"UPDATE proveedores SET razon_social='$razon_social',cuit='$cuit',mail='$email',idestado=$idestado WHERE cuit='$cuit_anterior'");
 	//echo $razon_social." ".$cuit." ".$email." ".$idestado;
-        header("location:proveedores.php");
+        header("location:proveedores.php?pagina=1&est=$idestado");
 
 } 
 if (isset($_POST['Delete'])  && !empty($_POST['Delete'])) {
