@@ -135,7 +135,7 @@ if(!isset($_GET['pagina'])){
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
 

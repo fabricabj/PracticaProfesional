@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario inactivos</title>
+    <title>Usuario Inactivos</title>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
         <h3 class="text-center text-white">Listado de Usuarios Inactivos</h3>
         <form action="buscarUsuarioInactivos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
-                  <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="ingrese el titulo a buscar">
+                  <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese el título a buscar">
                   <div class="input-group-append">
                     <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                   </div>
@@ -133,7 +133,7 @@
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
 

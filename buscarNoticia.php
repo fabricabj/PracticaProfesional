@@ -95,7 +95,7 @@
                 <input type="text" id="ascendente" name="ascendente" value="<?php echo $asc;?>" hidden>
                 <input type="text" id="estado" name="estado" value="<?php echo $_POST['estado'];?>" hidden>
                 <input type="text" id="nombre_noticia" name="nombre_noticia" value="<?php echo $_POST['nombre_noticia'];?>" hidden>
-                <button type="submit" class="ordenButton" name="descripcion" value="descripcion">Descripcion</button>
+                <button type="submit" class="ordenButton" name="descripcion" value="descripcion">Descripción</button>
             </form>
             <th scope ="col">Estado</th>
             
@@ -154,7 +154,7 @@
           <form action="buscarNoticia.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" method="POST">
             <input id="estado" name="estado" type="text" value="<?php echo $est;?>" hidden>
             <input id="nombre_noticia" name="nombre_noticia" value="<?php echo $nombre_noticia;?>" style="width:70%" type="text" class="form-control" aria-label="Text input with dropdown button" hidden>
-            <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anteriror</button>
+            <button name="buscar" value="buscar" class="page-link" id="button-addon2">Anterior</button>
           </form>
         </li>
         <?php for ($i = 1; $i <= $paginas; $i++) : ?>

@@ -78,7 +78,7 @@
                          </div>                
                          <div class="form-group">
                              <input type="text" name="id" id="id" value="<?php echo $datos['idnoticia']; ?>" hidden>
-                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar cambios</button>
+                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar Cambios</button>
                          </div>
                        </form>
                       <?php 

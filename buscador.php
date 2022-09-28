@@ -54,7 +54,7 @@
                             <div align="center" class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header" style="background:#212121;color:white">
-                                        <h4 class="modal-title">informacion</h4>
+                                        <h4 class="modal-title">Información</h4>
                                         <button style="color:white" type="button" class="close" data-dismiss="modal">X</button>
                                     </div>
                                     <div class="modal-body" style="background:#121212;color:white">
@@ -85,7 +85,7 @@
                                                 <input type="text" name="id" id="id" value="<?php echo $r['idpelicula']; ?>" hidden>
                                                 
                                                
-                                                <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a carrito</button>
+                                                <button style="margin: 5px;" type="submit" class="btn btn-dark">Añadir a Carrito</button>
                                                     
                                                 
                                                 </form>

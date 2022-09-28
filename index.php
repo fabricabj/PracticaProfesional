@@ -16,7 +16,7 @@
     }
     
 </style>
-<title>Inicio Peliculas AFL cinema</title>
+<title>Inicio Películas AFL cinema</title>
 </head>
 <body>
 <?php
@@ -77,7 +77,7 @@
                        <div class="modal-dialog modal-lg" >
                             <div class="modal-content">
                                <div class="modal-header" style="background:#212121;color:white">
-                                   <h4 class="modal-title">informacion</h4>
+                                   <h4 class="modal-title">Información</h4>
                                    <button style="color:white" type="button" class="close" data-dismiss="modal">X</button>
                                </div>
                                <div class="modal-body" style="background:#121212;color:white">
@@ -86,12 +86,12 @@
 		                                        <img src="ImagenesOriginales/<?php echo $r['imagen'];?>" style="width:50%"><br>
 		                                   </div>
 		                                  <div class="col-md-6">
-		                                        <h6><strong>Titulo: </strong><?php echo $r['titulo'];?></h6>
-                                            <h6><strong>categorias: </strong><?php echo $r['categorias'];?></h6>
-                                            <h6><strong>Duracion: </strong><?php echo $r['duracion']." min";?></h6>
-                                            <h6><strong>puntaje: </strong><?php echo "<i class='fas fa-star'></i>".$r['puntaje'];?></h6>
+		                                        <h6><strong>Título: </strong><?php echo $r['titulo'];?></h6>
+                                            <h6><strong>Categorías: </strong><?php echo $r['categorias'];?></h6>
+                                            <h6><strong>Duración: </strong><?php echo $r['duracion']." min";?></h6>
+                                            <h6><strong>Puntaje: </strong><?php echo "<i class='fas fa-star'></i>".$r['puntaje'];?></h6>
                                             <h6><strong>Año: </strong><?php echo $r['anio'];?></h6>
-                                            <h6 align="center"><strong>Descripcion </strong></h6>
+                                            <h6 align="center"><strong>Descripción </strong></h6>
                                             <h6><?php echo $r['descripcion'];?></h6>
 		                                  </div>
                                             <?php if (isset($_SESSION['login']) && $_SESSION['login'] > 0) {
@@ -131,11 +131,11 @@
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span class="sr-only">Anterior</span>
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span class="sr-only">Siguiente</span>
             </a>
         </div>
       </div>

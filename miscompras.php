@@ -75,7 +75,7 @@ if(!isset($_GET['pagina'])){
             <th scope ="col"><a href="miscompras.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idventa&ascendente=<?php echo $asc; ?>" >Id</a></th>
             <th scope ="col"><a href="miscompras.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idusuario&ascendente=<?php echo $asc; ?>" >Usuario</a></th>
             <th scope ="col"><a href="miscompras.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=precio_total&ascendente=<?php echo $asc; ?>" >Precio Total</a></th>
-            <<th scope ="col"><a href="miscompras.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha venta</a></th>
+            <<th scope ="col"><a href="miscompras.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=fecha_venta&ascendente=<?php echo $asc; ?>" > Fecha Venta</a></th>
             <th scope ="col">Estado</th>
             <th>
               <select name="Est" id="Est">
@@ -145,7 +145,7 @@ if(!isset($_GET['pagina'])){
 
       <?php
         if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
+            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
         }
         ?>
 

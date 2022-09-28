@@ -26,7 +26,7 @@
                         <b>Ayelén Calissi</b>
                     </p>
                     <p class="card-text descrip">
-                        <i>Estudiante del Instituto tecnológico Beltrán, Desarrolladora Software, y fan de los gatitos</i></br>
+                        <i>Estudiante del Instituto Tecnológico Beltrán, Desarrolladora Software</i></br>
                     </p>
                     <p class="card-text">
                         <i class="fab fa-github fa-lg" style="color:#FFF"> </i>
@@ -45,7 +45,7 @@
                         <b>Leonel Girett</b>
                     </p>
                     <p class="card-text descrip">
-                        <i>Estudiante del Instituto tecnológico Beltrán, curo el empacho online</i>
+                        <i>Estudiante del Instituto Tecnológico Beltrán, Desarrollador Software</i>
                     </p>
                     <p class="card-text">
                         <i class="fab fa-github fa-lg" style="color:#FFF"> </i>
@@ -64,7 +64,7 @@
                         <b>Franco Colavella</b>
                     </p>
                     <p class="card-text descrip">
-                        <i>Estudiante del Instituto tecnológico Beltrán, cerrajero en Aldo Bonzi</i>
+                        <i>Estudiante del Instituto Tecnológico Beltrán, Desarrollador Software</i>
                     </p>
                     <p class="card-text">
                         <i class="fab fa-github fa-lg" style="color:#FFF"> </i>
@@ -142,7 +142,7 @@
                         
                             <div class="form-group">
                                 <label for="txtarea1">Mensaje</label>
-                                <textarea class="form-control" id="descripcion" name ="descripcion" maxlength="99" placeholder="Agreguen Buscando a Nemo, please!" rows="3"></textarea>
+                                <textarea class="form-control" id="descripcion" name ="descripcion" maxlength="99" placeholder="Agregue alguna sugerencia !" rows="3"></textarea>
                             </div>
                         
                     </div>
@@ -156,13 +156,13 @@
     </div>
     <?php
         if (isset($_GET['error'])&& $_GET['error']==1) {
-            echo "<script type='text/javascript'>alert('verifique el captcha.');</script>";
+            echo "<script type='text/javascript'>alert('Verifique el captcha.');</script>";
         }
         if (isset($_GET['error'])&& $_GET['error']==1) {
-            echo "<script type='text/javascript'>alert('no se puede enviar el correo.');</script>";
+            echo "<script type='text/javascript'>alert('No se puede enviar el correo.');</script>";
         }
         if (isset($_GET['exito'])&& $_GET['exito']==1) {
-            echo "<script type='text/javascript'>alert('el mail ha sido enviado.');</script>";
+            echo "<script type='text/javascript'>alert('El mail ha sido enviado.');</script>";
         }
     ?>
 </body>

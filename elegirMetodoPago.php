@@ -16,9 +16,9 @@ $cont=$_POST['total'];
 ?>
             <div class="container"  style="padding-top:70px">
                 <form action="metodoPago.php" method="POST" style="background:white;border-radius:30px;padding:20px">
-                <h2 align="center">Metodo de pago</h2>
+                <h2 align="center">Método de pago</h2>
                 <br><br>
-                <h3 align="center"> Seleccione el metodo de pago</h3>
+                <h3 align="center"> Seleccione el método de pago</h3>
                     <div align="center" class="form-group">
                         <div class="row">
                             <div class="col-md-6 form-group" id="password-group">

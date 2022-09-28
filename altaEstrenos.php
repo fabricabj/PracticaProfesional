@@ -49,11 +49,11 @@
                              </div>
                            
                              <div class="form-group col-md-3">
-                                <label for="inputPassword4">Fecha de publicación</label>
+                                <label for="inputPassword4">Fecha de Publicación</label>
                                 <input type="date" class="form-control" name="fecha_publicacion" id="fecha_publicacion" value="<?php echo $datos_generos['fecha_publicacion'];?>" required>
                              </div>
 							<div class="form-group col-md-3">
-								<label>estado</label>
+								<label>Estado</label>
 								<select name="estado" class="form-control" >
 									
 									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM pelicula_estados ORDER BY descripcion ASC");
@@ -65,7 +65,7 @@
 							</div>
 						 </div>
                          <div class="form-group">
-                            <label>DescripciÓn</label>
+                            <label>Descripción</label>
                             <textarea type="text" class="form-control" name="descripcion" id="descripcion" rows="3"><?php echo $datos_generos['descripcion'];?></textarea>
                          </div>
                          <div class="form-row">
@@ -81,7 +81,7 @@
                          <div class="form-row"  style="border: 1px solid white;color:#fafafa;padding-top:20px;float:left;width:100%">
                              <div class="form-group">
                                 <label class="checkbox">
-                                    Fantasia
+                                    Fantasía
                                     <input type="checkbox" name="nombre_genero[]" value="Fantasia" <?php if(in_array('Fantasia',$generos)){?> checked <?php }?>>
                                     <span class="check"></span>
                                 </label>
