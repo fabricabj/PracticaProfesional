@@ -13,14 +13,14 @@ if (isset($_POST['btnModificar']) && !empty($_POST['btnModificar'])) {
 	echo $usuario_anterior." ".$nombre." ".$mail." ".$idestado;
 
 	$update=mysqli_query($conexion,"UPDATE grupo_usuarios SET idgrupo=$rol WHERE idusuario=$usuario_anterior");
-   header("location:listarUsuario.php");
+   header("location:listarUsuario.php?pagina=1&est=$idestado&estado=3");
 }
 
 if (isset($_POST['Activar']) && !empty($_POST['Activar'])) {
 	
 	$idUsuario = $_POST['idusuario'];
 	$delete=mysqli_query($conexion, "Update usuarios set idestado = 1 where idusuario=$idUsuario");
-	header("location:listarUsuario.php?pagina=1&est=2");
+	header("location:listarUsuario.php?pagina=1&est=2&estado=2");
 
 }
 if (isset($_POST['Cancelar']) && !empty($_POST['Cancelar'])) {
@@ -53,6 +53,6 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	$idUsuario = $_POST['id'];
 	$est=$_POST['est'];
 	$delete=mysqli_query($conexion, "Update usuarios Set idestado = 2 where idusuario=$idUsuario");
-	header("location:listarUsuario.php?pagina=1&est=1");
+	header("location:listarUsuario.php?pagina=1&est=1&estado=1");
 }
 ?>

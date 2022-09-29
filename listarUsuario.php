@@ -60,6 +60,15 @@
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Usuarios</h3>
+        <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Usuario inactivado con exito!!</div>";
+              }
+              if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                echo "<div class='alert alert-success'>Usuario activado con exito!!</div>";
+              }
+              if (isset($_GET['estado'])&& $_GET['estado']==3) {
+                echo "<div class='alert alert-success'>Usuario modificado con exito!!</div>";
+              }?>
           <form action="buscarUsuario.php?pagina=1" method="POST">
           <div class="input-group-prepend">
              <input id="nombre_usuario" name="nombre_usuario" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese el nombre a buscar">
@@ -179,7 +188,7 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
               console.log(jqXHR.statusText);
           });
           alert('El usuario ha sido inactivado');
-          window.location.href ='listarUsuario.php?pagina='+pagina+'&est='+estado;
+          window.location.href ='listarUsuario.php?pagina='+pagina+'&est='+estado+'&estado=1';
       }
   } 
 </script>

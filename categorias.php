@@ -11,6 +11,13 @@
 
    ?>
    <div class="container">
+   <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+            echo "<div class='alert alert-success'>Pelicula agregada con exito!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==2) {
+            echo "<div class='alert alert-success'>Pelicula modificada con exito!!</div>";
+          }?>
+
        <div class="row">
          <?php 
               $select=mysqli_query($conexion,"SELECT * FROM categoria");

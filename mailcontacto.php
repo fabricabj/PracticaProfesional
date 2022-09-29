@@ -70,7 +70,7 @@
                               );
                               $estadoEnvio = $mail->Send(); 
                               if($estadoEnvio){
-                                   header("location:contactenos.php?exito=1");
+                                   header("location:contactenos.php?estado=2");
                               } else {
                                    header("location:contactenos.php?error=2");
                                    exit();

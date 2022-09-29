@@ -183,24 +183,24 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 		  if (!is_null($nombreImg)) {	
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:categorias.php?genero=$generos&esatado=2");
+			header("location:categorias.php?genero=$generos&estado=2");
 			
 		  }else{
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:categorias.php?genero=$generos&esatado=2"); 
+			header("location:categorias.php?genero=$generos&estado=2"); 
 		  }
 		}
 	}else{
 		if (!is_null($nombreImg)) {	
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:categorias.php?genero=$generos&esatado=2");
+			header("location:categorias.php?genero=$generos&estado=2");
 			
 		  }else{
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,precio=$precio,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:categorias.php?genero=$generos&esatado=2"); 
+			header("location:categorias.php?genero=$generos&estado=2"); 
 		  }
 	}
 }
@@ -210,7 +210,7 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 2 where idpelicula=$idPelicula");
-	header("location:peliculas.php");
+	header("location:peliculas.php?genero=$nombre_genero&estado=4");
 
 }
 if (isset($_POST['deleteEstreno']) && !empty($_POST['deleteEstreno'])) {
@@ -226,7 +226,7 @@ if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	
 	$idPelicula = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 1 where idpelicula=$idPelicula");
-	header("location:listarpeliculas.php?pagina=1&est=2");
+	header("location:listarpeliculas.php?pagina=1&est=2&estado=2");
 
 }
 

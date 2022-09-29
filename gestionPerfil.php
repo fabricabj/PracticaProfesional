@@ -54,6 +54,15 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
 <div class="container"  style="padding-top:100px;">
     <div style="background:#212121; border-radius:30px;">
     <H1 align="center" class="text-white">Perfil</H1>
+    <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Perfil modificado con exito!!</div>";
+            }
+            if (isset($_GET['error'])&& $_GET['error']==1) {
+                echo "<div class='alert alert-success'>Contraseña incorrecta!!</div>";
+            }
+            if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                echo "<div class='alert alert-success'>Contraseña modificada con exito!!</div>";
+            }?>
         <div class="px-lg-5 py-lg-4 p-4">
             <form action="abm_gestionPerfil.php" method ="POST" style="width:95%;">
                 <div class="form-row">
@@ -169,11 +178,6 @@ $selectProvincias=mysqli_query($conexion,"SELECT idprovincia,nombre_provincia FR
     </div>
 </div>
 
-
-
-<?php if(isset($_GET['estado'])&& $_GET['estado']==1){
-    echo "<script>alert('Perfil actualizado con exito');</script>";
-}?>
   <script>
 
 function Numeros(string){
@@ -244,13 +248,5 @@ function filterFloat(evt,input){
     }
 
     </script>
-    <?php
-    if (isset($_GET['error'])&& $_GET['error']==1) {
-        echo "<script type='text/javascript'>alert('Contraseña incorrecta.');</script>";
-    }
-    if (isset($_GET['estado'])&& $_GET['estado']==1) {
-        echo "<script type='text/javascript'>alert('Contraseña cambiada correctamente.');</script>";
-    }
-    ?>
 </body>
 </html>

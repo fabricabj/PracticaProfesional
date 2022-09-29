@@ -61,6 +61,12 @@
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Películas</h3>
+        <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Pelicula inactivada con exito!!</div>";
+              }
+              if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                echo "<div class='alert alert-success'>Pelicula activada con exito!!</div>";
+              }?>
         <form action="buscarPelicula.php?pagina=1" method="POST">
              <div class="input-group-prepend">
              <input id="nombre_pelicula" name="nombre_pelicula" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
@@ -152,16 +158,9 @@
                             </ul>
                         </nav>
                     </div>
-
-      <?php
-
-        if (isset($_GET['estado']) && $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
-        }
-        ?>
         <script>
                         function eliminarPelicula(idpelicula,pagina,estado){
-                            var eliminar = confirm('De verdad desea eliminar esta película');
+                            var eliminar = confirm('De verdad desea inactivar esta película');
                             var eliminarPelicula=document.getElementById('eliminarPelicula').value;
                             if ( eliminar ) {
                                 
@@ -181,8 +180,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La película ha sido eliminada');
-                                window.location.href ='listarpeliculas.php?pagina='+pagina+'&est='+estado;
+                                window.location.href ='listarpeliculas.php?pagina='+pagina+'&est='+estado+'&estado=1';
                             }
                         } 
          </script>

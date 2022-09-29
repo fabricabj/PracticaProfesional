@@ -53,6 +53,15 @@
             </div> 
             <div class="container">
             <h1 align="center" style="color:white">Noticias</h1>
+            <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                    echo "<div class='alert alert-success'>Noticia agregada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                    echo "<div class='alert alert-success'>Noticia modificada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==3) {
+                    echo "<div class='alert alert-success'>Noticia inactivada con exito!!</div>";
+                }?>
               <div class="row">
             <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
@@ -116,7 +125,7 @@
                                                                     <div class="col-md-6">
                              
                                                                        <input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
-                                                                       <a style="margin: 5px;" href="#" onclick="eliminarNoticia(<?php echo $r['idnoticia']?>)" class="btn btn-dark">Eliminar</a>
+                                                                       <a style="margin: 5px;" href="#" onclick="eliminarNoticia(<?php echo $r['idnoticia']?>)" class="btn btn-dark">Inactivar</a>
                                                                     </div>
                                                     <?php break;
                                                         }
@@ -148,7 +157,7 @@
     </div>
          <script>
                         function eliminarNoticia(idNoticia){
-                            var eliminar = confirm('De verdad desea eliminar está noticia');
+                            var eliminar = confirm('De verdad desea inactivar está noticia');
                             var eliminarNoticia=document.getElementById('eliminarNoticia').value;
                             if ( eliminar ) {
                                 
@@ -167,8 +176,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La noticia ha sido eliminada');
-                                window.location.href ='noticias.php';
+                                window.location.href ='noticias.php?pagina=1&estado=3';
                             }
                         }
                     

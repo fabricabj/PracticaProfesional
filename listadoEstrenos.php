@@ -61,6 +61,12 @@
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Estrenos</h3>
+        <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Estreno inactivado con exito!!</div>";
+              }
+              if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                echo "<div class='alert alert-success'>Estreno activado con exito!!</div>";
+              }?>
          <form action="buscarEstrenos.php?pagina=1" method="POST">
              <div class="input-group-prepend">
                   <input id="nombre_estreno" name="nombre_estreno" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
@@ -147,15 +153,9 @@
                             </ul>
                         </nav>
                     </div>
-
-      <?php
-        if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
-        }
-        ?>
         <script>
                         function eliminarPelicula(idpelicula,pagina,estado){
-                            var eliminar = confirm('De verdad desea eliminar esta pelÍcula');
+                            var eliminar = confirm('De verdad desea inactivar este estreno');
                             var eliminarPelicula=document.getElementById('eliminarPelicula').value;
                             if ( eliminar ) {
                                 
@@ -175,8 +175,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La pelicula ha sido eliminada');
-                                window.location.href ='listadoEstrenos.php?pagina='+pagina+'&est='+estado;
+                                window.location.href ='listadoEstrenos.php?pagina='+pagina+'&est='+estado+'&estado=1';
                             }
                         } 
          </script>

@@ -60,6 +60,24 @@ $resultado = mysqli_query($conexion,$sql . " limit $iniciar,$proveedores_x_pag")
 <div class="container">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h3 class="text-center text-white">Listado de Proveedores</h3>
+    <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+            echo "<div class='alert alert-success'>Proveedor agregado con exito!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==2) {
+            echo "<div class='alert alert-success'>Proveedor modificado con exito!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==3) {
+            echo "<div class='alert alert-success'>Proveedor inactivado con exito!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==4) {
+            echo "<div class='alert alert-success'>Proveedor activado con exito!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==5) {
+            echo "<div class='alert alert-success'>Cuit ya existente, intente con otro!!</div>";
+          }
+          if (isset($_GET['estado'])&& $_GET['estado']==6) {
+            echo "<div class='alert alert-success'>Mail ya existente, intente con otro!!</div>";
+          }?>
     <form action="buscarProveedores.php?pagina=1" method="POST">
              <div class="input-group-prepend">
              <input id="razonsocial" name="razonsocial" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
@@ -152,12 +170,6 @@ while($fila = $resultado->fetch_assoc()){
                     </nav>
                 </div>
 
-  <?php
-    if (isset($_GET['estado'])&& $_GET['estado']==1) {
-        echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
-    }
-    ?>
-
 <script>
                         function eliminarProveedor(idproveedor,pagina,estado){
                             var eliminar = confirm('De verdad desea inactivar este Proveedor');
@@ -180,8 +192,7 @@ while($fila = $resultado->fetch_assoc()){
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('El Proveedor ha sido inactivado');
-                                window.location.href ='proveedores.php?pagina='+pagina+'&est='+estado;
+                                window.location.href ='proveedores.php?pagina='+pagina+'&est='+estado+'&estado=3';
                             }
                         } 
          </script>

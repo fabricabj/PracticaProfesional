@@ -143,14 +143,14 @@ if (isset($_POST['guardar']) && !empty($_POST['guardar'])) {
 	if(mysqli_num_rows($registros)>0){  
 		$select=mysqli_query($conexion,"SELECT categorias FROM peliculas WHERE titulo='$titulo'");
 		while($r=mysqli_fetch_array($select)){$nombre_genero=$r['categorias'];}
-		header("location:estrenos.php");         
+		header("location:estrenos.php?pagina=1&estado=4");         
 	}else{
 		$selectEstado=mysqli_query($conexion,"SELECT idestado FROM pelicula_estados WHERE descripcion='$estado'");
 		while($r=mysqli_fetch_array($selectEstado)){
 			$idestado=$r['idestado'];
 		}
 		$Insert=mysqli_query($conexion,"INSERT INTO peliculas values (00,'$titulo','$descripcion',$anio,$puntaje,null,'$duracion','$nombreImg',$idestado,'$generos',null,null,'$fecha_publicacion')");
-		header("location:estrenos.php");
+		header("location:estrenos.php?pagina=1&estado=1");
 
 	}
 }
@@ -176,29 +176,29 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 	if(mysqli_num_rows($registros)>0){  
 			$select=mysqli_query($conexion,"SELECT categorias FROM peliculas WHERE titulo='$titulo'");
 			while($r=mysqli_fetch_array($select)){$nombre_genero=$r['categorias'];}
-			header("location:estrenos.php");     
+			header("location:estrenos.php?pagina=1&estado=4");     
 		}else{
 		  if (!is_null($nombreImg)) {	
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:estrenos.php");
+			header("location:estrenos.php?pagina=1&estado=2");
 			
 		  }else{
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:estrenos.php"); 
+			header("location:estrenos.php?pagina=1&estado=2"); 
 		  }
 		}
 	}else{
 		if (!is_null($nombreImg)) {	
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',imagen='$nombreImg',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:estrenos.php");
+			header("location:estrenos.php?pagina=1&estado=2");
 			
 		  }else{
 			$Actualizar = "UPDATE peliculas SET titulo='$titulo',descripcion='$descripcion',anio=$anio,puntaje=$puntaje,duracion='$duracion',idestado=$idestado,categorias='$generos',fecha_publicacion='$fecha_publicacion' WHERE titulo='$titulo_anterior'";
 			$enviar = mysqli_query($conexion, $Actualizar);
-			header("location:estrenos.php"); 
+			header("location:estrenos.php?pagina=1&estado=2"); 
 		  }
 	}
 }
@@ -208,7 +208,7 @@ if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
 if (isset($_POST['activar']) && !empty($_POST['activar'])) {
 	$idPelicula = $_POST['idpelicula'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 3 where idpelicula=$idPelicula");
-	header("location:listadoEstrenos.php?pagina=1&est=4");
+	header("location:listadoEstrenos.php?pagina=1&est=4&estado=2");
 
 }
 
@@ -216,7 +216,6 @@ if (isset($_POST['delete']) && !empty($_POST['delete'])) {
 	$idPelicula = $_POST['id'];
 	$est=$_POST['est'];
 	$delete=mysqli_query($conexion, "Update peliculas Set idestado = 4 where idpelicula=$idPelicula");
-	header("location:listadoEstrenos.php?pagina=1&est=4");
 
 }
 

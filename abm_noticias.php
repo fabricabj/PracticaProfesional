@@ -134,7 +134,7 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	
 	$Insert=mysqli_query($conexion,"INSERT INTO noticias values (00,'$nombre_noticia','$descripcion','$fecha','$nombreImg',$estado,$idproveedor)");	
 		//echo"$Insert";
-		header("location:noticias.php");
+		header("location:noticias.php?pagina=1&estado=1");
 
 } 
  if (isset($_POST['Modificar']) && !empty($_POST['Modificar'])) {
@@ -150,11 +150,11 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	if (!is_null($nombreImg)) {
 			$Actualizar = "UPDATE noticias SET nombre_noticia='$nombre_noticia',descripcion='$descripcion',fecha='$fecha',imagen='$nombreImg',idestado=$idestado,idproveedor='$idproveedor' WHERE idnoticia=$idnoticia";
 			$enviar = mysqli_query($conexion, $Actualizar);
-            header("location:noticias.php");   		
+            header("location:noticias.php?pagina=1&estado=2");   		
 	}else{
 		$Actualizar = "UPDATE noticias SET nombre_noticia='$nombre_noticia',descripcion='$descripcion',fecha='$fecha',idestado=$idestado,idproveedor='$idproveedor' WHERE idnoticia=$idnoticia";
 			$enviar = mysqli_query($conexion, $Actualizar);
-            header("location:noticias.php");   
+            header("location:noticias.php?pagina=1&estado=2");   
 	}
 	}
 
@@ -170,7 +170,7 @@ if (isset($_POST['guardarNoticia']) && !empty($_POST['guardarNoticia'])) {
 	
 	$idNoticia = $_POST['id'];
 	$delete=mysqli_query($conexion, "Update noticias Set idestado = 1 where idnoticia=$idNoticia");
-	header("location:listarNoticias.php?pagina=1&est=2");
+	header("location:listarNoticias.php?pagina=1&est=2&estado=2");
 	
 
 }

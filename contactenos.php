@@ -18,6 +18,18 @@
         <div class="row justify-content-around mt-3">
             <div class="col-12">
                 <p class="text-center descripNos">Nosotros</p>
+                <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                    echo "<div class='alert alert-success'>Sugerencia enviada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                    echo "<div class='alert alert-success'>Mail enviado con exito!!</div>";
+                }
+                if (isset($_GET['error'])&& $_GET['error']==1) {
+                    echo "<div class='alert alert-success'>verifique el capchat!!</div>";
+                }
+                if (isset($_GET['error'])&& $_GET['error']==2) {
+                    echo "<div class='alert alert-success'>No se a podido enviar el correo!!</div>";
+                }?>
             </div>
             <div class="card col-3" style="width: 18rem; background-color: #212121">
                 <img src="./imagenes/aye.jpeg" class="card-img-top" alt="...">
@@ -154,17 +166,6 @@
             </div>
         </div>
     </div>
-    <?php
-        if (isset($_GET['error'])&& $_GET['error']==1) {
-            echo "<script type='text/javascript'>alert('Verifique el captcha.');</script>";
-        }
-        if (isset($_GET['error'])&& $_GET['error']==1) {
-            echo "<script type='text/javascript'>alert('No se puede enviar el correo.');</script>";
-        }
-        if (isset($_GET['exito'])&& $_GET['exito']==1) {
-            echo "<script type='text/javascript'>alert('El mail ha sido enviado.');</script>";
-        }
-    ?>
 </body>
 
 

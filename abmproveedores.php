@@ -11,10 +11,10 @@ if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
 	$registros2=mysqli_query($conexion,"SELECT mail from proveedores WHERE mail='$email'");
 	if(mysqli_num_rows($registros)>0 || mysqli_num_rows($registros2)>0){  
 		if(mysqli_num_rows($registros)>0){
-             echo "<script>alert('el cuit ingresado ya existe, intente con otro');</script>";
+             header("proveedores.php?pagina=1&est=$estado&estado=5");
 		}
 		if(mysqli_num_rows($registros2)>0){
-			echo "<script>alert('el mail ingresado ya existe, intente con otro');</script>";
+			header("proveedores.php?pagina=1&est=$estado&estado=6");
 	    }
 	}else{
 		$selectEstado=mysqli_query($conexion,"SELECT idestado FROM estados_provedores WHERE descripcion='$estado'");
@@ -22,7 +22,7 @@ if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
             $idestado=$r['idestado'];
 		}
 		$Insert=mysqli_query($conexion,"INSERT INTO proveedores values (00,'$razon_social','$cuit','$email',$idestado)");
-		echo "<script>alert('registrado con exito');</script>";
+		header("proveedores.php?pagina=1&est=$estado&estado=1");
        
     }
 }
@@ -35,21 +35,21 @@ if (isset($_POST['btnGuardar']) && !empty($_POST['btnGuardar'])) {
 
     $Insert=mysqli_query($conexion,"UPDATE proveedores SET razon_social='$razon_social',cuit='$cuit',mail='$email',idestado=$idestado WHERE cuit='$cuit_anterior'");
 	//echo $razon_social." ".$cuit." ".$email." ".$idestado;
-        header("location:proveedores.php?pagina=1&est=$idestado");
+        header("location:proveedores.php?pagina=1&est=$idestado&estado=2");
 
 } 
 if (isset($_POST['Delete'])  && !empty($_POST['Delete'])) {
 		$est = $_POST['est'];
 		$id = $_POST['id'];
 		$delete=mysqli_query($conexion, "UPDATE proveedores SET idestado = 2 WHERE idproveedor=$id ");
-		header("location:proveedores.php?pagina=1&est=$est");
+		header("location:proveedores.php?pagina=1&est=$est&estado=3");
 	}
 
     if (isset($_POST['activar'])) {
 
 		$idproveedor = $_POST['id'];
 		$activar=mysqli_query($conexion, "UPDATE proveedores SET idestado = 1 WHERE idproveedor='$idproveedor' ");
-		header("location:proveedores.php?pagina=1&est=2");
+		header("location:proveedores.php?pagina=1&est=2&estado=4");
 	}
  
 ?>

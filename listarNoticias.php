@@ -61,6 +61,12 @@
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Listado de Noticias</h3>
+        <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Noticia inactivada con exito!!</div>";
+              }
+              if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                echo "<div class='alert alert-success'>Noticia activada con exito!!</div>";
+              }?>
         <form action="buscarNoticia.php?pagina=1" method="POST">
              <div class="input-group-prepend">
                   <input id="nombre_noticia" name="nombre_noticia" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese título a buscar">
@@ -120,7 +126,7 @@
             if($_GET['est']==1){   
               echo '<td><input type="text" name="eliminarNoticia" id="eliminarNoticia" value="eliminarNoticia" hidden>
                     <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Eliminar</a></td>';
+                    <a style="margin: 5px;" href="#" onclick="eliminarNoticia('.$fila['idnoticia'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
             }else{
               echo "<td><form action='abm_noticias.php' method='post'>
                     <input name='id' id='id' value='".$fila['idnoticia']."'hidden>
@@ -148,15 +154,9 @@
                             </ul>
                         </nav>
                     </div>
-
-      <?php
-        if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
-        }
-        ?>
       <script>
                         function eliminarNoticia(idNoticia,pagina,estado){
-                            var eliminar = confirm('De verdad desea eliminar esta noticia');
+                            var eliminar = confirm('De verdad desea inactivar esta noticia');
                             var eliminarNoticia=document.getElementById('eliminarNoticia').value;
                             if ( eliminar ) {
                                 
@@ -176,8 +176,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La noticia ha sido eliminada');
-                                window.location.href ='listarNoticias.php?pagina='+pagina+'&est='+estado;
+                                window.location.href ='listarNoticias.php?pagina='+pagina+'&est='+estado+'&estado=1';
                             }
                         } 
          </script>

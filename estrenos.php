@@ -54,6 +54,18 @@
             </div> 
             <div class="container">
             <h1 align="center" style="color:white">Estrenos</h1>
+            <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                    echo "<div class='alert alert-success'>Estreno agregada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                    echo "<div class='alert alert-success'>Estreno modificada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==3) {
+                    echo "<div class='alert alert-success'>Estreno inactivada con exito!!</div>";
+                }
+                if (isset($_GET['estado'])&& $_GET['estado']==4) {
+                    echo "<div class='alert alert-success'>Titulo ya existente, por favor intente con otro!!</div>";
+                }?>
               <div class="row">
             <?php while ($r = mysqli_fetch_array($resultado)) { ?>
                     <div align="center" class="col-md-3" style="padding:1%;">    
@@ -119,7 +131,7 @@
                                                         case "baja estrenos": ?>
                                                                     <div class="col-md-6">
                                                                          <input type="text" name="eliminarEstrenos" id="eliminarEstrenos" value="eliminarEstrenos" hidden>
-                                                                         <a style="margin: 5px;" href="#" onclick="eliminarEstrenos(<?php echo $r['idpelicula']?>)" class="btn btn-dark">Eliminar</a>
+                                                                         <a style="margin: 5px;" href="#" onclick="eliminarEstrenos(<?php echo $r['idpelicula']?>)" class="btn btn-dark">Inactivar</a>
                                                                     </div>
                                                     <?php break;
                                                         }
@@ -151,7 +163,7 @@
     </div>
          <script>
              function eliminarEstrenos(idPelicula){
-                var eliminar = confirm('Desea eliminar este estreno?');
+                var eliminar = confirm('Desea inactivar este estreno?');
                 var estreno=document.getElementById('eliminarEstrenos').value;
                 if ( eliminar ) {
                         
@@ -170,8 +182,7 @@
                         .fail(function(jqXHR){
                         console.log(jqXHR.statusText);
                         });
-                        alert('El estreno ha sido eliminado');
-                        window.location.href='estrenos.php';
+                        window.location.href='estrenos.php&pagina=1&estado=3';
    }
 } 
 

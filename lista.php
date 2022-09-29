@@ -21,6 +21,9 @@
   require("conexion.php");
   ?>
   <div class="container">
+  <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                echo "<div class='alert alert-success'>Pelicula eliminada de favoritos con exito!!</div>";
+              }?>
     <div class="row" style="padding-top:40px"> 
       <div class="col-md-12" style="background:#212121">
         <?php if (isset($_SESSION['login'])) {
@@ -57,11 +60,6 @@
       </div>
     </div>
   </div>
-  <?php if (isset($_GET['estado']) && $_GET['estado'] == 1) {
-    echo "<script>alert('Película eliminada de favoritos');</script>";
-  } 
- 
-  ?>
 
   <script>
     function init() {
@@ -72,7 +70,7 @@
       init();
     }
     function eliminarDato(idpelicula){
-    var eliminar = confirm('De verdad desea eliminar esta pelicula?');
+    var eliminar = confirm('De verdad desea eliminar esta pelicula de favoritos?');
  
   
     if ( eliminar ) {
@@ -92,8 +90,7 @@
          .fail(function(jqXHR){
             console.log(jqXHR.statusText);
          });
-         alert('La pelicula ha sido eliminada');
-         window.location.href="lista.php";
+         window.location.href="lista.php?estado=1";
     }
 } 
   </script>

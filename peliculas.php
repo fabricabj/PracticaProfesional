@@ -50,6 +50,26 @@
             </div> 
             <div class="container">
             <h1 align="center" style="color:white"><?php echo $peliculas;?></h1>
+            <?php if (isset($_GET['estado'])&& $_GET['estado']==1) {
+                        echo "<div class='alert alert-success'>Agregada a favoritos exitosamente!!</div>";
+                    }
+                    if (isset($_GET['estado'])&& $_GET['estado']==2) {
+                        echo "<div class='alert alert-success'>Eliminada de favoritos exitosamente!!</div>";
+                    }
+                    if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==2){
+                        echo "<div class='alert alert-success'>Ya se agrego esta pelicula al carrito anteriormente!!</div>";
+                    }
+                    if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==1){
+                        echo "<div class='alert alert-success'>Pelicula agregada al carrito!!</div>";
+                    }
+                    if (isset($_GET['estado'])&& $_GET['estado']==3) {
+                        echo "<div class='alert alert-success'>Ya existe otra pelicula con ese titulo, intente con otro!!</div>";
+                    }
+                    if (isset($_GET['estado'])&& $_GET['estado']==4) {
+                        echo "<div class='alert alert-success'>Pelicula inactivada con exito!!</div>";
+                    }
+                     ?>
+                    
               <div class="row">
                 
             <?php 
@@ -174,7 +194,7 @@
                                                                 <input type="text" name="pag" id="pag" value="<?php echo $_GET['pagina'];?>" hidden>
                                                                 <input type="text" name="categ" id="categ" value="<?php echo $peliculas;?>" hidden>
                                                                 <input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
-                                                                <a style="margin: 5px;" href="#" onclick="eliminarPelicula(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>)" class="btn btn-dark">Eliminar</a>
+                                                                <a style="margin: 5px;" href="#" onclick="eliminarPelicula(<?php echo $r['idpelicula']?>,<?php echo $_GET['pagina']?>)" class="btn btn-dark">Inactivar</a>
                                                             
                                                             </div>
                                                     <?php break;
@@ -231,17 +251,12 @@
                                 echo "<script>alert('pelicula agregada');</script>";
                             }
                         }
-                        if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==2){
-                            echo "<script>alert('La película ya fue agregada al carrito anteriormente');</script>";
-                        }
-                        if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==1){
-                            echo "<script>alert('La película fue agregada exitosamente!');</script>";
-                        }
+                        
                                             
                     ?>
                     <script>
                         function eliminarPelicula(idPelicula,pagina){
-                            var eliminar = confirm('De verdad desea eliminar esta película');
+                            var eliminar = confirm('De verdad desea inactivar esta película');
                             var categoria=document.getElementById('categ').value;
                             var eliminarPelicula=document.getElementById('eliminarPelicula').value;
                             if ( eliminar ) {
@@ -261,8 +276,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('La película ha sido eliminada');
-                                window.location.href ='peliculas.php?genero='+categoria+'&pagina='+pagina;
+                                window.location.href ='peliculas.php?genero='+categoria+'&pagina='+pagina+'&estado=4';
                             }
                         } 
                         function eliminarFav(idPelicula,idUsuario,pagina){
@@ -290,8 +304,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('se ha quitado de favoritos');
-                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina;
+                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina+'&estado=2';
                             }
                     } 
                     function agregarFav(idPelicula,idUsuario,pagina){
@@ -319,8 +332,7 @@
                                 .fail(function(jqXHR){
                                     console.log(jqXHR.statusText);
                                 });
-                                alert('se ha agregado a favoritos');
-                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina;
+                                window.location.href ='peliculas.php?genero='+genero+'&pagina='+pagina+'&estado=1';
                             }
                     } 
                     function vistos(idPelicula,pagina){

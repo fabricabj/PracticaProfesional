@@ -14,6 +14,6 @@ if (isset($_POST['guardarSugerencia']) && !empty($_POST['guardarSugerencia'])) {
 
 	$Insert=mysqli_query($conexion,"INSERT INTO sugerencias VALUES (00,'$fecha','$descripcion','$idestado','$idusuario')");	
 
-	header("location:contactenos.php");
+	header("location:contactenos.php?estado=1");
 } 
 ?>
