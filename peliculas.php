@@ -57,13 +57,13 @@
                         echo "<div class='alert alert-success'>Eliminada de favoritos exitosamente!!</div>";
                     }
                     if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==2){
-                        echo "<div class='alert alert-success'>Ya se agrego esta pelicula al carrito anteriormente!!</div>";
+                        echo "<div class='alert alert-warning'>Ya se agrego esta pelicula al carrito anteriormente!!</div>";
                     }
                     if(isset($_GET['estadocarrito'])&& $_GET['estadocarrito']==1){
                         echo "<div class='alert alert-success'>Pelicula agregada al carrito!!</div>";
                     }
                     if (isset($_GET['estado'])&& $_GET['estado']==3) {
-                        echo "<div class='alert alert-success'>Ya existe otra pelicula con ese titulo, intente con otro!!</div>";
+                        echo "<div class='alert alert-warning'>Ya existe otra pelicula con ese titulo, intente con otro!!</div>";
                     }
                     if (isset($_GET['estado'])&& $_GET['estado']==4) {
                         echo "<div class='alert alert-success'>Pelicula inactivada con exito!!</div>";

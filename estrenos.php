@@ -64,7 +64,7 @@
                     echo "<div class='alert alert-success'>Estreno inactivada con exito!!</div>";
                 }
                 if (isset($_GET['estado'])&& $_GET['estado']==4) {
-                    echo "<div class='alert alert-success'>Titulo ya existente, por favor intente con otro!!</div>";
+                    echo "<div class='alert alert-warning'>Titulo ya existente, por favor intente con otro!!</div>";
                 }?>
               <div class="row">
             <?php while ($r = mysqli_fetch_array($resultado)) { ?>

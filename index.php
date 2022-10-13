@@ -144,7 +144,7 @@
            <h3>Películas 2021</h3>
            <?php $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021"); ?>
            <div class="parent">
-              <div class="child"> 
+              <div class="child">
                   <?php while ($r=mysqli_fetch_array($consulta)) { ?>
                           <div style="padding:2%;color:grey">
                              <p style="margin-right:20px">
