@@ -6,7 +6,9 @@
 	$fechaActual = date('Y-m-d');
     if(isset($_POST['tarjeta'])){
        $total=$_POST['total'];
-       echo '<div class="container"  style="padding-top:70px">
+       echo '
+       <div class="container"  style="padding-top:70px">
+            <h1 align="center" style="color:white">Tarjeta de crédito</h1>
                 <form action="comprar.php" method="POST" style="background:white;border-radius:30px;padding:20px">
                     <div class="row">
                         <div class="col-md-4 form-group" id="user-group">
@@ -38,8 +40,8 @@
     }else{
         $total=$_POST['total'];
         echo '<div class="container" style="padding-top:70px">
+            <h1 align="center" style="color:white">Transferencia bancaria</h1>
                 <div align="center" style="background:white;border-radius:30px;padding:20px">
-                  <h3> Transferencia Bancaria</h3>
                   <br><br>
                   <h4>Empresa: AFLcinema</h4>
                   <h4>CBU: 1234567890123456789012</h4>

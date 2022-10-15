@@ -177,7 +177,7 @@
                                                 <h6><strong>Duración: </strong><?php echo $r['duracion']." min"; ?></h6>
                                                 <h6><strong>Puntaje: </strong><?php echo "<i class='fas fa-star'></i>" .$r['puntaje']; ?></h6>
                                                 <h6><strong>Año: </strong><?php echo $r['anio']; ?></h6>
-                                                <h6><strong>Precio: </strong><?php echo $r['precio']; ?></h6>
+                                                <h6><strong>Precio: </strong><?php echo '$' . $r['precio']; ?></h6>
                                                 <h6 align="center"><strong>Descripción </strong></h6>
                                                 <h6><?php echo $r['descripcion']; ?></h6>
                                             </div>

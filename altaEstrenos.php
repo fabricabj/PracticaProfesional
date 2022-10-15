@@ -24,7 +24,7 @@
                       $datos_generos=mysqli_fetch_assoc($resultado);
                       $generos=explode(' ',$datos_generos['categorias']);
                       $rta=in_array(' ',$generos);
-                  ?>
+                  ?><h1 align="center" style="color:white">Editar estreno </h1>
                        <form method="POST" action="abm_estrenos.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-8">
@@ -134,7 +134,7 @@
                       <?php 
                   }
                  if(isset($_POST['alta']) && !empty($_POST['alta'])){ ?>
-                    
+                    <h1 align="center" style="color:white">Alta estreno </h1>
                     <form method="POST" action="abm_estrenos.php" enctype="multipart/form-data" style="width:70%;">
                         <div class="form-row">
                             <div class="form-group col-md-8">

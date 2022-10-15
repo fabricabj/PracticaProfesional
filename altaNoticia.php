@@ -24,7 +24,7 @@
                       $resultado=mysqli_query($conexion,$consulta);
                       $datos=mysqli_fetch_assoc($resultado);
                      
-                  ?>
+                  ?><h1 align="center" style="color:white">Editar noticia </h1>
                        <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                          <div class="form-row">
                              <div class="form-group col-md-4">
@@ -84,7 +84,7 @@
                       <?php 
                   }
                  if(isset($_POST['alta']) && !empty($_POST['alta'])){ ?>
-                    
+                    <h1 align="center" style="color:white">Alta noticia </h1>
                     <form method="POST" action="abm_noticias.php" enctype="multipart/form-data" style="width:70%;">
                         <div class="form-row">
                             <div class="form-group col-md-8">
