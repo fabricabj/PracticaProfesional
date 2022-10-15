@@ -110,7 +110,7 @@
       echo "<td>"; echo $fila['idpelicula']; echo "</td>";
       echo "<td>"; echo $fila['titulo']; echo "</td>";
       echo "<td>"; echo $fila['anio']; echo "</td>";
-      echo "<td>"; echo $fila['precio']; echo "</td>";
+      echo "<td>"; echo '$' . $fila['precio']; echo "</td>";
       echo "<td>"; echo $fila['categorias']; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestado FROM peliculas WHERE idpelicula='{$fila['idpelicula']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
@@ -130,7 +130,7 @@
             if($_GET['est']==1){
               echo '<td><input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
                     <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-                    <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Eliminar</a></td>';
+                    <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
             }else{  
               echo "<td><form action='ABM.php' method='post'>
                       <input name='id' id='id' value='".$fila['idpelicula']."'hidden>

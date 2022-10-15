@@ -60,7 +60,7 @@ if(!isset($_GET['pagina'])){
  </script>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Ventas</h3>
+        <h3 class="text-center text-white">Mis ventas</h3>
          <form action="buscarventa.php?pagina=1" method="POST">
              <div class="input-group-prepend">
                   <input id="venta" name="venta" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese venta a buscar">
@@ -103,7 +103,7 @@ if(!isset($_GET['pagina'])){
       echo "<tr>";
       echo "<td>"; echo $fila['idventa']; echo "</td>";
       echo "<td>"; echo $nombre_usuario; echo "</td>";
-      echo "<td>"; echo $fila['precio_total']; echo "</td>";
+      echo "<td>"; echo '$' . $fila['precio_total']; echo "</td>";
       echo "<td>"; echo $fila['fecha_venta']; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestados FROM ventas WHERE idventa='{$fila['idventa']}'");
                       while($i=mysqli_fetch_array($tipoestado)){

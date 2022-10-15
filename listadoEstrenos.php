@@ -126,7 +126,7 @@
             if($_GET['est']==3){
               echo '<td><input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
                     <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-                    <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Eliminar</a></td>';
+                    <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
             }else{   
               echo "<td><form action='abm_estrenos.php' method='post'>
                     <input name='idpelicula' id='idpelicula' value='".$fila['idpelicula']."'hidden>

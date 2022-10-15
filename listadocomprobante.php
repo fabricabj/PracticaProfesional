@@ -182,11 +182,11 @@
                                                 <label style="color:white">Título: <?php echo $titulo;?></label>
                                                 </div>
                                                 <div align="center" class="col-md-6">
-                                                <label style="color:white">Precio: <?php echo $precio;?></label>
+                                                <label style="color:white">Precio: <?php echo '$' . $precio;?></label>
                                                 </div>
                                                   <?php  }?>
                                                 <div align="center" class="col-md-12">
-                                                <label style="color:white">Total: <?php echo $totalpagar;?></label>
+                                                <label style="color:white">Total: <?php echo '$' . $totalpagar;?></label>
                                                 </div>
                                                 <?php if($_GET['est']==3){  ?>
                                                 <div align="center" class="col-md-6" style="padding-top:30px">

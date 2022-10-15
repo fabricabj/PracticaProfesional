@@ -59,7 +59,7 @@ if(!isset($_GET['pagina'])){
  </script>
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h3 class="text-center text-white">Ventas</h3>
+        <h3 class="text-center text-white">Todas las ventas</h3>
         <table class="table table-light">
           <thead>
             <th scope ="col"><a href="reporteventa.php?pagina=1&est=<?php echo $_GET['est'];?>&orden=idventa&ascendente=<?php echo $asc; ?>" >Id</a></th>
@@ -93,7 +93,7 @@ if(!isset($_GET['pagina'])){
       echo "<tr>";
       echo "<td>"; echo $fila['idventa']; echo "</td>";
       echo "<td>"; echo $nombre_usuario; echo "</td>";
-      echo "<td>"; echo $fila['precio_total']; echo "</td>";
+      echo "<td>"; echo '$' . $fila['precio_total']; echo "</td>";
       echo "<td>"; echo $fila['fecha_venta']; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestados FROM ventas WHERE idventa='{$fila['idventa']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
