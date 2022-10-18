@@ -23,7 +23,7 @@
                          require("conexion.php");
                          if (isset($_POST['enviarMail']) && !empty($_POST['enviarMail'])) {
                          include('sendmail.php');//Mando a llamar la funcion que se encarga de enviar el correo electronico
-                         $sugerencia = "cinemaafl@gmail.com";
+                         $sugerencia = "aflcinema1@gmail.com";
                          $subject = $_POST['asunto'];
                          $message = $_POST['mensaje'];
                          $cc = $_POST['mail'];
@@ -32,8 +32,8 @@
                          // mail($to, $subject, $message, $headers);
 
                               $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-                              $smtpUsuario = ("cinemaafl@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
-                              $smtpClave = "vrlbszgsljkjmthu";  // Mi contraseña,  alfsugerencias
+                              $smtpUsuario = ("aflcinema1@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
+                              $smtpClave = "ohiczseicwwbodvh";  // Mi contraseña,  alfsugerencias
                               $mail = new PHPMailer();
                               $mail->IsSMTP();
                               $mail->SMTPAuth = true;

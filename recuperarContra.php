@@ -12,8 +12,8 @@ if (isset($_POST['buscar'])){
      $token=uniqid();// genera un ID único
      $sql=mysqli_query($conexion,"UPDATE usuarios set token='$token' WHERE mail='{$r['mail']}'");
 	 $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-     $smtpUsuario = ("cinemaafl@gmail.com");  // Mi cuenta de correo
-     $smtpClave = "vrlbszgsljkjmthu";  // Mi contraseña
+     $smtpUsuario = ("aflcinema1@gmail.com");  // Mi cuenta de correo
+     $smtpClave = "ohiczseicwwbodvh";  // Mi contraseña
      $mail = new PHPMailer();
      $mail->IsSMTP();
      $mail->SMTPAuth = true;

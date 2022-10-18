@@ -154,8 +154,8 @@ try {
 	$mail->isSMTP();                                            // Send using SMTP
 	$mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
 	$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-	$mail->Username   = 'cinemaafl@gmail.com';                     // SMTP username
-	$mail->Password   = 'vrlbszgsljkjmthu';                             // SMTP password
+	$mail->Username   = 'aflcinema1@gmail.com';                     // SMTP username
+	$mail->Password   = 'ohiczseicwwbodvh';                             // SMTP password
 	$mail->SMTPOptions = array(
 		'ssl' => array(
 			'verify_peer' => false,
@@ -167,7 +167,7 @@ try {
 	$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
 
 	//Recipients
-	$mail->setFrom('cinemaafl@gmail.com', 'noReply');
+	$mail->setFrom('aflcinema1@gmail.com', 'noReply');
 	$mail->addAddress($email);     // Add a recipient
 	//$mail->addAddress('ellen@example.com');               // Name is optional
 	
