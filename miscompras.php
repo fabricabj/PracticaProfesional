@@ -61,14 +61,6 @@ if(!isset($_GET['pagina'])){
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h3 class="text-center text-white">Mis compras</h3>
-         <form action="buscarventa.php?pagina=1" method="POST">
-             <div class="input-group-prepend">
-                  <input id="venta" name="venta" style="background:black;color:white" type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Ingrese venta a buscar">
-                  <div class="input-group-append">
-                    <button style="border-color: white" class="btn btn-outline-dark" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
-                  </div>
-            </div>
-        </form>
         <table class="table table-light">
           <thead>
           
