@@ -27,6 +27,7 @@ if (isset($_SESSION['venta']) && !empty($_SESSION['venta'])) {
 		$fecha_compra=$rn['fecha_venta'];
 		$filename='FacturaVenta_n°_'.$idventa;
 	}
+	$fecha=date('d/m/Y',strtotime($fecha_compra)); 
 	
 	$pdf->SetFillColor(255,255,255);
 	
@@ -49,7 +50,7 @@ if (isset($_SESSION['venta']) && !empty($_SESSION['venta'])) {
 	$pdf->Cell(75,5,'',0,0,'C',1);
 	$pdf->Cell(20,5,'',0,0,'C',1);
 	$pdf->Cell(10,5,'',0,0,'C',1);
-	$pdf->Cell(70,5,'Fecha de emision: '.$fecha_compra,0,1,'i',0);
+	$pdf->Cell(70,5,'Fecha de emision: '.$fecha,0,1,'i',0);
 	
 
 	$pdf->SetFont('Arial','B',12);

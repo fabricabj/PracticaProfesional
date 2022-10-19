@@ -101,7 +101,7 @@
                         
                         $fecha = mysqli_query($conexion, "SELECT fechapago FROM comprobantes WHERE idcomprobante='{$fila['idcomprobante']}'");
                         while ($i = mysqli_fetch_array($fecha)) {
-                            $fecha1 = $i['fechapago'];
+                            $fecha1=date('d/m/Y',strtotime($i['fechapago'])); 
                         }
                         $total = mysqli_query($conexion, "SELECT totalpagar FROM comprobantes WHERE idcomprobante='{$fila['idcomprobante']}'");
                         while ($i = mysqli_fetch_array($total)) {

@@ -89,13 +89,13 @@
                     <?php
 
                     while ($fila = $resultado->fetch_assoc()) {
-
+                        $fecha=date('d/m/Y',strtotime($fila['fecha'])); 
                         echo "<tr>";
                         echo "<td>";
                         echo $fila['idsugerencia'];
                         echo "</td>";
                         echo "<td>";
-                        echo $fila['fecha'];
+                        echo $fecha;
                         echo "</td>";
                         echo "<td>";
                         echo $fila['descripcion'];

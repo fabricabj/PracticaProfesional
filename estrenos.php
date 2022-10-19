@@ -74,7 +74,8 @@
                               <div class="card-body" style="height:70px">
                                   <p align="center" class="card-text"><?php echo $r['titulo']; ?></p>
                                   <strong>Duración: </strong><?php echo $r['duracion']; ?>
-                                  <br><strong>Fecha: </strong><?php echo $r['fecha_publicacion']; ?>
+                                  <?php $fecha=date('d/m/Y',strtotime($r['fecha_publicacion'])); ?>
+                                  <br><strong>Fecha: </strong><?php echo $fecha; ?>
                                   <br><strong>Categorías: </strong><?php echo $r['categorias']; ?>
                               </div>
                               <br>

@@ -89,12 +89,12 @@ if(!isset($_GET['pagina'])){
         while ($usu = mysqli_fetch_array($selectUsuario)) {
             $nombre_usuario = $usu['nombre_usuario'];
         }
-        
+      $fecha=date('d/m/Y',strtotime($fila['fecha_venta'])); 
       echo "<tr>";
       echo "<td>"; echo $fila['idventa']; echo "</td>";
       echo "<td>"; echo $nombre_usuario; echo "</td>";
       echo "<td>"; echo '$' . $fila['precio_total']; echo "</td>";
-      echo "<td>"; echo $fila['fecha_venta']; echo "</td>";
+      echo "<td>"; echo $fecha; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestados FROM ventas WHERE idventa='{$fila['idventa']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestados'];
