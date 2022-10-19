@@ -48,7 +48,7 @@
     }
     $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
   }
-  $usuarios_x_pag = 8;
+  $usuarios_x_pag = 5;
   $total_usuarios = mysqli_num_rows($consulta);
   $paginas = $total_usuarios / $usuarios_x_pag;
   $paginas = ceil($paginas);
@@ -212,7 +212,6 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
           .fail(function(jqXHR){
               console.log(jqXHR.statusText);
           });
-          alert('El usuario ha sido inactivado');
           window.location.href ='listarUsuario.php?pagina='+pagina+'&est='+estado;
       }
   } 

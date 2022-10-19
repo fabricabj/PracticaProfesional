@@ -32,7 +32,7 @@ if(isset($_GET['ascendente'])){
 }
 $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
 }
-$proveedores_x_pag = 2;
+$proveedores_x_pag = 5;
 $total_proveedores = mysqli_num_rows($consulta);
 $paginas = $total_proveedores / $proveedores_x_pag;
 $paginas = ceil($paginas);
@@ -142,8 +142,8 @@ while($fila = $resultado->fetch_assoc()){
                 <a style="margin: 5px;" href="#" onclick="eliminarProveedor('.$fila['idproveedor'].','.$_GET['pagina'].','.$_GET['est'].')" class="btn btn-danger">Inactivar</a></td>';
         }else{  
           echo "<td><form action='abmproveedores.php' method='post'>
-                <input name='cuit' id='cuit' value='".$fila['cuit']."'hidden>
-                <button type='submit' class='btn btn-danger' name='Activar' id='Activar' value='Activar'>Activar</button>
+                <input name='id' id='id' value='".$fila['idproveedor']."'hidden>
+                <button type='submit' class='btn btn-danger' name='activar' id='activar' value='activar'>Activar</button>
             </form>
         </td>";
         }

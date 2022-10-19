@@ -32,7 +32,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $noticias_x_pag = 2;
+  $noticias_x_pag = 5;
   $total_noticias = mysqli_num_rows($consulta);
   $paginas = $total_noticias / $noticias_x_pag;
   $paginas = ceil($paginas);

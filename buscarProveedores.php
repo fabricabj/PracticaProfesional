@@ -48,7 +48,7 @@ if(isset($_POST['ascendente'])){
 }
 $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
 }
-$proveedores_x_pag = 2;
+$proveedores_x_pag = 5;
 $total_proveedores = mysqli_num_rows($consulta);
 $paginas = $total_proveedores / $proveedores_x_pag;
 $paginas = ceil($paginas);
@@ -209,7 +209,6 @@ while($fila = $resultado->fetch_assoc()){
                   .fail(function(jqXHR){
                       console.log(jqXHR.statusText);
                   });
-                  alert('El proveedor ha sido Inactivado');
                   window.location.href ='proveedores.php?pagina='+pagina+'&est='+estado;
               }
           } 

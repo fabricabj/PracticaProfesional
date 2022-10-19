@@ -48,7 +48,7 @@
     }
     $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
   }
-  $estrenos_x_pag = 2;
+  $estrenos_x_pag = 5;
   $total_estrenos = mysqli_num_rows($consulta);
   $paginas = $total_estrenos / $estrenos_x_pag;
   $paginas = ceil($paginas);
@@ -130,7 +130,7 @@
       if($est==3){
         echo '<td><input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
               <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-              <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$est.')" class="btn btn-danger">Eliminar</a></td>';
+              <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$est.')" class="btn btn-danger">Inactivar</a></td>';
       }else{   
         echo "<td><form action='abm_estrenos.php' method='post'>
               <input name='idpelicula' id='idpelicula' value='".$fila['idpelicula']."'hidden>
@@ -179,11 +179,7 @@
     </nav>
   </div>
 
-      <?php
-        if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('el cuit ingresado ya existe, intente con otro.');</script>";
-        }
-        ?>
+    
         <script>
           function eliminarPelicula(idpelicula,pagina,estado){
               var eliminar = confirm('De verdad desea Inactivar esta pelicula');
@@ -206,7 +202,6 @@
                   .fail(function(jqXHR){
                       console.log(jqXHR.statusText);
                   });
-                  alert('La pelicula ha sido inactivada');
                   window.location.href ='listadoEstrenos.php?pagina='+pagina+'&est='+estado;
               }
           } 

@@ -30,7 +30,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $permisos_x_pag = 2;
+  $permisos_x_pag = 5;
   $total_permisos = mysqli_num_rows($consulta);
   $paginas = $total_permisos / $permisos_x_pag;
   $paginas = ceil($paginas);

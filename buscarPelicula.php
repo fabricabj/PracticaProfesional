@@ -48,7 +48,7 @@
     }
     $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
   }
-  $peliculas_x_pag = 8;
+  $peliculas_x_pag = 5;
   $total_peliculas = mysqli_num_rows($consult);
   $paginas = $total_peliculas / $peliculas_x_pag;
   $paginas = ceil($paginas);
@@ -119,7 +119,7 @@
       echo "<td>"; echo $fila['idpelicula']; echo "</td>";
       echo "<td>"; echo $fila['titulo']; echo "</td>";
       echo "<td>"; echo $fila['anio']; echo "</td>";
-      echo "<td>"; echo $fila['precio']; echo "</td>";
+      echo "<td>"; echo '$' . $fila['precio']; echo "</td>";
       echo "<td>"; echo $fila['categorias']; echo "</td>";
       $tipoestado=mysqli_query($conexion,"SELECT idestado FROM peliculas WHERE idpelicula='{$fila['idpelicula']}'");
                       while($i=mysqli_fetch_array($tipoestado)){
@@ -139,7 +139,7 @@
       if($est==1){
         echo '<td><input type="text" name="eliminarPelicula" id="eliminarPelicula" value="eliminarPelicula" hidden>
               <input type="text" name="pagina" id="pagina" value="'.$_GET['pagina'].'" hidden>
-              <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$est.')" class="btn btn-danger">Eliminar</a></td>';
+              <a style="margin: 5px;" href="#" onclick="eliminarPelicula('.$fila['idpelicula'].','.$_GET['pagina'].','.$est.')" class="btn btn-danger">Inactivar</a></td>';
       }else{  
         echo "<td><form action='ABM.php' method='post'>
                 <input name='id' id='id' value='".$fila['idpelicula']."'hidden>
@@ -216,7 +216,6 @@
                   .fail(function(jqXHR){
                       console.log(jqXHR.statusText);
                   });
-                  alert('La pelicula ha sido Inactivada');
                   window.location.href ='listarpeliculas.php?pagina='+pagina+'&est='+estado;
               }
           } 

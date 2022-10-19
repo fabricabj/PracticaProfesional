@@ -32,7 +32,7 @@
     }
     $sql .= " ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $peliculas_x_pag = 8;
+  $peliculas_x_pag = 5;
   $total_peliculas = mysqli_num_rows($consulta);
   $paginas = $total_peliculas / $peliculas_x_pag;
   $paginas = ceil($paginas);
@@ -57,7 +57,7 @@
 
             <th scope="col"><a href="verEstadisticas.php?pagina=1&orden=titulo&ascendente=<?php echo $asc; ?>">Título</a></th>
             <th scope="col"><a href="verEstadisticas.php?pagina=1&orden=anio&ascendente=<?php echo $asc; ?>">Año</a></th>
-            <th scope="col"><a href="verEstadisticas.php?pagina=1&orden=cantidad_visto&cantidad_vendida&ascendente=<?php echo $asc; ?>">Cant. Vendido</a></th>
+            <th scope="col"><a href="verEstadisticas.php?pagina=1&orden=cantidad_vendida&ascendente=<?php echo $asc; ?>">Cant. Vendido</a></th>
             <th scope="col"><a href="verEstadisticas.php?pagina=1&orden=cantidad_visto&ascendente=<?php echo $asc; ?>">Cant. Visto</a></th>
             <th scope="col" class="col-2">Promedio Interacción <span title="(cantidad visto + cantidad vendido) / 2" class="badge badge-pill badge-info">Cálculo</span></th>
             <th scope="col">Estado</th>

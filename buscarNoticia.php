@@ -51,7 +51,7 @@
     }
     $sql.=" ORDER BY " . $_POST['orden'] . $sql2;
   }
-  $noticias_x_pag = 2;
+  $noticias_x_pag = 5;
   $total_noticias = mysqli_num_rows($consulta);
   $paginas = $total_noticias / $noticias_x_pag;
   $paginas = ceil($paginas);
@@ -204,7 +204,6 @@
           .fail(function(jqXHR){
               console.log(jqXHR.statusText);
           });
-          alert('La noticia ha sido inactivada');
           window.location.href ='listarNoticias.php?pagina='+pagina+'&est='+estado;
       }
   } 

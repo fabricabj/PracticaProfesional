@@ -15,7 +15,7 @@
         $consulta = mysqli_query($conexion, $sql);
 
          
-    $noticias_x_pag = 8;
+    $noticias_x_pag = 4;
     $total_noticias = mysqli_num_rows($consulta);
     $paginas = $total_noticias / $noticias_x_pag;
     $paginas = ceil($paginas);

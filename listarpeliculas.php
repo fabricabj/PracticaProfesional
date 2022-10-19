@@ -32,7 +32,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $peliculas_x_pag = 8;
+  $peliculas_x_pag = 5;
   $total_peliculas = mysqli_num_rows($consulta);
   $paginas = $total_peliculas / $peliculas_x_pag;
   $paginas = ceil($paginas);

@@ -40,7 +40,7 @@
         }
         $sql .= " ORDER BY " . $_GET['orden'] . $sql2;
     }
-    $comprobantes_x_pag = 8;
+    $comprobantes_x_pag = 5;
     $total_comprobantes = mysqli_num_rows($consulta);
     $paginas = $total_comprobantes / $comprobantes_x_pag;
     $paginas = ceil($paginas);

@@ -32,7 +32,7 @@
     }
     $sql.=" ORDER BY " . $_GET['orden'] . $sql2;
   }
-  $usuarios_x_pag = 8;
+  $usuarios_x_pag = 5;
   $total_usuarios = mysqli_num_rows($consulta);
   $paginas = $total_usuarios / $usuarios_x_pag;
   $paginas = ceil($paginas);
@@ -160,9 +160,6 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
                     </div>
 
       <?php
-        if (isset($_GET['estado'])&& $_GET['estado']==1) {
-            echo "<script type='text/javascript'>alert('El cuit ingresado ya existe, intente con otro.');</script>";
-        }
         ?>
 
 <script>
@@ -187,7 +184,6 @@ echo "<td>"; echo $nombre_grupo; echo "</td>";
           .fail(function(jqXHR){
               console.log(jqXHR.statusText);
           });
-          alert('El usuario ha sido inactivado');
           window.location.href ='listarUsuario.php?pagina='+pagina+'&est='+estado+'&estado=1';
       }
   } 

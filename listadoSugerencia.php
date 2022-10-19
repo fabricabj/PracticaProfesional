@@ -40,7 +40,7 @@
         }
         $sql .= " ORDER BY " . $_GET['orden'] . $sql2;
     }
-    $sugerencias_x_pag = 8;
+    $sugerencias_x_pag = 5;
     $total_sugerencias = mysqli_num_rows($consulta);
     $paginas = $total_sugerencias / $sugerencias_x_pag;
     $paginas = ceil($paginas);
