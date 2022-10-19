@@ -183,7 +183,7 @@
                         .fail(function(jqXHR){
                         console.log(jqXHR.statusText);
                         });
-                        window.location.href='estrenos.php&pagina=1&estado=3';
+                        window.location.href='estrenos.php?pagina=1&estado=3';
    }
 } 
 
