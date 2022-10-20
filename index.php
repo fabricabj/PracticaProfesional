@@ -24,19 +24,25 @@
     
     require("conexion.php");
     if (isset($_GET['error'])&& $_GET['error']==1) {
-        echo "<div class='alert alert-danger'>El mail ingresado ya existe, por favor ingrese otro!</div>";
+        echo "<div class='alert alert-danger'>¡El mail ingresado ya existe, por favor ingrese otro!</div>";
     }
     if (isset($_GET['error'])&& $_GET['error']==2) {
-        echo "<div class='alert alert-danger'>Usuario o contraseña incorrecta!</div>";
+        echo "<div class='alert alert-danger'>¡Usuario o contraseña incorrecta!</div>";
+    }
+    if (isset($_GET['error'])&& $_GET['error']==3) {
+        echo "<div class='alert alert-danger'>¡Usuario a sido suspendido!</div>";
+    }
+    if (isset($_GET['error'])&& $_GET['error']==4) {
+        echo "<div class='alert alert-danger'>¡El nombre de usuario ingresado ya existe, por favor ingrese otro!</div>";
     }
     if (isset($_GET['estado'])&& $_GET['estado']==1) {
-        echo "<div class='alert alert-success'>Usuario registrado con exito!</div>";
+        echo "<div class='alert alert-success'>¡Usuario registrado con exito!</div>";
     }
     if(isset($_GET['retorno'])&& $_GET['retorno']==2){
-        echo "<div class='alert alert-warning'>La pelicula ya fue agregada al carrito anteriormente!</div>";
+        echo "<div class='alert alert-warning'>¡La pelicula ya fue agregada al carrito anteriormente!</div>";
     }
     if(isset($_GET['retorno'])&& $_GET['retorno']==1){
-        echo "<div class='alert alert-success'>Pelicula agregada exitosamente!</div>";
+        echo "<div class='alert alert-success'>¡Pelicula agregada exitosamente!</div>";
     }
     if (isset($_GET['recuperar'])&& $_GET['recuperar']==2){
         echo '<script> alert("Hubo problemas con el envio");</script>';
