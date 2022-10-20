@@ -109,7 +109,12 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     <?php break;
                                                     case "listado comprobantes": ?>
                                                         <!--<form method="POST" action="listadocomprobante.php">-->
-                                                            <a href="listadocomprobante.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Comprobantes</a>
+                                                            <a href="listadocomprobante.php?pagina=1&est=3" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Comprobantes
+                                                            <?php $consul=mysqli_query($conexion,"SELECT * FROM comprobantes WHERE idestado=3");
+                                                            if(mysqli_num_rows($consul)>0){?>
+                                                                <i class='fa fa-exclamation-circle'></i>
+                                                           <?php } ?>
+                                                        </a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "buscar estrenos": ?>
@@ -119,7 +124,11 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                                     <?php break;
                                                     case "baja sugerencias": ?>
                                                         <!--<form method="POST" action="listadoSugerencia.php">-->
-                                                        <a href="listadoSugerencia.php?pagina=1&est=2" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Sugerencias</a>
+                                                        <a href="listadoSugerencia.php?pagina=1&est=2" onMouseover="this.style.background='#B7B7B7'" onMouseout="this.style.background='white'" class="dropdown-item"><i class='fa fa-list-alt'></i> Listado Sugerencias
+                                                        <?php $consul=mysqli_query($conexion,"SELECT * FROM sugerencias WHERE idestado=2");
+                                                            if(mysqli_num_rows($consul)>0){?>
+                                                                <i class='fa fa-exclamation-circle'></i>
+                                                           <?php } ?></a>
                                                         <!--</form>-->
                                                     <?php break;
                                                     case "Mis compras": ?>
