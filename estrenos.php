@@ -11,7 +11,7 @@
             header("location:estrenos.php?pagina=1");
         }
         require("conexion.php");
-        $sql = "SELECT * FROM peliculas where idestado=3";
+        $sql = "SELECT * FROM peliculas where idestado=3 ORDER BY idpelicula DESC";
         $consulta = mysqli_query($conexion, $sql);
 
          

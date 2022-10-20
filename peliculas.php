@@ -76,7 +76,7 @@
             
             if (isset($_GET['pagina'])) {
                $iniciar = ($_GET['pagina'] - 1) * $peliculas_x_pag;
-               $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY anio DESC limit $iniciar,$peliculas_x_pag");
+               $consulta2 = mysqli_query($conexion, "SELECT * FROM peliculas WHERE (categorias like '%$peliculas%') AND idestado=1 ORDER BY idpelicula DESC limit $iniciar,$peliculas_x_pag");
                while ($r = mysqli_fetch_array($consulta2)) {
                  if(isset($_SESSION['login'])){
                    $seletFavoritos=mysqli_query($conexion,"SELECT * FROM favoritos WHERE idusuario={$_SESSION['login']} AND idpelicula={$r['idpelicula']}");

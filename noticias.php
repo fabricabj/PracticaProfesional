@@ -11,9 +11,8 @@
             header("location:noticias.php?pagina=1");
         }
         require("conexion.php");
-        $sql = "SELECT * FROM noticias where idestado=1";
+        $sql = "SELECT n.* FROM noticias AS n, proveedores AS p where n.idproveedor = p.idproveedor and p.idestado=1 and n.idestado=1 ORDER BY n.idnoticia DESC";
         $consulta = mysqli_query($conexion, $sql);
-
          
     $noticias_x_pag = 4;
     $total_noticias = mysqli_num_rows($consulta);
