@@ -20,6 +20,10 @@
                       $tipoestado=mysqli_query($conexion,"SELECT idestado FROM noticias WHERE idnoticia='$idnoticia'");
                       while($i=mysqli_fetch_array($tipoestado)){
                           $idTipoEstado=$i['idestado'];
+                      }
+                      $tipoproveedor=mysqli_query($conexion,"SELECT idproveedor FROM noticias WHERE idnoticia='$idnoticia'");
+                      while($i=mysqli_fetch_array($tipoproveedor)){
+                          $idTipoproveedor=$i['idproveedor'];
                       }  
                       $resultado=mysqli_query($conexion,$consulta);
                       $datos=mysqli_fetch_assoc($resultado);
@@ -67,7 +71,7 @@
 									<?php $selectProveedor=mysqli_query($conexion,"SELECT razon_social,idproveedor FROM proveedores ORDER BY idproveedor ASC");
 									while($r=mysqli_fetch_array($selectProveedor)){?>
 										
-										<option value="<?php echo $r['idproveedor'];?>"><?php echo $r['razon_social'];?></option>
+										<option value="<?php echo $r['idproveedor'];?>" <?php  if($idTipoproveedor==$r['idproveedor']){ echo'selected';}?>><?php echo $r['razon_social'];?></option>
 									<?php }?>
 								</select>
 							</div>
