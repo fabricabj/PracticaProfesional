@@ -62,7 +62,12 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
 
                                     <li class="nav-item">
                                         <a class="btn btn-light user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <?php echo $nombre_usuario;  ?>  <i class="fas fa-user-alt"></i>
+                                            <i class="fas fa-user-alt"></i> <?php echo $nombre_usuario; 
+                                                 $consul1=mysqli_query($conexion,"SELECT * FROM comprobantes WHERE idestado=3");
+                                                 $consul2=mysqli_query($conexion,"SELECT * FROM sugerencias WHERE idestado=2");
+                                                            if(mysqli_num_rows($consul1)>0 || mysqli_num_rows($consul2)>0){?>
+                                                                <i class='fa fa-exclamation-circle' style='color: red'></i>
+                                                           <?php } ?> 
                                         </a>
                                                    
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
