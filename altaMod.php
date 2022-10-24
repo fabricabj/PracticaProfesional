@@ -25,7 +25,7 @@
                       $generos=explode(' ', $datos_generos['categorias']);
                       $rta=in_array(' ',$generos);
                   ?><h1 align="center" style="color:white">Editar pelicula </h1>
-                       <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;">
+                       <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;" onsubmit="return alta(this)">
                          <div class="form-row">
                              <div class="form-group col-md-8">
                                 <label>Título</label>
@@ -45,7 +45,6 @@
                              <div class="form-group col-md-4">
                                 <label for="inputPassword4">Puntaje</label>
                                 <input type="text" class="form-control" name="puntaje" id="puntaje" value="<?php echo $datos_generos['puntaje'];?>" required onkeypress="return filterFloat(event,this);">
-                               
                              </div>
                              <div class="form-group col-md-4">
                                 <label for="inputPassword4">Precio</label>
@@ -134,7 +133,7 @@
                              </div>
                          </div>   
                          <div class="form-group">
-                             <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar"><i class="fas fa-save"></i> Guardar</button>
+                             <button type="submit" class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="Modificar" name="Modificar" onclick="alta();"><i class="fas fa-save"></i> Guardar</button>
                              <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
                          </div>
                        </form>
@@ -143,7 +142,7 @@
                  if(isset($_POST['alta']) && !empty($_POST['alta'])){ ?>
                  <h1 align="center" style="color:white">Alta pelicula </h1>
                     
-                    <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;">
+                    <form method="POST" action="ABM.php" enctype="multipart/form-data" style="width:70%;" onsubmit="return alta(this)">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                <label for="inputEmail4">Título</label>
@@ -248,7 +247,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardar" name="guardar"><i class="fas fa-save"></i> Guardar</button>
+                            <button  class="btn btn-dark" style="margin-top: 3%;width: 100%;" value="guardar" name="guardar" onclick="alta();"><i class="fas fa-save"></i> Guardar</button>
                             <button style="margin-top: 3%;width: 100%;" class="btn btn-dark"><a style="text-decoration: none;color: white;" href="javascript:history.go(-1)"><i class="fas fa-ban"></i> Cancelar</a></button>
                         </div>
                     </form>
@@ -318,6 +317,23 @@ function filterFloat(evt,input){
         }
         
     }
+    function alta(v) {
+            var ok = true;
+            var msg = "ERROR: \n";
+
+            if (v.elements['puntaje'].value > 10) {
+                msg += "Puntaje incorrecto debe ser menor o igual a 10 \n";
+                ok = false;
+            }
+            if (v.elements['puntaje'].value < 1) {
+                msg += "Puntaje incorrecto debe ser mayor o igual a 1 \n";
+                ok = false;
+            }
+            if (ok == false) {
+                alert(msg);
+                return ok;
+            }
+        }
 
     </script>
    </body>

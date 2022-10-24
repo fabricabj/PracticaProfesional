@@ -14,7 +14,7 @@
 
     if (isset($_POST['Rechazar'])){
         include "conexion.php";
-        $idComprobante = $_POST['Rechazado'];
+        $idComprobante = $_POST['Rechazar'];
         $Actualizar = "UPDATE comprobantes SET idestado=2 WHERE idcomprobante='$idComprobante'";
         $enviar = mysqli_query($conexion, $Actualizar);
     }

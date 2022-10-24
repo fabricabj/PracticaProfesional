@@ -86,9 +86,9 @@
             if(($fila['cantidad_visto'] != 0) && ($fila['cantidad_vendida'] != 0)){              
               $numero = (($fila['cantidad_vendida'] * 100) / $fila['cantidad_visto']);
               //formateo dos decimales
-              echo number_format($numero, 2, '.', '');
+              echo number_format($numero, 2, '.', '') . ' %';
             }else{
-              echo 0;
+              echo 0 . ' %';
             }
             echo "</td>";
             $tipoestado = mysqli_query($conexion, "SELECT idestado FROM peliculas WHERE idpelicula='{$fila['idpelicula']}'");
