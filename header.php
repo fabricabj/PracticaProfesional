@@ -65,14 +65,16 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                                             <i class="fas fa-user-alt"></i> <?php echo $nombre_usuario; 
                                                  $consul1=mysqli_query($conexion,"SELECT * FROM comprobantes WHERE idestado=3");
                                                  $consul2=mysqli_query($conexion,"SELECT * FROM sugerencias WHERE idestado=2");
+                                                 $idgrupo = $_SESSION['grupo'];
+                                                        if($idgrupo==1){
                                                             if(mysqli_num_rows($consul1)>0 || mysqli_num_rows($consul2)>0){?>
                                                                 <i class='fa fa-exclamation-circle' style='color: red'></i>
-                                                           <?php } ?> 
+                                                           <?php }
+                                                        }?> 
                                         </a>
                                                    
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <?php
-                                            $idgrupo = $_SESSION['grupo'];
                                             $permisos = mysqli_query($conexion, "SELECT p.nombre_permiso,gp.idpermiso FROM permisos_usuarios AS p, grupos_permisos AS gp WHERE p.idpermiso = gp.idpermiso AND gp.idgrupo=$idgrupo;");
                                             while ($rs = mysqli_fetch_array($permisos)) {
                                                 $nombrePermiso = $rs['nombre_permiso'];
