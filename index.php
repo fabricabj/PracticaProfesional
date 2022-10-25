@@ -54,7 +54,7 @@
        <div class="row">
         <?php
         
-           $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021 and idestado=1");
+           $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2022 and idestado=1");
            ?>
             <div class="col-md-8" style="background:#212121">
               <div align="center" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -147,7 +147,7 @@
       </div>
       <div class="col-md-4" style="color:white;background:#121212">
            <br>
-           <h3>Películas 2021</h3>
+           <h3>Películas 2022</h3>
            <?php $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021"); ?>
            <div class="parent">
               <div class="child">
