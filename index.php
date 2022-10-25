@@ -148,7 +148,7 @@
       <div class="col-md-4" style="color:white;background:#121212">
            <br>
            <h3>Películas 2022</h3>
-           <?php $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2021"); ?>
+           <?php $consulta= mysqli_query($conexion,"SELECT * FROM peliculas WHERE anio=2022"); ?>
            <div class="parent">
               <div class="child">
                   <?php while ($r=mysqli_fetch_array($consulta)) { ?>
