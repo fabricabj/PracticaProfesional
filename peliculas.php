@@ -308,11 +308,11 @@
                             }
                     } 
                     function agregarFav(idPelicula,idUsuario,pagina){
-                            var agregar = confirm('De verdad desea agregar está película de favoritos?');
+                            var agregare = confirm('De verdad desea agregar está película de favoritos?');
                             
                             var agregar=document.getElementById('agregar').value;
                             var genero=document.getElementById('genero').value;
-                            if ( agregar ) {
+                            if ( agregare ) {
                                 
                                 $.ajax({
                                     url: 'ABfavoritos.php',

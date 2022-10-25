@@ -310,6 +310,10 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
     <script type="text/javascript" src="jquery.min.js"></script>
     <script src="bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/2be8605e79.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script>
         function registrar(v) {
             var ok = true;
@@ -320,7 +324,7 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login'])) {
                 ok = false;
             }
             if (ok == false) {
-                alert(msg);
+                Swal.fire(msg);
                 return ok;
             }
         }
