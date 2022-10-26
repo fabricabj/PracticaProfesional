@@ -32,6 +32,9 @@
     if (isset($_GET['error'])&& $_GET['error']==3) {
         echo "<div class='alert alert-danger'>¡Usuario a sido suspendido!</div>";
     }
+    if (isset($_GET['error'])&& $_GET['error']==6) {
+        echo "<div class='alert alert-danger'>¡Usuario no existente!</div>";
+    }
     if (isset($_GET['error'])&& $_GET['error']==4) {
         echo "<div class='alert alert-danger'>¡El nombre de usuario ingresado ya existe, por favor ingrese otro!</div>";
     }

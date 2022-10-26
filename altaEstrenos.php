@@ -56,7 +56,7 @@
 								<label>Estado</label>
 								<select name="estado" class="form-control" >
 									
-									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM pelicula_estados WHERE idestado=3 OR idestado=4 ORDER BY descripcion ASC");
+									<?php $selectEstado=mysqli_query($conexion,"SELECT idestado,descripcion FROM pelicula_estados ORDER BY descripcion ASC");
 									while($r=mysqli_fetch_array($selectEstado)){?>
 										
 										<option value="<?php echo $r['idestado'];?>" <?php  if($idTipoEstado==$r['idestado']){ echo'selected';}?>><?php echo $r['descripcion'];?></option>

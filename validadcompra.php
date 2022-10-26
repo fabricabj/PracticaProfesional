@@ -69,7 +69,7 @@ $tipoPago =$_POST['tipoPago'];
 $totalPagar =$_POST['totalpagar'];
 $imagen=imagen();
 include('sendmail.php');//Mando a llamar la funcion que se encarga de enviar el correo electronico
-$sugerencia = "aflcinema1@gmail.com";
+$sugerencia = "aflcinema2@gmail.com";
 //$subject = $_POST['asunto'];
 //$message = $_POST['mensaje'];
 
@@ -77,8 +77,8 @@ $sugerencia = "aflcinema1@gmail.com";
 // mail($to, $subject, $message, $headers);
 
      $smtpHost = "smtp.gmail.com";  // Dominio alternativo brindado en el email de alta 
-     $smtpUsuario = ("aflcinema1@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
-     $smtpClave = "ohiczseicwwbodvh";  // Mi contraseña,  alfsugerencias
+     $smtpUsuario = ("aflcinema2@gmail.com");  // Mi cuenta de correo afl.sugerencias@gmail.com
+     $smtpClave = "vyvmytpfexawxlxl";  // Mi contraseña,  alfsugerencias
      $mail = new PHPMailer();
      $mail->IsSMTP();
      $mail->SMTPAuth = true;
